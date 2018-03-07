@@ -10,15 +10,15 @@ namespace Grayson.ExampleCQRS.Application.BusinessUseCases
 {
     public class UpdateRit
     {
-        private readonly Func<IRitRepository> _ritRepositoryFactory;
+        private readonly Func<IRepository<Rit>> _ritRepositoryFactory;
 
-        public UpdateRit(Func<IRitRepository> ritRepositoryFactory)
+        public UpdateRit(Func<IRepository<Rit>> ritRepositoryFactory)
         {
             _ritRepositoryFactory = ritRepositoryFactory;
         }
 
         public UpdateRit()
-            : this(() => new RitRepository(new EventStore()))
+            : this(() => new Repository<Rit>(new EventStore()))
         {
             ///
         }

@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Grayson.ExampleCQRS.Domain.Repository
 {
-    public interface IRitRepository
+    public interface IRepository<TAgrregate>
     {
-        void Add(Rit rit);
+        void Add(TAgrregate agrregate);
 
-        Rit FindBy(Guid id);
+        TAgrregate FindBy(Guid id);
 
-        void Save(Rit rit);
+        void Save(TAgrregate agrregate);
     }
 }

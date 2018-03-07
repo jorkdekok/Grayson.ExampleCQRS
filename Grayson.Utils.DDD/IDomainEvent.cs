@@ -6,6 +6,6 @@ namespace Grayson.Utils.DDD
 {
     public interface IDomainEvent
     {
-        Guid Id { get; set; }
+        Guid Id { get; }
     }
 }

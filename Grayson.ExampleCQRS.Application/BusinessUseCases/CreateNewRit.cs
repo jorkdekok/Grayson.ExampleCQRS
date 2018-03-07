@@ -10,15 +10,15 @@ namespace Grayson.ExampleCQRS.Application.BusinessUseCases
 {
     public class CreateNewRit
     {
-        private readonly Func<IRitRepository> _ritRepositoryFactory;
+        private readonly Func<IRepository<Rit>> _ritRepositoryFactory;
 
-        public CreateNewRit(Func<IRitRepository> ritRepositoryFactory)
+        public CreateNewRit(Func<IRepository<Rit>> ritRepositoryFactory)
         {
             _ritRepositoryFactory = ritRepositoryFactory;
         }
 
         public CreateNewRit() 
-            : this(() => new RitRepository(new EventStore()))
+            : this(() => new Repository<Rit>(new EventStore()))
         {
             ///
         }

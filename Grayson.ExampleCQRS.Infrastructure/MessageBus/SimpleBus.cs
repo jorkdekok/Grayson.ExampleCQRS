@@ -1,5 +1,6 @@
 ﻿using Grayson.Utils.DDD;
 using NetMQ.Sockets;
+using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,27 +12,37 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
     {
         private readonly ResponseSocket _server;
         private readonly RequestSocket _client;
-
+        private readonly Container _container;
         private static IList<Type> _registeredHandlers = new List<Type>();
 
         public SimpleBus()
         {
             _server = new ResponseSocket("@tcp://127.0.0.1:5556");
             _client = new RequestSocket(">tcp://127.0.0.1:5556");
+            _container = new Container();
+
+            AutoRegisterCommandHandlers();
         }
 
-        public void RegisterHandler<T>()
+        private void AutoRegisterCommandHandlers()
         {
-            _registeredHandlers.Add(typeof(T));
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in assemblies)
+            {
+                Console.WriteLine(assembly.GetName());
+            }
+            _container.Register(typeof(ICommandHandler<>), assemblies);
+        }
+
+        public void RegisterHandler<TCommandHandler, TInstance>()
+        {
+            _container.Register(typeof(TCommandHandler), typeof(TInstance));
         }
 
         public void Send<T>(T command) where T : ICommand
         {
-            if (_registeredHandlers.Contains(typeof(T)))
-            {
-                ICommandHandler<T> handler = _registeredHandlers.Where(t => t == typeof(T)).Single() as ICommandHandler<T>;
-                handler.Handle(command);
-            }
+            var instance = _container.GetInstance<ICommandHandler<T>>();
+            instance.When(command);
         }
     }
 }

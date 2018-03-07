@@ -7,6 +7,6 @@ namespace Grayson.Utils.DDD
     public interface ICommandHandler<TCommand>
         where TCommand : ICommand 
     {
-        void Handle(TCommand command);
+        void When(TCommand command);
     }
 }

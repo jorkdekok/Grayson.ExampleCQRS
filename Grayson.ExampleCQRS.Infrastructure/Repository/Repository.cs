@@ -8,16 +8,17 @@ using System.Text;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Repository
 {
-    public class RitRepository : IRitRepository
+    public class Repository<TAggregate> : IRepository<TAggregate>
+        where TAggregate: EventSourcedAggregate, new()
     {
         private readonly IEventStore _eventStore;
 
-        public RitRepository(IEventStore eventStore)
+        public Repository(IEventStore eventStore)
         {
             _eventStore = eventStore;
         }
 
-        public void Add(Rit rit)
+        public void Add(TAggregate rit)
         {
             var streamName = StreamNameFor(rit.Id);
 
@@ -27,10 +28,10 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
         private string StreamNameFor(Guid id)
         {
             // Stream per-aggregate: {AggregateType}-{AggregateId}
-            return string.Format("{0}-{1}", typeof(Rit).Name, id);
+            return string.Format("{0}-{1}", typeof(TAggregate).Name, id);
         }
 
-        public Rit FindBy(Guid id)
+        public TAggregate FindBy(Guid id)
         {
             var streamName = StreamNameFor(id);
 
@@ -45,7 +46,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
 
             var stream = _eventStore.GetStream(streamName, fromEventNumber, toEventNumber);
 
-            Rit rit = new Rit();
+            TAggregate rit = new TAggregate();
             //if (snapshot != null)
             //{
             //    payAsYouGoAccount = new PayAsYouGoAccount(snapshot);
@@ -64,7 +65,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             return rit;
         }
 
-        public void Save(Rit rit)
+        public void Save(TAggregate rit)
         {
             var streamName = StreamNameFor(rit.Id);
 

@@ -31,6 +31,9 @@ namespace Grayson.ExampleCQRS.Application.Services
 
             KmStand kmStand = new KmStand();
             kmStand.Create(command.Stand, command.Datum, command.AdresId);
+
+
+
             repository.Add(kmStand);
         }
     }

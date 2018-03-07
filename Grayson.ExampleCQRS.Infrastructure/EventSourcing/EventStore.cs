@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Grayson.ExampleCQRS.Domain.Model;
+using Grayson.Utils.DDD;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+
+namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
+{
+    public class EventStore : IEventStore
+    {
+        private MongoClient _client;
+        private IMongoDatabase _database;
+        private IMongoCollection<EventStream> _eventStreams;
+        private IMongoCollection<EventWrapper> _events;
+
+        public EventStore()
+        {
+            _client = new MongoClient("mongodb://localhost:27017");
+            _database = _client.GetDatabase("GrasysonTestDB");
+
+            _eventStreams = _database.GetCollection<EventStream>("EventStreams");
+            _events = _database.GetCollection<EventWrapper>("Events");
+
+            ConfigureMappings();
+        }
+
+        private void ConfigureMappings()
+        {
+            if (!BsonClassMap.IsClassMapRegistered(typeof(EventStream)))
+                BsonClassMap.RegisterClassMap<EventStream>(cm => cm.AutoMap());
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(EventWrapper)))
+                BsonClassMap.RegisterClassMap<EventWrapper>(cm => cm.AutoMap());
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(RitCreated)))
+                BsonClassMap.RegisterClassMap<RitCreated>(cm => cm.AutoMap());
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(RitUpdated)))
+                BsonClassMap.RegisterClassMap<RitUpdated>(cm => cm.AutoMap());
+        }
+
+        public void AddSnapshot<T>(string streamName, T snapshot)
+        {
+            throw new NotImplementedException();
+        }
+
+         public void CreateNewStream(string streamName, IEnumerable<IDomainEvent> domainEvents)
+        {
+            var eventStream = new EventStream(streamName);
+
+            _eventStreams.InsertOne(eventStream);
+
+            AppendEventsToStream(streamName, domainEvents);
+
+        }
+
+        public void AppendEventsToStream(string streamName, IEnumerable<IDomainEvent> domainEvents, int? expectedVersion = null)
+        {
+            var stream = _eventStreams.AsQueryable().Where(e => e.Id == streamName).Single();
+
+            foreach (var @event in domainEvents)
+            {
+                var e = stream.RegisterEvent(@event);
+                _events.InsertOne(e);
+            }
+
+            // update eventstream version
+            _eventStreams.ReplaceOne(s => s.Id == streamName, stream);
+        }
+
+        public T GetLatestSnapshot<T>(string streamName) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<IDomainEvent> GetStream(string streamName, int fromVersion, int toVersion)
+        {
+            var events = _events.AsQueryable().Where(
+                e => e.EventStreamId == streamName
+                    && e.EventNumber <= toVersion
+                    && e.EventNumber >= fromVersion)
+                    .Select(e => e).ToList();
+
+            if (events.Count == 0)
+            {
+                return null;
+            }
+
+            var domainevents = events.Select(e => e.Event).ToList();
+            return domainevents;
+        }
+    }
+}

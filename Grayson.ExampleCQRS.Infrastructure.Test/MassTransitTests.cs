@@ -21,7 +21,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Test
                 cfg.ReceiveEndpoint(host,
                     RabbitMqConstants.CommandsQueue, e =>
                     {
-                        e.Consumer<MassTransitConsumer<AddNewKmStand>>();
+                        //e.Consumer<MassTransitConsumer<AddNewKmStand>>();
                     });
             });
 

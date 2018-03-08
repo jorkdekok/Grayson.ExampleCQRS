@@ -1,30 +1,62 @@
 ﻿using Grayson.ExampleCQRS.Application.Commands;
+using Grayson.ExampleCQRS.Domain.Model;
+using Grayson.ExampleCQRS.Domain.Repository;
+using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Infrastructure.Repository;
+using Grayson.Utils.DDD;
 using MassTransit;
+using SimpleInjector;
 using System;
 
 namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var bus2 = AdvancedBus.ConfigureBus((cfg, host) =>
+            using (var container = new Container())
             {
-                cfg.ReceiveEndpoint(host,
-                    RabbitMqConstants.CommandsQueue, e =>
-                    {
-                        e.Consumer<MassTransitConsumer<AddNewKmStand>>();
-                    });
-            });
+                container.Options.AllowResolvingFuncFactories();
 
-            bus2.StartAsync();
+                RegisterCommandHandlers.AutoRegisterCommandHandlers(container);
+                RepositoryRegistrations.Register(container);
 
-            Console.WriteLine("Listening for Register order commands.. " +
-                              "Press enter to exit");
-            Console.ReadLine();
+                // create a generic consumer for each command and register 
+                var assemblies = new[] { typeof(AddNewKmStand).Assembly };
+                var commands = container.GetTypesToRegister(typeof(ICommand), assemblies);
 
-            bus2.StopAsync();
+                Type mtc= typeof(MassTransitConsumer<>);
+                
+                foreach (var commandType in commands)
+                {
+                    Type real = mtc.MakeGenericType(commandType);
+                    container.Register(real);
+                }
+
+                container.RegisterSingleton(AdvancedBus.ConfigureBus((cfg, host) =>
+                {
+                    cfg.ReceiveEndpoint(host,
+                        RabbitMqConstants.CommandsQueue, e =>
+                        {
+                            e.LoadFrom(container); // .Consumer<MassTransitConsumer<AddNewKmStand>>();
+                            //e.Consumer<MassTransitConsumer<AddNewKmStand>>(container);
+                            //e.Consumer(container);
+                            
+                        });
+                }));
+
+                var r = container.GetInstance<IRepository<KmStand>>();
+
+                var bus2 = container.GetInstance<IBusControl>();
+
+                bus2.StartAsync();
+
+                Console.WriteLine("Listening for commands.. Press enter to exit");
+                Console.ReadLine();
+
+                bus2.StopAsync();
+            }
         }
     }
 }

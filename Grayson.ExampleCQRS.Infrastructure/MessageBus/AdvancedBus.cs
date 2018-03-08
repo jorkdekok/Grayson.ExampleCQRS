@@ -1,6 +1,7 @@
 ﻿using Grayson.Utils.DDD;
 using MassTransit;
 using MassTransit.RabbitMqTransport;
+using MassTransit.SimpleInjectorIntegration;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                     hst.Username(RabbitMqConstants.UserName);
                     hst.Password(RabbitMqConstants.Password);
                 });
-
+                
                 registrationAction?.Invoke(cfg, host);
             });
         }

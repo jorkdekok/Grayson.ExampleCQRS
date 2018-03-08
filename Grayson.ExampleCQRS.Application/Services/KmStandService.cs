@@ -10,7 +10,7 @@ namespace Grayson.ExampleCQRS.Application.Services
     {
         private readonly Func<IRepository<KmStand>> _repositoryFactory;
 
-        private KmStandService(Func<IRepository<KmStand>> repositoryFactory)
+        public KmStandService(Func<IRepository<KmStand>> repositoryFactory)
         {
             _repositoryFactory = repositoryFactory;
         }

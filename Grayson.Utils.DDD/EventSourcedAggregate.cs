@@ -3,21 +3,23 @@ using System.Collections.Generic;
 
 namespace Grayson.Utils.DDD
 {
-    public abstract class EventSourcedAggregate : Entity
+    public abstract class EventSourcedAggregate : Entity, IEventSourcedAggregate
     {
         private readonly IServiceBus _bus;
         private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
-        public int Version { get; internal set; }
+        private readonly IServiceBus _serviceBus;
 
-        protected EventSourcedAggregate(IServiceBus bus)
+        public EventSourcedAggregate(IServiceBus serviceBus)
         {
-            _bus = bus;
+            _serviceBus = serviceBus;
         }
+
+        public int Version { get; set; }
 
         public void AddChange(IDomainEvent @event)
         {
             _changes.Add(@event);
-            _bus.Publish(@event);
+            _serviceBus.Publish(@event);
         }
 
         public IEnumerable<IDomainEvent> GetUncommittedEvents()

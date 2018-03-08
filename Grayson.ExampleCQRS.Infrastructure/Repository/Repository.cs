@@ -9,20 +9,22 @@ using System.Text;
 namespace Grayson.ExampleCQRS.Infrastructure.Repository
 {
     public class Repository<TAggregate> : IRepository<TAggregate>
-        where TAggregate: EventSourcedAggregate, new()
+        where TAggregate: class, IEventSourcedAggregate
     {
         private readonly IEventStore _eventStore;
+        private readonly IAggregateFactory _aggregateFactory;
 
-        public Repository(IEventStore eventStore)
+        public Repository(IAggregateFactory aggregateFactory, IEventStore eventStore)
         {
             _eventStore = eventStore;
+            _aggregateFactory = aggregateFactory;
         }
 
-        public void Add(TAggregate rit)
+        public void Add(TAggregate aggregate)
         {
-            var streamName = StreamNameFor(rit.Id);
+            var streamName = StreamNameFor(aggregate.Id);
 
-            _eventStore.CreateNewStream(streamName, rit.GetUncommittedEvents());
+            _eventStore.CreateNewStream(streamName, aggregate.GetUncommittedEvents());
         }
 
         private string StreamNameFor(Guid id)
@@ -46,7 +48,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
 
             var stream = _eventStore.GetStream(streamName, fromEventNumber, toEventNumber);
 
-            TAggregate rit = new TAggregate();
+            TAggregate rit = _aggregateFactory.Create<TAggregate>();
             //if (snapshot != null)
             //{
             //    payAsYouGoAccount = new PayAsYouGoAccount(snapshot);
@@ -65,13 +67,13 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             return rit;
         }
 
-        public void Save(TAggregate rit)
+        public void Save(TAggregate aggregate)
         {
-            var streamName = StreamNameFor(rit.Id);
+            var streamName = StreamNameFor(aggregate.Id);
 
             //var expectedVersion = GetExpectedVersion(rit.InitialVersion);
             //_eventStore.AppendEventsToStream(streamName, rit.Changes, expectedVersion);
-            _eventStore.AppendEventsToStream(streamName, rit.GetUncommittedEvents(), 0);
+            _eventStore.AppendEventsToStream(streamName, aggregate.GetUncommittedEvents(), 0);
         }
 
         private int? GetExpectedVersion(int expectedVersion)

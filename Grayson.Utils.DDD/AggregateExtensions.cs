@@ -31,11 +31,11 @@ namespace Grayson.Utils.DDD
         /// <param name="aggregate"></param>
         /// <param name="event"></param>
         public static void Replay<TAggregate>(this TAggregate aggregate, IDomainEvent @event)
-            where TAggregate : EventSourcedAggregate
+            where TAggregate : IEventSourcedAggregate
 
         {
             RedirectToWhen.InvokeEventOptional(aggregate, @event);
-            EventSourcedAggregate eventSourcedAggregate = (EventSourcedAggregate)aggregate;
+            IEventSourcedAggregate eventSourcedAggregate = (IEventSourcedAggregate)aggregate;
             eventSourcedAggregate.Version++;
         }
     }

@@ -2,12 +2,12 @@
 
 namespace Grayson.ExampleCQRS.Domain.Repository
 {
-    public interface IRepository<TAgrregate>
+    public interface IRepository<TAggregate>
     {
-        void Add(TAgrregate agrregate);
+        void Add(TAggregate aggregate);
 
-        TAgrregate FindBy(Guid id);
+        TAggregate FindBy(Guid id);
 
-        void Save(TAgrregate agrregate);
+        void Save(TAggregate aggregate);
     }
 }

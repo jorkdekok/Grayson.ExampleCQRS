@@ -1,6 +1,7 @@
-﻿using Grayson.Utils.DDD;
-using System;
+﻿using System;
 using System.Diagnostics;
+
+using Grayson.Utils.DDD;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {
@@ -8,7 +9,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
     {
         public string Name { get; private set; }
 
-        public Rit(IServiceBus bus) : base(bus)
+        public Rit(IServiceBus serviceBus) : base(serviceBus)
         {
         }
 

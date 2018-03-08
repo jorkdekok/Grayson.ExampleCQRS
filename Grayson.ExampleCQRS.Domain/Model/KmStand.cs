@@ -1,15 +1,20 @@
-﻿using Grayson.Utils.DDD;
-using System;
+﻿using System;
+
+using Grayson.Utils.DDD;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {
     public class KmStand : EventSourcedAggregate, IApplyEvent<KmStandCreated>
     {
+        private readonly IServiceBus bus;
+
         public Guid AdresId { get; private set; }
+
         public DateTime Datum { get; private set; }
+
         public int Stand { get; private set; }
 
-        public KmStand(IServiceBus bus) : base(bus)
+        public KmStand(IServiceBus serviceBus) : base(serviceBus)
         {
         }
 

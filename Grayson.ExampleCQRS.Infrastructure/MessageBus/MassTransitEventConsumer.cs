@@ -18,14 +18,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
         public async Task Consume(ConsumeContext<TRequest> context)
         {
-            Type messageType = context.Message.GetType();
-            Type commandhandlerType = typeof(ICommandHandler<>);
-            Type constructedType= commandhandlerType.MakeGenericType(messageType);
-
-            var handler = _container.GetInstance(constructedType);
-            ((dynamic)handler).When(context.Message);
-
-            await Console.Out.WriteLineAsync($"Received command message: {context.Message.GetType()}");
+            await Console.Out.WriteLineAsync($"Received event message: {context.Message.GetType()}");
         }
     }
 }

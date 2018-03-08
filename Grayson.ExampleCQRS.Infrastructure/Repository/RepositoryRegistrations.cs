@@ -10,6 +10,9 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
     {
         public static void Register(Container container)
         {
+            var assemblies = new[] { typeof(Rit).Assembly };
+            container.RegisterCollection(typeof(Rit), assemblies);
+
             container.Register(typeof(IRepository<>), typeof(Repository<>));
 
             container.Register<IEventStore, EventStore>();

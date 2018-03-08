@@ -56,5 +56,14 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             await endPoint
                 .Send(command);
         }
+
+        public async void Publish<T>(T @event)
+            where T : class, IDomainEvent
+        {
+            var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
+
+            await _bus.Publish(@event);
+
+        }
     }
 }

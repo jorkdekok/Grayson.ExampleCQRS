@@ -2,8 +2,6 @@
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
@@ -19,8 +17,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             RegisterCommandHandlers.AutoRegisterCommandHandlers(_container);
         }
 
-        
-
         public void RegisterHandler<TCommandHandler, TInstance>()
         {
             _container.Register(typeof(TCommandHandler), typeof(TInstance));
@@ -30,6 +26,12 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         {
             var instance = _container.GetInstance<ICommandHandler<T>>();
             instance.When(command);
+        }
+
+        public void Publish<T>(T @event)
+            where T : class, IDomainEvent
+        {
+            throw new NotImplementedException();
         }
     }
 }

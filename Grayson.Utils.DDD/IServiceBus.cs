@@ -11,5 +11,7 @@ namespace Grayson.Utils.DDD
         //void RaiseEvent<T>(T theEvent) where T : Event;
         //void RegisterSaga<T>() where T : Saga;
         void RegisterHandler<TCommandHandler, TInstance>();
+
+        void Publish<T>(T @event) where T : class, IDomainEvent;
     }
 }

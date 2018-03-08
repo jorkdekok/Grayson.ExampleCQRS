@@ -9,9 +9,11 @@ namespace Grayson.ExampleCQRS.Application.Services
     public class KmStandService : ApplicationService, ICommandHandler<AddNewKmStand>
     {
         private readonly Func<IRepository<KmStand>> _repositoryFactory;
+        private readonly IAggregateFactory aggregateFactory;
 
-        public KmStandService(Func<IRepository<KmStand>> repositoryFactory)
+        public KmStandService(IAggregateFactory aggregateFactory, Func<IRepository<KmStand>> repositoryFactory)
         {
+            this.aggregateFactory = aggregateFactory;
             _repositoryFactory = repositoryFactory;
         }
 
@@ -19,7 +21,7 @@ namespace Grayson.ExampleCQRS.Application.Services
         {
             var repository = _repositoryFactory();
 
-            KmStand kmStand = new KmStand();
+            KmStand kmStand = aggregateFactory.Create<KmStand>();
             kmStand.Create(command.Stand, command.Datum, command.AdresId);
 
             repository.Add(kmStand);

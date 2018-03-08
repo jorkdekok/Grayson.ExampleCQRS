@@ -36,7 +36,7 @@ namespace Grayson.ExampleCQRS.Domain.Test
             Rit rit = new Rit();
 
             rit.Create(Guid.NewGuid(), "test1");
-            
+
             Assert.IsNotNull(rit.Id);
         }
     }

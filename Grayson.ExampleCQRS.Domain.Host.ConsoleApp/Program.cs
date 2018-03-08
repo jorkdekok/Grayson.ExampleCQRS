@@ -1,9 +1,9 @@
 ﻿using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Domain.Repository;
+using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
-using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD;
 using MassTransit;
 using SimpleInjector;
@@ -19,15 +19,14 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
             {
                 container.Options.AllowResolvingFuncFactories();
 
-                RegisterCommandHandlers.AutoRegisterCommandHandlers(container);
-                RepositoryRegistrations.Register(container);
+                RegistrationModule.Register(container);
 
-                // create a generic consumer for each command and register 
+                // create a generic consumer for each command and register
                 var assemblies = new[] { typeof(AddNewKmStand).Assembly };
                 var commands = container.GetTypesToRegister(typeof(ICommand), assemblies);
 
-                Type mtc= typeof(MassTransitCommandConsumer<>);
-                
+                Type mtc = typeof(MassTransitCommandConsumer<>);
+
                 foreach (var commandType in commands)
                 {
                     Type real = mtc.MakeGenericType(commandType);
@@ -39,7 +38,7 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
                     cfg.ReceiveEndpoint(host,
                         RabbitMqConstants.CommandsQueue, e =>
                         {
-                            e.LoadFrom(container);                             
+                            e.LoadFrom(container);
                         });
                 }));
 

@@ -10,18 +10,17 @@ namespace Grayson.ExampleCQRS.Application.Test
         [TestMethod]
         public void CreateNewRitTest()
         {
-            var createdNewRit = new CreateNewRit();
+            //var createdNewRit = new CreateNewRit(null);
 
-            createdNewRit.Handle();
+            //createdNewRit.Handle();
         }
 
         [TestMethod]
         public void GetRitTest()
         {
-            var updateRit = new UpdateRit();
+            //var updateRit = new UpdateRit(null);
 
-            updateRit.Handle(Guid.Parse("696e6130-0b07-4376-a00a-ba0efe1e2425"));
+            //updateRit.Handle(Guid.Parse("696e6130-0b07-4376-a00a-ba0efe1e2425"));
         }
-
     }
 }

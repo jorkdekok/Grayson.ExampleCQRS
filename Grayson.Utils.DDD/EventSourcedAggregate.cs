@@ -3,15 +3,21 @@ using System.Collections.Generic;
 
 namespace Grayson.Utils.DDD
 {
-    public abstract class EventSourcedAggregate : Entity//, IApplyEvent<IDomainEvent>
+    public abstract class EventSourcedAggregate : Entity
     {
+        private readonly IServiceBus _bus;
         private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
-
         public int Version { get; internal set; }
+
+        protected EventSourcedAggregate(IServiceBus bus)
+        {
+            _bus = bus;
+        }
 
         public void AddChange(IDomainEvent @event)
         {
             _changes.Add(@event);
+            _bus.Publish(@event);
         }
 
         public IEnumerable<IDomainEvent> GetUncommittedEvents()
@@ -19,14 +25,14 @@ namespace Grayson.Utils.DDD
             return _changes;
         }
 
-        public void MarkEventsAsCommitted()
-        {
-            _changes.Clear();
-        }
-
         public void LoadsFromHistory(IEnumerable<IDomainEvent> history)
         {
             foreach (var e in history) ApplyEvent(e, false);
+        }
+
+        public void MarkEventsAsCommitted()
+        {
+            _changes.Clear();
         }
 
         protected void ApplyEvent(IDomainEvent @event)
@@ -40,10 +46,5 @@ namespace Grayson.Utils.DDD
             //this.AsDynamic().Apply(@event);
             //if (isNew) _changes.Add(@event);
         }
-
-        //public void Apply(IDomainEvent @event)
-        //{
-            
-        //}
     }
 }

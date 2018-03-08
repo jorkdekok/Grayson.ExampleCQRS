@@ -8,9 +8,9 @@ using System;
 
 namespace Grayson.ExampleCQRS.TestConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (var container = new Container())
             {
@@ -18,13 +18,12 @@ namespace Grayson.ExampleCQRS.TestConsoleApp
 
                 RegisterCommandHandlers.AutoRegisterCommandHandlers(container);
 
-                container.Register<IServiceBus, AdvancedBus>();
                 container.RegisterSingleton(AdvancedBus.ConfigureBus());
 
                 var bus = container.GetInstance<IServiceBus>();
 
                 bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
-                                
+
                 Console.WriteLine("Press ENTER to quit");
                 Console.ReadLine();
             }

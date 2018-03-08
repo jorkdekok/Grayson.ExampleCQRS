@@ -16,6 +16,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                 Console.WriteLine(assembly.GetName());
             }
             container.Register(typeof(ICommandHandler<>), assemblies);
+
+            container.Register<IServiceBus, AdvancedBus>();
         }
     }
 }

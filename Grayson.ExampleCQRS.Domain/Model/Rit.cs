@@ -1,14 +1,16 @@
 ﻿using Grayson.Utils.DDD;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {
     public class Rit : EventSourcedAggregate, IApplyEvent<RitCreated>, IApplyEvent<RitUpdated>
     {
         public string Name { get; private set; }
+
+        public Rit(IServiceBus bus) : base(bus)
+        {
+        }
 
         public void Apply(RitCreated @event)
         {

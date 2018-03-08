@@ -26,7 +26,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             _container.Register(typeof(TCommandHandler), typeof(TInstance));
         }
 
-        public void Send<T>(T command) where T : ICommand
+        public void Send<T>(T command) where T : class, ICommand
         {
             var instance = _container.GetInstance<ICommandHandler<T>>();
             instance.When(command);

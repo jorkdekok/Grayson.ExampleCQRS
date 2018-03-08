@@ -1,21 +1,14 @@
-using Grayson.ExampleCQRS.Application.Commands;
+﻿using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using MassTransit;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Grayson.ExampleCQRS.Infrastructure.Test
+namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
 {
-    [TestClass]
-    public class MassTransitTests
+    class Program
     {
-        [TestMethod]
-        public void TestMethod1()
+        static void Main(string[] args)
         {
-            var bus = new AdvancedBus(AdvancedBus.ConfigureBus());
-
-            bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
-
             var bus2 = AdvancedBus.ConfigureBus((cfg, host) =>
             {
                 cfg.ReceiveEndpoint(host,
@@ -33,8 +26,5 @@ namespace Grayson.ExampleCQRS.Infrastructure.Test
 
             bus2.StopAsync();
         }
-
-
-
     }
 }

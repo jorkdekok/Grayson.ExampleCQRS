@@ -1,8 +1,7 @@
 ﻿using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
-using Rebus.Config;
-using Rebus.SimpleInjector;
-using Rebus.Transport.InMem;
+using Grayson.Utils.DDD;
+using MassTransit;
 using SimpleInjector;
 using System;
 
@@ -16,14 +15,14 @@ namespace Grayson.ExampleCQRS.TestConsoleApp
             {
                 //container.RegisterCollection<IHandleMessages<string>>(new[] { typeof(StringHandler) });
                 RegisterCommandHandlers.AutoRegisterCommandHandlers(container);
+                container.Register<IServiceBus, AdvancedBus>();
+                container.RegisterSingleton(AdvancedBus.ConfigureBus());
 
-                var bus = Configure.With(new SimpleInjectorContainerAdapter(container))
-                    .Transport(t => t.UseInMemoryTransport(new InMemNetwork(), "simple-injector-test"))
-                    .Start();
+                var bus = container.GetInstance<IServiceBus>();
 
-                
+                bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
 
-                bus.Advanced.SyncBus.SendLocal(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
+
 
                 Console.WriteLine("Press ENTER to quit");
                 Console.ReadLine();

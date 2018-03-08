@@ -6,12 +6,12 @@ using Grayson.Utils.DDD;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class MassTransitConsumer<TRequest> : IConsumer<TRequest>
+    public class MassTransitEventConsumer<TRequest> : IConsumer<TRequest>
         where TRequest : class
     {
         private readonly Container _container;
 
-        public MassTransitConsumer(Container container )
+        public MassTransitEventConsumer(Container container )
         {
             _container = container;
         }

@@ -26,7 +26,7 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
                 var assemblies = new[] { typeof(AddNewKmStand).Assembly };
                 var commands = container.GetTypesToRegister(typeof(ICommand), assemblies);
 
-                Type mtc= typeof(MassTransitConsumer<>);
+                Type mtc= typeof(MassTransitCommandConsumer<>);
                 
                 foreach (var commandType in commands)
                 {
@@ -39,10 +39,7 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
                     cfg.ReceiveEndpoint(host,
                         RabbitMqConstants.CommandsQueue, e =>
                         {
-                            e.LoadFrom(container); // .Consumer<MassTransitConsumer<AddNewKmStand>>();
-                            //e.Consumer<MassTransitConsumer<AddNewKmStand>>(container);
-                            //e.Consumer(container);
-                            
+                            e.LoadFrom(container);                             
                         });
                 }));
 

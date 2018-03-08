@@ -5,7 +5,7 @@ using System.Text;
 namespace Grayson.Utils.DDD
 {
 
-    public interface IBus
+    public interface IServiceBus
     {
         void Send<T>(T command) where T : ICommand;
         //void RaiseEvent<T>(T theEvent) where T : Event;

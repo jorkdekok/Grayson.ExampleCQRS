@@ -13,7 +13,7 @@ namespace Grayson.ExampleCQRS.Application.Test
         [TestMethod]
         public void AddNewKmStandTest1()
         {
-            IBus bus = new SimpleBus();
+            IServiceBus bus = new SimpleBus();
             //bus.RegisterHandler<ICommandHandler<AddNewKmStand>, KmStandService>();
 
             bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));

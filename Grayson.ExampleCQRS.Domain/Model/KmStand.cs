@@ -6,8 +6,6 @@ namespace Grayson.ExampleCQRS.Domain.Model
 {
     public class KmStand : EventSourcedAggregate, IApplyEvent<KmStandCreated>
     {
-        private readonly IMessgeBus bus;
-
         public Guid AdresId { get; private set; }
 
         public DateTime Datum { get; private set; }

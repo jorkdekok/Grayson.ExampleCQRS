@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
+    <PackageReference Include="CodeGeneration.Roslyn" Version="0.4.11" />
+    <PackageReference Include="CodeGeneration.Roslyn.Attributes" Version="0.4.11" />
   </ItemGroup>
 
 </Project>

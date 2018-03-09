@@ -1,7 +1,4 @@
 ﻿using Grayson.Utils.DDD;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {
@@ -14,8 +11,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
 
         public void RitCreator(KmStandCreated @event)
         {
-            // find last kmstand
-            // check if connected to existing rit
+            // find last kmstand check if connected to existing rit
         }
     }
 }

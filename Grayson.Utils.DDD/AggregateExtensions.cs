@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
-namespace Grayson.Utils.DDD
+﻿namespace Grayson.Utils.DDD
 {
     public static class AggregateExtensions
     {
@@ -14,7 +9,7 @@ namespace Grayson.Utils.DDD
         /// <param name="aggregate"></param>
         /// <param name="event"></param>
         public static void Causes<TAggregate>(this TAggregate aggregate, IDomainEvent @event)
-            where TAggregate: EventSourcedAggregate
+            where TAggregate : EventSourcedAggregate
 
         {
             //((dynamic)aggregate).Apply((dynamic)@event);

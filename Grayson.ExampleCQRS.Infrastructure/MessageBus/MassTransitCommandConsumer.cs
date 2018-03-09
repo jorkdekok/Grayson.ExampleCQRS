@@ -1,8 +1,11 @@
-﻿using MassTransit;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using SimpleInjector;
+
 using Grayson.Utils.DDD;
+
+using MassTransit;
+
+using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
@@ -11,7 +14,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
     {
         private readonly Container _container;
 
-        public MassTransitCommandConsumer(Container container )
+        public MassTransitCommandConsumer(Container container)
         {
             _container = container;
         }
@@ -20,7 +23,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         {
             Type messageType = context.Message.GetType();
             Type commandhandlerType = typeof(ICommandHandler<>);
-            Type constructedType= commandhandlerType.MakeGenericType(messageType);
+            Type constructedType = commandhandlerType.MakeGenericType(messageType);
 
             var handler = _container.GetInstance(constructedType);
             ((dynamic)handler).When(context.Message);

@@ -1,18 +1,16 @@
-﻿using Grayson.ExampleCQRS.Domain.Model;
+﻿using System;
+
 using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.Utils.DDD;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Repository
 {
     public class Repository<TAggregate> : IRepository<TAggregate>
-        where TAggregate: class, IEventSourcedAggregate
+        where TAggregate : class, IEventSourcedAggregate
     {
-        private readonly IEventStore _eventStore;
         private readonly IAggregateFactory _aggregateFactory;
+        private readonly IEventStore _eventStore;
 
         public Repository(IAggregateFactory aggregateFactory, IEventStore eventStore)
         {
@@ -25,12 +23,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             var streamName = StreamNameFor(aggregate.Id);
 
             _eventStore.CreateNewStream(streamName, aggregate.GetUncommittedEvents());
-        }
-
-        private string StreamNameFor(Guid id)
-        {
-            // Stream per-aggregate: {AggregateType}-{AggregateId}
-            return string.Format("{0}-{1}", typeof(TAggregate).Name, id);
         }
 
         public TAggregate FindBy(Guid id)
@@ -57,7 +49,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             //{
             //    payAsYouGoAccount = new PayAsYouGoAccount();
             //}
-
 
             foreach (var @event in stream)
             {
@@ -87,6 +78,12 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             {
                 return expectedVersion;
             }
+        }
+
+        private string StreamNameFor(Guid id)
+        {
+            // Stream per-aggregate: {AggregateType}-{AggregateId}
+            return string.Format("{0}-{1}", typeof(TAggregate).Name, id);
         }
     }
 }

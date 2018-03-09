@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Applica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.TestConsoleApp", "Grayson.ExampleCQRS.TestConsoleApp\Grayson.ExampleCQRS.TestConsoleApp.csproj", "{12269706-6D69-49FE-86C7-F5DD645D9FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.ExampleCQRS.Infrastructure.Test", "Grayson.ExampleCQRS.Infrastructure.Test\Grayson.ExampleCQRS.Infrastructure.Test.csproj", "{6A74D608-EAEF-4C59-A8CB-E7DCE2D2C9C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Infrastructure.Test", "Grayson.ExampleCQRS.Infrastructure.Test\Grayson.ExampleCQRS.Infrastructure.Test.csproj", "{6A74D608-EAEF-4C59-A8CB-E7DCE2D2C9C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.ExampleCQRS.Domain.Host.ConsoleApp", "Grayson.ExampleCQRS.Domain.Host.ConsoleApp\Grayson.ExampleCQRS.Domain.Host.ConsoleApp.csproj", "{8AECAF29-F76A-4E52-B570-9FEC5789D76F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Domain.Host.ConsoleApp", "Grayson.ExampleCQRS.Domain.Host.ConsoleApp\Grayson.ExampleCQRS.Domain.Host.ConsoleApp.csproj", "{8AECAF29-F76A-4E52-B570-9FEC5789D76F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp", "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.csproj", "{57C927D9-B00A-4EA6-8B60-50FEF1E51274}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,16 +2,16 @@ using System;
 
 namespace Grayson.Utils.DDD
 {
-    public class DomainEventRegistrationRemover : IDisposable 
+    public class DomainEventRegistrationRemover : IDisposable
     {
         private readonly Action CallOnDispose;
- 
-        public DomainEventRegistrationRemover(Action ToCall) 
+
+        public DomainEventRegistrationRemover(Action ToCall)
         {
-            this.CallOnDispose = ToCall; 
+            this.CallOnDispose = ToCall;
         }
 
-        public void Dispose() 
+        public void Dispose()
         {
             this.CallOnDispose.DynamicInvoke();
         }

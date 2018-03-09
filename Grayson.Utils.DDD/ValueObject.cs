@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Grayson.Utils.DDD
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {
-        protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
+        public static bool operator !=(ValueObject<T> left, ValueObject<T> right)
+        {
+            return !(left == right);
+        }
+
+        public static bool operator ==(ValueObject<T> left, ValueObject<T> right)
+        {
+            return Equals(left, right);
+        }
 
         public override bool Equals(object other)
         {
@@ -23,16 +29,6 @@ namespace Grayson.Utils.DDD
             return GetAttributesToIncludeInEqualityCheck().SequenceEqual(other.GetAttributesToIncludeInEqualityCheck());
         }
 
-        public static bool operator ==(ValueObject<T> left, ValueObject<T> right)
-        {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(ValueObject<T> left, ValueObject<T> right)
-        {
-            return !(left == right);
-        }
-
         public override int GetHashCode()
         {
             int hash = 17;
@@ -41,5 +37,7 @@ namespace Grayson.Utils.DDD
 
             return hash;
         }
+
+        protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
     }
 }

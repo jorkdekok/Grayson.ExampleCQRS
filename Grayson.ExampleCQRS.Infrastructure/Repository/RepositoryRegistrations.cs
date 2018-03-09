@@ -1,8 +1,9 @@
-﻿using Grayson.ExampleCQRS.Domain.Model;
+﻿using System;
+
 using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
+
 using SimpleInjector;
-using System;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Repository
 {

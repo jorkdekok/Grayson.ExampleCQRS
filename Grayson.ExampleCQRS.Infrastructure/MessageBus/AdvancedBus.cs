@@ -1,27 +1,19 @@
-﻿using Grayson.Utils.DDD;
+﻿using System;
+
+using Grayson.Utils.DDD;
+
 using MassTransit;
 using MassTransit.RabbitMqTransport;
-using MassTransit.SimpleInjectorIntegration;
-using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class AdvancedBus : IServiceBus
+    public class AdvancedBus : IMessgeBus
     {
         private readonly IBusControl _bus;
 
         public AdvancedBus(IBusControl bus)
         {
             _bus = bus;
-        }
-
-        public void Configure()
-        {
-
         }
 
         public static IBusControl ConfigureBus(
@@ -35,18 +27,28 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                     hst.Username(RabbitMqConstants.UserName);
                     hst.Password(RabbitMqConstants.Password);
                 });
-                
+
                 registrationAction?.Invoke(cfg, host);
             });
         }
 
+        public void Configure()
+        {
+        }
+
+        public async void Publish<T>(T @event)
+            where T : class, IDomainEvent
+        {
+            var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
+
+            await _bus.Publish(@event, @event.GetType());
+        }
 
         public void RegisterHandler<TCommandHandler, TInstance>()
         {
-            
         }
 
-        public async void Send<T>(T command) 
+        public async void Send<T>(T command)
             where T : class, ICommand
         {
             var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" +
@@ -55,15 +57,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
             await endPoint
                 .Send(command);
-        }
-
-        public async void Publish<T>(T @event)
-            where T : class, IDomainEvent
-        {
-            var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
-
-            await _bus.Publish(@event);
-
         }
     }
 }

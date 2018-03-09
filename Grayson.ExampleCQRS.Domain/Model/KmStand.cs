@@ -6,7 +6,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
 {
     public class KmStand : EventSourcedAggregate, IApplyEvent<KmStandCreated>
     {
-        private readonly IServiceBus bus;
+        private readonly IMessgeBus bus;
 
         public Guid AdresId { get; private set; }
 
@@ -14,7 +14,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
 
         public int Stand { get; private set; }
 
-        public KmStand(IServiceBus serviceBus) : base(serviceBus)
+        public KmStand(IMessgeBus serviceBus) : base(serviceBus)
         {
         }
 

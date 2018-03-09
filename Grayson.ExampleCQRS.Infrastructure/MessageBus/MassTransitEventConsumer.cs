@@ -1,8 +1,11 @@
-﻿using MassTransit;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using SimpleInjector;
+
 using Grayson.Utils.DDD;
+
+using MassTransit;
+
+using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
@@ -11,7 +14,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
     {
         private readonly Container _container;
 
-        public MassTransitEventConsumer(Container container )
+        public MassTransitEventConsumer(Container container)
         {
             _container = container;
         }
@@ -19,6 +22,16 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         public async Task Consume(ConsumeContext<TRequest> context)
         {
             await Console.Out.WriteLineAsync($"Received event message: {context.Message.GetType()}");
+
+            Type messageType = context.Message.GetType();
+            Type eventSubscriverType = typeof(IDomainEventSubscriber<>);
+            Type constructedType = eventSubscriverType.MakeGenericType(messageType);
+
+            var subscribers = _container.GetAllInstances(constructedType);
+            foreach (var subscriber in subscribers)
+            {
+                ((dynamic)subscriber).On(context.Message);
+            }
         }
     }
 }

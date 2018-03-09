@@ -1,5 +1,3 @@
-using System;
-
 namespace Grayson.ExampleCQRS.Models
 {
     public class ErrorViewModel

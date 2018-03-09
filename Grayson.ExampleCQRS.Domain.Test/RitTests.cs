@@ -1,6 +1,8 @@
-using Grayson.ExampleCQRS.Domain.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+
+using Grayson.ExampleCQRS.Domain.Model;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Grayson.ExampleCQRS.Domain.Test
 {
@@ -10,7 +12,7 @@ namespace Grayson.ExampleCQRS.Domain.Test
         [TestMethod]
         public void TestMethod1()
         {
-            Rit rit = new Rit();
+            Rit rit = new Rit(null);
 
             rit.Apply(new RitCreated(Guid.NewGuid(), "test1"));
 
@@ -20,7 +22,7 @@ namespace Grayson.ExampleCQRS.Domain.Test
         [TestMethod]
         public void TestMethod2()
         {
-            Rit rit = new Rit();
+            Rit rit = new Rit(null);
 
             rit.Create(Guid.NewGuid(), "test1");
             rit.Create(Guid.NewGuid(), "test2");
@@ -33,7 +35,7 @@ namespace Grayson.ExampleCQRS.Domain.Test
         [TestMethod]
         public void TestMethod3()
         {
-            Rit rit = new Rit();
+            Rit rit = new Rit(null);
 
             rit.Create(Guid.NewGuid(), "test1");
 

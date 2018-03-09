@@ -1,8 +1,9 @@
+using System;
+
 using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
-using MassTransit;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Test
 {
@@ -33,8 +34,5 @@ namespace Grayson.ExampleCQRS.Infrastructure.Test
 
             bus2.StopAsync();
         }
-
-
-
     }
 }

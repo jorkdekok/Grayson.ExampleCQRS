@@ -1,10 +1,8 @@
 ﻿using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD;
+
 using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Infrastructure
 {
@@ -14,7 +12,7 @@ namespace Grayson.ExampleCQRS.Infrastructure
         {
             container.Register<IAggregateFactory, AggregateFactory>();
 
-            RegisterCommandHandlers.AutoRegisterCommandHandlers(container);
+            MessageBusRegistrations.Register(container);
             RepositoryRegistrations.Register(container);
         }
     }

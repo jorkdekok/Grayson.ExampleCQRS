@@ -1,11 +1,8 @@
-﻿using Grayson.ExampleCQRS.Domain.Model;
+﻿using System;
+
+using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Domain.Repository;
-using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
-using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Grayson.ExampleCQRS.Application.BusinessUseCases
 {

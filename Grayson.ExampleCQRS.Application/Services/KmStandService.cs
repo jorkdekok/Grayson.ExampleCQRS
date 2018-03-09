@@ -1,8 +1,9 @@
-﻿using Grayson.ExampleCQRS.Application.Commands;
+﻿using System;
+
+using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.Utils.DDD;
-using System;
 
 namespace Grayson.ExampleCQRS.Application.Services
 {
@@ -15,6 +16,10 @@ namespace Grayson.ExampleCQRS.Application.Services
         {
             this.aggregateFactory = aggregateFactory;
             _repositoryFactory = repositoryFactory;
+        }
+
+        public void On(KmStandCreated @event)
+        {
         }
 
         public void When(AddNewKmStand command)

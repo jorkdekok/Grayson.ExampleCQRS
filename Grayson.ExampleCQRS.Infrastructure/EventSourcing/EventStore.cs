@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.Utils.DDD;
+
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -14,8 +15,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
     {
         private MongoClient _client;
         private IMongoDatabase _database;
-        private IMongoCollection<EventStream> _eventStreams;
         private IMongoCollection<EventWrapper> _events;
+        private IMongoCollection<EventStream> _eventStreams;
 
         public EventStore()
         {
@@ -28,34 +29,9 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
             ConfigureMappings();
         }
 
-        private void ConfigureMappings()
-        {
-            if (!BsonClassMap.IsClassMapRegistered(typeof(EventStream)))
-                BsonClassMap.RegisterClassMap<EventStream>(cm => cm.AutoMap());
-
-            if (!BsonClassMap.IsClassMapRegistered(typeof(EventWrapper)))
-                BsonClassMap.RegisterClassMap<EventWrapper>(cm => cm.AutoMap());
-
-            if (!BsonClassMap.IsClassMapRegistered(typeof(RitCreated)))
-                BsonClassMap.RegisterClassMap<RitCreated>(cm => cm.AutoMap());
-
-            if (!BsonClassMap.IsClassMapRegistered(typeof(RitUpdated)))
-                BsonClassMap.RegisterClassMap<RitUpdated>(cm => cm.AutoMap());
-        }
-
         public void AddSnapshot<T>(string streamName, T snapshot)
         {
             throw new NotImplementedException();
-        }
-
-         public void CreateNewStream(string streamName, IEnumerable<IDomainEvent> domainEvents)
-        {
-            var eventStream = new EventStream(streamName);
-
-            _eventStreams.InsertOne(eventStream);
-
-            AppendEventsToStream(streamName, domainEvents);
-
         }
 
         public void AppendEventsToStream(string streamName, IEnumerable<IDomainEvent> domainEvents, int? expectedVersion = null)
@@ -70,6 +46,15 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 
             // update eventstream version
             _eventStreams.ReplaceOne(s => s.Id == streamName, stream);
+        }
+
+        public void CreateNewStream(string streamName, IEnumerable<IDomainEvent> domainEvents)
+        {
+            var eventStream = new EventStream(streamName);
+
+            _eventStreams.InsertOne(eventStream);
+
+            AppendEventsToStream(streamName, domainEvents);
         }
 
         public T GetLatestSnapshot<T>(string streamName) where T : class
@@ -92,6 +77,21 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 
             var domainevents = events.Select(e => e.Event).ToList();
             return domainevents;
+        }
+
+        private void ConfigureMappings()
+        {
+            if (!BsonClassMap.IsClassMapRegistered(typeof(EventStream)))
+                BsonClassMap.RegisterClassMap<EventStream>(cm => cm.AutoMap());
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(EventWrapper)))
+                BsonClassMap.RegisterClassMap<EventWrapper>(cm => cm.AutoMap());
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(RitCreated)))
+                BsonClassMap.RegisterClassMap<RitCreated>(cm => cm.AutoMap());
+
+            if (!BsonClassMap.IsClassMapRegistered(typeof(RitUpdated)))
+                BsonClassMap.RegisterClassMap<RitUpdated>(cm => cm.AutoMap());
         }
     }
 }

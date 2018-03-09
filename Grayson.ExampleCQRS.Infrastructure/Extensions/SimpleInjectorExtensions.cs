@@ -1,7 +1,8 @@
-﻿using SimpleInjector;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+
+using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Extensions
 {

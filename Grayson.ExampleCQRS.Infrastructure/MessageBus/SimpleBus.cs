@@ -1,20 +1,28 @@
-﻿using Grayson.Utils.DDD;
-using SimpleInjector;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using Grayson.Utils.DDD;
+
+using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class SimpleBus : IServiceBus
+    public class SimpleBus : IMessgeBus
     {
-        private readonly Container _container;
         private static IList<Type> _registeredHandlers = new List<Type>();
+        private readonly Container _container;
 
         public SimpleBus()
         {
             _container = new Container();
 
-            RegisterCommandHandlers.AutoRegisterCommandHandlers(_container);
+            MessageBusRegistrations.Register(_container);
+        }
+
+        public void Publish<T>(T @event)
+            where T : class, IDomainEvent
+        {
+            throw new NotImplementedException();
         }
 
         public void RegisterHandler<TCommandHandler, TInstance>()
@@ -26,12 +34,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         {
             var instance = _container.GetInstance<ICommandHandler<T>>();
             instance.When(command);
-        }
-
-        public void Publish<T>(T @event)
-            where T : class, IDomainEvent
-        {
-            throw new NotImplementedException();
         }
     }
 }

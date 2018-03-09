@@ -12,7 +12,7 @@ using MassTransit;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
+namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
 {
     internal class Program
     {
@@ -22,29 +22,29 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
             {
                 container.Options.AllowResolvingFuncFactories();
 
+                var add = typeof(AddNewKmStand);
+
                 RegistrationModule.Register(container);
-                MessageBusRegistrations.RegisterCommandConsumers(container);
+                MessageBusRegistrations.RegisterEventConsumers(container);
 
                 container.RegisterSingleton(AdvancedBus.ConfigureBus((cfg, host) =>
                 {
-                    // command queue
-                    cfg.ReceiveEndpoint(host,
-                        RabbitMqConstants.CommandsQueue, e =>
-                        {
-                            e.LoadFrom(container);
-                        });
+                    cfg.ReceiveEndpoint(host, RabbitMqConstants.EventsQueue, e =>
+                    {
+                        e.Handler<IDomainEvent>(context =>
+                            Console.Out.WriteLineAsync($"Event received : {context.Message.GetType()}"));
+                        e.LoadFrom(container);
+                    });
                 }));
 
                 container.Register<KmStand>();
                 var r = container.GetInstance<IRepository<KmStand>>();
-                container.Verify();
-                var c = container.GetInstance<ICommandHandler<AddNewKmStand>>();
 
                 var bus2 = container.GetInstance<IBusControl>();
 
                 bus2.StartAsync();
 
-                Console.WriteLine("Listening for commands.. Press enter to exit");
+                Console.WriteLine("Listening for events.. Press enter to exit");
                 Console.ReadLine();
 
                 bus2.StopAsync();

@@ -1,15 +1,14 @@
-﻿using Grayson.Utils.DDD;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
+using Grayson.Utils.DDD;
 
 namespace Grayson.ExampleCQRS.Application.Commands
 {
     public class AddNewKmStand : ICommand
     {
-        public int Stand { get; private set; }
-        public DateTime Datum { get; private set; }
         public Guid AdresId { get; private set; }
+        public DateTime Datum { get; private set; }
+        public int Stand { get; private set; }
 
         public AddNewKmStand(int stand, DateTime datum, Guid adresId)
         {

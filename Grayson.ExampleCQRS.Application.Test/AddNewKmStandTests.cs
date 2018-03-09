@@ -1,9 +1,10 @@
+using System;
+
 using Grayson.ExampleCQRS.Application.Commands;
-using Grayson.ExampleCQRS.Application.Services;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.Utils.DDD;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace Grayson.ExampleCQRS.Application.Test
 {
@@ -13,7 +14,7 @@ namespace Grayson.ExampleCQRS.Application.Test
         [TestMethod]
         public void AddNewKmStandTest1()
         {
-            IServiceBus bus = new SimpleBus();
+            IMessgeBus bus = new SimpleBus();
             //bus.RegisterHandler<ICommandHandler<AddNewKmStand>, KmStandService>();
 
             bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));

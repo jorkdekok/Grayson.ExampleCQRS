@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Grayson.Utils.DDD
 {
     public abstract class EventSourcedAggregate : Entity, IEventSourcedAggregate
     {
-        private readonly IServiceBus _bus;
+        private readonly IMessgeBus _bus;
         private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
-        private readonly IServiceBus _serviceBus;
+        private readonly IMessgeBus _serviceBus;
 
-        public EventSourcedAggregate(IServiceBus serviceBus)
+        public int Version { get; set; }
+
+        public EventSourcedAggregate(IMessgeBus serviceBus)
         {
             _serviceBus = serviceBus;
         }
 
-        public int Version { get; set; }
-
         public void AddChange(IDomainEvent @event)
         {
             _changes.Add(@event);
-            _serviceBus.Publish(@event);
+            _serviceBus?.Publish(@event);
         }
 
         public IEnumerable<IDomainEvent> GetUncommittedEvents()

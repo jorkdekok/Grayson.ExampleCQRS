@@ -1,11 +1,11 @@
 ﻿using System;
 
-using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.ReadModel.Application.Services;
 using Grayson.Utils.DDD;
 
 using MassTransit;
@@ -22,7 +22,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
             {
                 container.Options.AllowResolvingFuncFactories();
 
-                var add = typeof(AddNewKmStand);
+                var s = typeof(EventsProcessorService);
 
                 RegistrationModule.Register(container);
                 MessageBusRegistrations.RegisterEventConsumers(container);

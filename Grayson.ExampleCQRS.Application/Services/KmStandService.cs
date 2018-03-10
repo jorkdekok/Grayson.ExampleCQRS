@@ -18,7 +18,7 @@ namespace Grayson.ExampleCQRS.Application.Services
             _repositoryFactory = repositoryFactory;
         }
 
-        public void On(KmStandCreated @event)
+        public void When(KmStandCreated @event)
         {
         }
 

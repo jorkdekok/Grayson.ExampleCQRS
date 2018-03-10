@@ -8,7 +8,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Application.Services
 {
     public class EventsProcessorService : ApplicationService, IDomainEventSubscriber<KmStandCreated>
     {
-        public void On(KmStandCreated @event)
+        public void When(KmStandCreated @event)
         {
         }
     }

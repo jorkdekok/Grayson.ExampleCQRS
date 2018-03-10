@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Grayson.ExampleCQRS.ReadModel.Domain.Model
 {
-    public class KmStand
+    public class KmStandView
     {
         public Guid Id { get; set; }
         public Guid AdresId { get; set; }

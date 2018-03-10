@@ -30,7 +30,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             var subscribers = _container.GetAllInstances(constructedType);
             foreach (var subscriber in subscribers)
             {
-                ((dynamic)subscriber).On(context.Message);
+                ((dynamic)subscriber).When(context.Message);
             }
         }
     }

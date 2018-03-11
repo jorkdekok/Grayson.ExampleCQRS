@@ -13,7 +13,7 @@ namespace Grayson.ExampleCQRS.Infrastructure
             container.Register<IAggregateFactory, AggregateFactory>();
 
             MessageBusRegistrations.Register(container);
-            RepositoryRegistrations.Register(container);
+            
         }
     }
 }

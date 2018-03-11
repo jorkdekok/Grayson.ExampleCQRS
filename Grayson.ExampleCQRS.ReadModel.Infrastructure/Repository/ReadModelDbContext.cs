@@ -17,7 +17,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Data Source=.\SQLEXPRESS;Initial Catalog=Grayson.Ritm.ReadModel;Integrated Security=True;MultipleActiveResultSets=True";
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(connection);
@@ -26,7 +26,9 @@ namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<KmStandView>().ToTable(TABLE_KMSTAND);
+            modelBuilder.Entity<KmStandView>()
+                .ToTable(TABLE_KMSTAND)
+                .HasKey(e => e.Id);
         }
     }
 }

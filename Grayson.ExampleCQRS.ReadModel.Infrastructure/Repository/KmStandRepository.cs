@@ -4,20 +4,25 @@ using System.Text;
 using Grayson.ExampleCQRS.ReadModel.Domain.Model;
 using Grayson.ExampleCQRS.ReadModel.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 {
     public class KmStandRepository : IKmStandRepository
     {
+        private readonly IDesignTimeDbContextFactory<ReadModelDbContext> _contextFactory;
         private readonly ReadModelDbContext _context;
 
-        public KmStandRepository()
+        public KmStandRepository(IDesignTimeDbContextFactory<ReadModelDbContext> contextFactory)
         {
-
+            _contextFactory = contextFactory;
+            _context = contextFactory.CreateDbContext(Array.Empty<string>());
         }
+
         public void Add(KmStandView aggregate)
         {
-            throw new NotImplementedException();
+            _context.KmStands.Add(aggregate);
+            _context.SaveChanges();
         }
 
         public void Delete(KmStandView aggregate)

@@ -5,6 +5,7 @@ using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.ExampleCQRS.ReadModel.Application.Services;
 using Grayson.Utils.DDD;
 
@@ -26,6 +27,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
 
                 RegistrationModule.Register(container);
                 MessageBusRegistrations.RegisterEventConsumers(container);
+                ReadModel.Infrastructure.Repository.RepositoryRegistrations.Register(container);
 
                 container.RegisterSingleton(AdvancedBus.ConfigureBus((cfg, host) =>
                 {
@@ -38,7 +40,6 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 }));
 
                 container.Register<KmStand>();
-                var r = container.GetInstance<IRepository<KmStand>>();
 
                 var bus2 = container.GetInstance<IBusControl>();
 

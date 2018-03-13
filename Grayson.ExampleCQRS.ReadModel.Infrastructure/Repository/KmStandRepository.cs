@@ -32,7 +32,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 
         public KmStandView GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Find(typeof(KmStandView), id) as KmStandView;
         }
 
         public void Update(KmStandView aggregate)

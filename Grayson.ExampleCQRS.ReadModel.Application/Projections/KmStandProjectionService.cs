@@ -16,7 +16,11 @@ namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
 
         public void When(KmStandCreated @event)
         {
-            _kmStandRepository.Add(new KmStandView { Id = @event.Id, AdresId = @event.AdresId, Datum = @event.Datum, Stand = @event.Stand });
+            var kmstandView = _kmStandRepository.GetById(@event.Id);
+            if (kmstandView != null)
+            {
+                _kmStandRepository.Add(new KmStandView { Id = @event.Id, AdresId = @event.AdresId, Datum = @event.Datum, Stand = @event.Stand });
+            }
         }
     }
 }

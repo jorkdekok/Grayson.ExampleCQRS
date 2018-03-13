@@ -9,12 +9,12 @@ using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class MassTransitCommandConsumer<TRequest> : IConsumer<TRequest>
+    public class MassTransitCommandHandler<TRequest> : IConsumer<TRequest>
         where TRequest : class
     {
         private readonly Container _container;
 
-        public MassTransitCommandConsumer(Container container)
+        public MassTransitCommandHandler(Container container)
         {
             _container = container;
         }

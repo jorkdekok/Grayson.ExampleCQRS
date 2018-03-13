@@ -27,7 +27,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             var assemblies = new[] { typeof(AddNewKmStand).Assembly };
             var commands = container.GetTypesToRegister(typeof(ICommand), assemblies);
 
-            Type mtc = typeof(MassTransitCommandConsumer<>);
+            Type mtc = typeof(MassTransitCommandHandler<>);
 
             foreach (var commandType in commands)
             {

@@ -8,7 +8,7 @@ using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class SimpleBus : IEventPublisher
+    public class SimpleBus : IEventPublisher, ICommandBus
     {
         private static IList<Type> _registeredHandlers = new List<Type>();
         private readonly Container _container;

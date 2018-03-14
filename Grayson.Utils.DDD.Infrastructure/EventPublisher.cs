@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Grayson.Utils.DDD.Domain;
+using Grayson.Utils.DDD.Infrastructure;
 
 namespace Grayson.Utils.DDD.Infrastructure
 {
@@ -26,9 +27,13 @@ namespace Grayson.Utils.DDD.Infrastructure
             Type constructedType = eventSubscriverType.MakeGenericType(messageType);
 
             var subscribers = _objectFactory.GetAllInstances(constructedType);
+
             foreach (Object subscriber in subscribers)
             {
-                ((dynamic)subscriber).When(@event);
+                var ms = subscriber.GetType().GetMethods();
+                var minfo = subscriber.GetType().GetMethod("When", new Type[] { messageType });
+                minfo.Invoke(subscriber, new object[] { @event });
+                //((dynamic)subscriber).When(@event);
             }
         }
 

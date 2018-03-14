@@ -1,7 +1,6 @@
 using System;
 
 using Grayson.ExampleCQRS.Application.Commands;
-using Grayson.ExampleCQRS.Application.Services;
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure;
@@ -11,7 +10,9 @@ using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
 using Grayson.Utils.DDD.Infrastructure;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Application.Test
@@ -35,7 +36,7 @@ namespace Grayson.ExampleCQRS.Application.Test
             container.RegisterSingleton<IEventPublisher>(eventPublisher);
 
             container.Register<IAggregateFactory, AggregateFactory>();
-            
+
             //var t = typeof(KmStand);
             //container.Register<KmStand>();
             RepositoryRegistrations.Register(container);

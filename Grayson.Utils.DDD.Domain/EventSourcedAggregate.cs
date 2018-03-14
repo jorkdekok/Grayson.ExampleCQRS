@@ -4,13 +4,13 @@ namespace Grayson.Utils.DDD.Domain
 {
     public abstract class EventSourcedAggregate : Entity, IEventSourcedAggregate
     {
-        private readonly IMessgeBus _bus;
+        private readonly IEventPublisher _bus;
         private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
-        private readonly IMessgeBus _serviceBus;
+        private readonly IEventPublisher _serviceBus;
 
         public int Version { get; set; }
 
-        public EventSourcedAggregate(IMessgeBus serviceBus)
+        public EventSourcedAggregate(IEventPublisher serviceBus)
         {
             _serviceBus = serviceBus;
         }

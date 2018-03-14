@@ -12,7 +12,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
 
         public int Stand { get; private set; }
 
-        public KmStand(IMessgeBus serviceBus) : base(serviceBus)
+        public KmStand(IEventPublisher serviceBus) : base(serviceBus)
         {
         }
 

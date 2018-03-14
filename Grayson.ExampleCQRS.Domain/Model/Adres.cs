@@ -8,7 +8,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
 
         public string Postcode { get; private set; }
 
-        public Adres(IMessgeBus serviceBus) : base(serviceBus)
+        public Adres(IEventPublisher serviceBus) : base(serviceBus)
         {
         }
     }

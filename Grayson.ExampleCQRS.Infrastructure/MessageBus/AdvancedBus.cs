@@ -8,7 +8,7 @@ using MassTransit.RabbitMqTransport;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class AdvancedBus : IMessgeBus
+    public class AdvancedBus : IEventPublisher
     {
         private readonly IBusControl _bus;
 

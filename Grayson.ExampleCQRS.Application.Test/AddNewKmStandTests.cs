@@ -14,7 +14,7 @@ namespace Grayson.ExampleCQRS.Application.Test
         [TestMethod]
         public void AddNewKmStandTest1()
         {
-            IMessgeBus bus = new SimpleBus();
+            IEventPublisher bus = new SimpleBus();
             //bus.RegisterHandler<ICommandHandler<AddNewKmStand>, KmStandService>();
 
             bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));

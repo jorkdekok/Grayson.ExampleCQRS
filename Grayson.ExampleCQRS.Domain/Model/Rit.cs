@@ -9,7 +9,7 @@ namespace Grayson.ExampleCQRS.Domain.Model
     {
         public string Name { get; private set; }
 
-        public Rit(IMessgeBus serviceBus) : base(serviceBus)
+        public Rit(IEventPublisher serviceBus) : base(serviceBus)
         {
         }
 

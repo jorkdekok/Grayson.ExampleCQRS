@@ -19,7 +19,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             //register event subscribers
             container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
 
-            container.Register<IMessgeBus, AdvancedBus>();
+            container.Register<IEventPublisher, AdvancedBus>();
         }
 
         public static void RegisterCommandConsumers(Container container)

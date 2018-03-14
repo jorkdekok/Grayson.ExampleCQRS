@@ -21,7 +21,7 @@ namespace Grayson.ExampleCQRS.TestConsoleApp
 
                 container.RegisterSingleton(AdvancedBus.ConfigureBus());
 
-                var bus = container.GetInstance<IMessgeBus>();
+                var bus = container.GetInstance<IEventPublisher>();
 
                 bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
 

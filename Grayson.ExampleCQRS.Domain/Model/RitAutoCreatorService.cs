@@ -2,16 +2,16 @@
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {
-    public class RitAutoCreatorService : DomainService, IApplyEvent<KmStandCreated>
+    public class RitAutoCreatorService : DomainService, IDomainEventHandler<KmStandCreated>
     {
-        public void Apply(KmStandCreated @event)
+        public RitAutoCreatorService()
         {
-            RitCreator(@event);
+
         }
 
-        public void RitCreator(KmStandCreated @event)
+        public void When(KmStandCreated @event)
         {
-            // find last kmstand check if connected to existing rit
+           
         }
     }
 }

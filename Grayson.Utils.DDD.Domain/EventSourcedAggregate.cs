@@ -6,19 +6,19 @@ namespace Grayson.Utils.DDD.Domain
     {
         private readonly IEventPublisher _bus;
         private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
-        private readonly IEventPublisher _serviceBus;
+        private readonly IEventPublisher _eventPublisher;
 
         public int Version { get; set; }
 
-        public EventSourcedAggregate(IEventPublisher serviceBus)
+        public EventSourcedAggregate(IEventPublisher eventPublisher)
         {
-            _serviceBus = serviceBus;
+            _eventPublisher = eventPublisher;
         }
 
         public void AddChange(IDomainEvent @event)
         {
             _changes.Add(@event);
-            _serviceBus?.Publish(@event);
+            _eventPublisher?.Publish(@event);
         }
 
         public IEnumerable<IDomainEvent> GetUncommittedEvents()

@@ -8,7 +8,7 @@ using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.Services
 {
-    public class KmStandService : ApplicationService, ICommandHandler<AddNewKmStand>, IDomainEventSubscriber<KmStandCreated>
+    public class KmStandService : ApplicationService, ICommandHandler<AddNewKmStand>, IDomainEventHandler<KmStandCreated>
     {
         private readonly Func<IRepository<KmStand>> _repositoryFactory;
         private readonly IAggregateFactory aggregateFactory;

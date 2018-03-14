@@ -6,7 +6,7 @@ using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
 {
-    public class KmStandProjectionService : ApplicationService, IDomainEventSubscriber<KmStandCreated>
+    public class KmStandProjectionService : ApplicationService, IDomainEventHandler<KmStandCreated>
     {
         private readonly IKmStandRepository _kmStandRepository;
 

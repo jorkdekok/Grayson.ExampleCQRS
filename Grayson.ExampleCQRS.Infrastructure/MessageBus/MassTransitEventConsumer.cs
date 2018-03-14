@@ -24,7 +24,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             await Console.Out.WriteLineAsync($"Received event message: {context.Message.GetType()}");
 
             Type messageType = context.Message.GetType();
-            Type eventSubscriverType = typeof(IDomainEventSubscriber<>);
+            Type eventSubscriverType = typeof(IDomainEventHandler<>);
             Type constructedType = eventSubscriverType.MakeGenericType(messageType);
 
             var subscribers = _container.GetAllInstances(constructedType);

@@ -35,7 +35,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratorApp", "CodeGeneratorApp\CodeGeneratorApp.csproj", "{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.MessagesMapper", "Grayson.MessagesMapper\Grayson.MessagesMapper.csproj", "{AD0FF308-0D1D-4C18-9708-56E487D4800F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.MessagesMapper", "Grayson.MessagesMapper\Grayson.MessagesMapper.csproj", "{AD0FF308-0D1D-4C18-9708-56E487D4800F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.DDD.Domain", "Grayson.Utils.DDD.Domain\Grayson.Utils.DDD.Domain.csproj", "{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.DDD.Application", "Grayson.Utils.DDD.Application\Grayson.Utils.DDD.Application.csproj", "{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.DDD.Infrastructure", "Grayson.Utils.DDD.Infrastructure\Grayson.Utils.DDD.Infrastructure.csproj", "{AD67E734-3812-478B-9041-1331F7EF0FC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +113,18 @@ Global
 		{AD0FF308-0D1D-4C18-9708-56E487D4800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0FF308-0D1D-4C18-9708-56E487D4800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0FF308-0D1D-4C18-9708-56E487D4800F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

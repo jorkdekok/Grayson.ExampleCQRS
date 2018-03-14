@@ -1,4 +1,4 @@
-﻿using Grayson.Utils.DDD;
+﻿using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {

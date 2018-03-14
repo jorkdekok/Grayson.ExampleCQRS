@@ -2,7 +2,7 @@
 
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Domain.Repository;
-using Grayson.Utils.DDD;
+using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.BusinessUseCases
 {

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Grayson.Utils.DDD;
+using Grayson.Utils.DDD.Application;
+using Grayson.Utils.DDD.Domain;
 
 using SimpleInjector;
 

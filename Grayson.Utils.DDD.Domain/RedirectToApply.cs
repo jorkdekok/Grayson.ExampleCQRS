@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace Grayson.Utils.DDD
+namespace Grayson.Utils.DDD.Domain
 {
-    public static class RedirectToWhen
+    public static class RedirectToApply
     {
         private static readonly MethodInfo InternalPreserveStackTraceMethod =
             typeof(Exception).GetMethod("InternalPreserveStackTrace", BindingFlags.Instance | BindingFlags.NonPublic);

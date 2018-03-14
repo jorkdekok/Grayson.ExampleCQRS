@@ -1,4 +1,4 @@
-﻿namespace Grayson.Utils.DDD
+﻿namespace Grayson.Utils.DDD.Domain
 {
     public static class AggregateExtensions
     {
@@ -13,7 +13,7 @@
 
         {
             //((dynamic)aggregate).Apply((dynamic)@event);
-            RedirectToWhen.InvokeEventOptional(aggregate, @event);
+            RedirectToApply.InvokeEventOptional(aggregate, @event);
             EventSourcedAggregate eventSourcedAggregate = (EventSourcedAggregate)aggregate;
             eventSourcedAggregate.Version++;
             eventSourcedAggregate.AddChange(@event);
@@ -29,7 +29,7 @@
             where TAggregate : IEventSourcedAggregate
 
         {
-            RedirectToWhen.InvokeEventOptional(aggregate, @event);
+            RedirectToApply.InvokeEventOptional(aggregate, @event);
             IEventSourcedAggregate eventSourcedAggregate = (IEventSourcedAggregate)aggregate;
             eventSourcedAggregate.Version++;
         }

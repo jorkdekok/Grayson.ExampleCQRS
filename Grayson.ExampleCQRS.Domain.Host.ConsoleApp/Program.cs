@@ -7,7 +7,7 @@ using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
-using Grayson.Utils.DDD;
+using Grayson.Utils.DDD.Application;
 
 using MassTransit;
 

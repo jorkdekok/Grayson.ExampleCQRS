@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Grayson.ExampleCQRS.Domain.Model;
-using Grayson.Utils.DDD;
+﻿using Grayson.ExampleCQRS.Domain.Model;
+using Grayson.Utils.DDD.Application;
+using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.ReadModel.Application.Services
 {

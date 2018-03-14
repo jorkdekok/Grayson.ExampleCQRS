@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayson.Utils.DDD
+namespace Grayson.Utils.DDD.Domain
 {
     public abstract class Entity
     {

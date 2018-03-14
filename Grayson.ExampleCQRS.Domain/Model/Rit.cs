@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-using Grayson.Utils.DDD;
+using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {

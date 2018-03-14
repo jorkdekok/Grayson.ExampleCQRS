@@ -1,4 +1,4 @@
-﻿using Grayson.Utils.DDD;
+﻿using Grayson.Utils.DDD.Domain;
 
 using SimpleInjector;
 

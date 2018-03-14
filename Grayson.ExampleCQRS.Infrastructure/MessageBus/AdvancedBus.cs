@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Grayson.Utils.DDD;
+
+using Grayson.Utils.DDD.Application;
+using Grayson.Utils.DDD.Domain;
 
 using MassTransit;
 using MassTransit.RabbitMqTransport;

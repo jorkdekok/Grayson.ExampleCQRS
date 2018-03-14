@@ -1,4 +1,6 @@
-﻿namespace Grayson.Utils.DDD
+﻿using Grayson.Utils.DDD.Application;
+
+namespace Grayson.Utils.DDD.Domain
 {
     public interface IMessgeBus
     {

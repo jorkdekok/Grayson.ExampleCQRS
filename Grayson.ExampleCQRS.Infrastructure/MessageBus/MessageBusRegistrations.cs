@@ -2,7 +2,8 @@
 
 using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Domain.Model;
-using Grayson.Utils.DDD;
+using Grayson.Utils.DDD.Application;
+using Grayson.Utils.DDD.Domain;
 
 using SimpleInjector;
 

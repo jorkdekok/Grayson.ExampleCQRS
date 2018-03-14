@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Domain\Grayson.ExampleCQRS.ReadModel.Domain.csproj" />
-    <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
   </ItemGroup>
 
 </Project>

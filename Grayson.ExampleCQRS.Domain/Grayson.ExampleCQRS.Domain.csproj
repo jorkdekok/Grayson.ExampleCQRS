@@ -9,6 +9,6 @@
     <DotNetCliToolReference Include="dotnet-codegen" Version="0.4.11" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.DDD.Domain\Grayson.Utils.DDD.Domain.csproj" />
   </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@ using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.Utils.DDD;
-
+using Grayson.Utils.DDD.Domain;
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.TestConsoleApp

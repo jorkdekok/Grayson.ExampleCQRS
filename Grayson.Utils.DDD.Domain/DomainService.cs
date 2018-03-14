@@ -1,4 +1,4 @@
-﻿namespace Grayson.Utils.DDD
+﻿namespace Grayson.Utils.DDD.Domain
 {
     public class DomainService
     {

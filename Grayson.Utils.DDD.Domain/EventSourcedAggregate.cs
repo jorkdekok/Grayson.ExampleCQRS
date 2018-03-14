@@ -4,7 +4,6 @@ namespace Grayson.Utils.DDD.Domain
 {
     public abstract class EventSourcedAggregate : Entity, IEventSourcedAggregate
     {
-        private readonly IEventPublisher _bus;
         private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
         private readonly IEventPublisher _eventPublisher;
 

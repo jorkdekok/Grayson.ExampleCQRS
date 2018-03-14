@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Grayson.Utils.DDD.Domain;
-using Grayson.Utils.DDD.Infrastructure;
 
 namespace Grayson.Utils.DDD.Infrastructure
 {
@@ -33,7 +31,5 @@ namespace Grayson.Utils.DDD.Infrastructure
                 minfo.Invoke(subscriber, new object[] { @event });
             }
         }
-
-        
     }
 }

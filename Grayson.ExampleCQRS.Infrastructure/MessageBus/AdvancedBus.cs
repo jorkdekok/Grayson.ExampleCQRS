@@ -8,7 +8,7 @@ using MassTransit.RabbitMqTransport;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class AdvancedBus : ICommandBus
+    public class AdvancedBus : ICommandBus, IDomainEventHandler<IDomainEvent>
     {
         private readonly IBusControl _bus;
 
@@ -37,18 +37,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         {
         }
 
-        public async void Publish<T>(T @event)
-            where T : class, IDomainEvent
-        {
-            var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
-
-            await _bus.Publish(@event, @event.GetType());
-        }
-
-        public void RegisterHandler<TCommandHandler, TInstance>()
-        {
-        }
-
         public async void Send<T>(T command)
             where T : class, ICommand
         {
@@ -58,6 +46,13 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
             await endPoint
                 .Send(command);
+        }
+
+        public void When(IDomainEvent @event)
+        {
+            var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
+            // TODO: convert to DTO
+            _bus.Publish(@event, @event.GetType());
         }
     }
 }

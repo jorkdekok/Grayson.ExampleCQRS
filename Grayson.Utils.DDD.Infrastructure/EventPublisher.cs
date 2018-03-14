@@ -12,7 +12,6 @@ namespace Grayson.Utils.DDD.Infrastructure
     public class EventPublisher : IEventPublisher
     {
         private readonly IObjectFactory _objectFactory;
-        private Dictionary<Type, Dictionary<Type, Type>> _handlers = new Dictionary<Type, Dictionary<Type, Type>>();
 
         public EventPublisher(IObjectFactory objectFactory)
         {
@@ -35,26 +34,6 @@ namespace Grayson.Utils.DDD.Infrastructure
             }
         }
 
-        public void RegisterHandler(Type eventType, Type handlerType)
-        {
-            if (!_handlers.ContainsKey(eventType))
-            {
-                Dictionary<Type, Type> handlersList = new Dictionary<Type, Type>();
-                Type eventHandlerType = typeof(IDomainEventHandler<>);
-                Type constructedType = eventHandlerType.MakeGenericType(eventType);
-                handlersList.Add(constructedType, handlerType);
-                _handlers.Add(eventType, handlersList);
-            }
-            else
-            {
-                var list = _handlers[eventType];
-                Type eventHandlerType = typeof(IDomainEventHandler<>);
-                Type constructedType = eventHandlerType.MakeGenericType(eventType);
-                if (!list.ContainsKey(constructedType))
-                {
-                    list[constructedType] = handlerType;
-                }
-            }
-        }
+        
     }
 }

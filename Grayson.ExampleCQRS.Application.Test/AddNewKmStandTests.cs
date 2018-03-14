@@ -32,7 +32,6 @@ namespace Grayson.ExampleCQRS.Application.Test
             container.RegisterSingleton<IObjectFactory>(objectFactory);
 
             var eventPublisher = new EventPublisher(objectFactory);
-            eventPublisher.RegisterHandler(typeof(KmStandCreated), typeof(RitAutoCreatorService));
             container.RegisterSingleton<IEventPublisher>(eventPublisher);
 
             container.Register<IAggregateFactory, AggregateFactory>();

@@ -10,12 +10,7 @@
 
   <ItemGroup>
     <Folder Include="CommandDtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="EventDtos\Template1.tt">
-      <Generator></Generator>
-    </None>
+    <Folder Include="EventDtos\" />
   </ItemGroup>
 
 </Project>

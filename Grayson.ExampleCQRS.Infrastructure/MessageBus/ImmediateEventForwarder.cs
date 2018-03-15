@@ -6,7 +6,7 @@ using MassTransit;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
-    public class ImmediateEventForwarder : IDomainEventHandler<IDomainEvent>
+    public class ImmediateEventForwarder : ICommittedEventHandler<IDomainEvent>
     {
         private readonly IBusControl _bus;
 

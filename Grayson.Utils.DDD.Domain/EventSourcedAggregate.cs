@@ -27,6 +27,12 @@ namespace Grayson.Utils.DDD.Domain
 
         public void MarkEventsAsCommitted()
         {
+            // first publish commmitted events
+            foreach (var @event in _changes)
+            {
+                _eventPublisher?.PublishCommitted(@event);
+            }
+            
             _changes.Clear();
         }
     }

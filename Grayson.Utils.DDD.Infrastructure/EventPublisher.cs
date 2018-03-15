@@ -30,5 +30,20 @@ namespace Grayson.Utils.DDD.Infrastructure
                 ((dynamic)subscriber).When((dynamic)@event);
             }
         }
+
+        void IEventPublisher.PublishCommitted<T>(T @event)
+        {
+            // publish event to all registered eventhandlers
+            Type messageType = @event.GetType();
+            Type eventSubscriverType = typeof(ICommittedEventHandler<>);
+            Type constructedType = eventSubscriverType.MakeGenericType(messageType);
+
+            var subscribers = _objectFactory.GetAllInstances(constructedType);
+
+            foreach (Object subscriber in subscribers)
+            {
+                ((dynamic)subscriber).When((dynamic)@event);
+            }
+        }
     }
 }

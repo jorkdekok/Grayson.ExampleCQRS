@@ -65,6 +65,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             //var expectedVersion = GetExpectedVersion(rit.InitialVersion);
             //_eventStore.AppendEventsToStream(streamName, rit.Changes, expectedVersion);
             _eventStore.AppendEventsToStream(streamName, aggregate.GetUncommittedEvents(), 0);
+            aggregate.MarkEventsAsCommitted();
         }
 
         private int? GetExpectedVersion(int expectedVersion)

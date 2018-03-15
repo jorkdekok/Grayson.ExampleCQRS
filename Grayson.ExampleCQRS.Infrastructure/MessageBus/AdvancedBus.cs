@@ -43,7 +43,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" +
                 $"{RabbitMqConstants.CommandsQueue}");
             var endPoint = await _bus.GetSendEndpoint(sendToUri);
-
+            // TODO: convert to DTO
             await endPoint
                 .Send(command);
         }
@@ -51,7 +51,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         public void When(IDomainEvent @event)
         {
             var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
-            // TODO: convert to DTO
+            // TODO: convert to DTO (external event)
             _bus.Publish(@event, @event.GetType());
         }
     }

@@ -81,17 +81,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 
         private void ConfigureMappings()
         {
-            if (!BsonClassMap.IsClassMapRegistered(typeof(EventStream)))
-                BsonClassMap.RegisterClassMap<EventStream>(cm => cm.AutoMap());
-
-            if (!BsonClassMap.IsClassMapRegistered(typeof(EventWrapper)))
-                BsonClassMap.RegisterClassMap<EventWrapper>(cm => cm.AutoMap());
-
-            if (!BsonClassMap.IsClassMapRegistered(typeof(RitCreated)))
-                BsonClassMap.RegisterClassMap<RitCreated>(cm => cm.AutoMap());
-
-            if (!BsonClassMap.IsClassMapRegistered(typeof(RitUpdated)))
-                BsonClassMap.RegisterClassMap<RitUpdated>(cm => cm.AutoMap());
+            EventMappings.Configure();
         }
     }
 }

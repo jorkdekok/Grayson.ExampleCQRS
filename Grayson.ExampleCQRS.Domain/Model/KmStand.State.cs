@@ -4,7 +4,9 @@ using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.Model
 {
-    public partial class KmStand : EventSourcedAggregate, IApplyEvent<KmStandCreated>
+    public partial class KmStand : EventSourcedAggregate, 
+        IApplyEvent<KmStandCreated>,
+        IApplyEvent<KmStandUpdated>
     {
         public Guid AdresId { get; private set; }
 
@@ -15,6 +17,13 @@ namespace Grayson.ExampleCQRS.Domain.Model
         public void Apply(KmStandCreated @event)
         {
             this.Id = @event.Id;
+            this.Stand = @event.Stand;
+            this.Datum = @event.Datum;
+            this.AdresId = @event.AdresId;
+        }
+
+        public void Apply(KmStandUpdated @event)
+        {
             this.Stand = @event.Stand;
             this.Datum = @event.Datum;
             this.AdresId = @event.AdresId;

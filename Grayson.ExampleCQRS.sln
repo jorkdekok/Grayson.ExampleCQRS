@@ -37,11 +37,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratorApp", "CodeGen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.MessagesMapper", "Grayson.MessagesMapper\Grayson.MessagesMapper.csproj", "{AD0FF308-0D1D-4C18-9708-56E487D4800F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.DDD.Domain", "Grayson.Utils.DDD.Domain\Grayson.Utils.DDD.Domain.csproj", "{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.DDD.Domain", "Grayson.Utils.DDD.Domain\Grayson.Utils.DDD.Domain.csproj", "{6E1126E5-8B8B-47D1-AA8D-80B71AE63A2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.DDD.Application", "Grayson.Utils.DDD.Application\Grayson.Utils.DDD.Application.csproj", "{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.DDD.Application", "Grayson.Utils.DDD.Application\Grayson.Utils.DDD.Application.csproj", "{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.DDD.Infrastructure", "Grayson.Utils.DDD.Infrastructure\Grayson.Utils.DDD.Infrastructure.csproj", "{AD67E734-3812-478B-9041-1331F7EF0FC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.DDD.Infrastructure", "Grayson.Utils.DDD.Infrastructure\Grayson.Utils.DDD.Infrastructure.csproj", "{AD67E734-3812-478B-9041-1331F7EF0FC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

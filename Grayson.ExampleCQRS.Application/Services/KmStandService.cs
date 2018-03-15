@@ -8,7 +8,10 @@ using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.Services
 {
-    public class KmStandService : ApplicationService, ICommandHandler<AddNewKmStand>, IDomainEventHandler<KmStandCreated>
+    public class KmStandService : ApplicationService,
+        ICommandHandler<AddNewKmStand>,
+        ICommandHandler<UpdateKmStand>,
+        IDomainEventHandler<KmStandCreated>
     {
         private readonly Func<IRepository<KmStand>> _repositoryFactory;
         private readonly IAggregateFactory aggregateFactory;
@@ -31,6 +34,17 @@ namespace Grayson.ExampleCQRS.Application.Services
             kmStand.Create(command.Stand, command.Datum, command.AdresId);
 
             repository.Add(kmStand);
+        }
+
+        public void When(UpdateKmStand command)
+        {
+            var repository = _repositoryFactory();
+
+            KmStand kmStand = repository.FindBy(command.Id);
+
+            kmStand.Update(command.Id, command.Stand, command.Datum, command.AdresId);
+
+            repository.Save(kmStand);
         }
     }
 }

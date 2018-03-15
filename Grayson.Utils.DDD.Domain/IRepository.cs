@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayson.ExampleCQRS.Domain.Repository
+namespace Grayson.Utils.DDD.Domain
 {
     public interface IRepository<TAggregate>
     {

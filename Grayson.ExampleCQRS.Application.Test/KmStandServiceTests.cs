@@ -7,6 +7,7 @@ using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Infrastructure.Registrations;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
@@ -36,7 +37,7 @@ namespace Grayson.ExampleCQRS.Application.Test
 
             container.Register<IAggregateFactory, AggregateFactory>();
 
-            RepositoryRegistrations.Register(container);
+            InfrastructureModule.RegisterAll(container);
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             // register command handlers
@@ -77,7 +78,7 @@ namespace Grayson.ExampleCQRS.Application.Test
 
             container.Register<IAggregateFactory, AggregateFactory>();
 
-            RepositoryRegistrations.Register(container);
+            InfrastructureModule.RegisterAll(container);
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             // register command handlers

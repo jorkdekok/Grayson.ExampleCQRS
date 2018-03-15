@@ -38,13 +38,17 @@ namespace Grayson.ExampleCQRS.Application.Services
 
         public void When(UpdateKmStand command)
         {
-            var repository = _repositoryFactory();
+            //var repository = _repositoryFactory();
 
-            KmStand kmStand = repository.FindBy(command.Id);
+            //KmStand kmStand = repository.FindBy(command.Id);
 
-            kmStand.Update(command.Id, command.Stand, command.Datum, command.AdresId);
+            //kmStand.Update(command.Id, command.Stand, command.Datum, command.AdresId);
 
-            repository.Save(kmStand);
+            //repository.Save(kmStand);
+            this.Update<KmStand>(command.Id,
+                _repositoryFactory,
+                kmstand => kmstand.Update(command.Id, command.Stand, command.Datum, command.AdresId)
+            );
         }
     }
 }

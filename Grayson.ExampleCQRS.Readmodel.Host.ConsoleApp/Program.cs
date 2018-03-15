@@ -22,7 +22,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 container.Options.AllowResolvingFuncFactories();
 
                 RabbitMqModule.RegisterEventConsumers(container);
-                InfrastructureModule.RegisterAll(container);
+                Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
 
                 var typesToRegister = container.GetTypesToRegister(
                                             typeof(IDomainEventHandler<>),

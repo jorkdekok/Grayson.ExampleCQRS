@@ -11,5 +11,7 @@ namespace Grayson.ExampleCQRS.Domain.ReadModel.Repository
         void Update(TAggregate aggregate);
 
         void Delete(TAggregate aggregate);
+
+        void SaveChanges();
     }
 }

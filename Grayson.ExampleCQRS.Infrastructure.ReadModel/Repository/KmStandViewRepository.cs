@@ -21,12 +21,11 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
         public void Add(KmStandView aggregate)
         {
             _context.KmStands.Add(aggregate);
-            _context.SaveChanges();
         }
 
         public void Delete(KmStandView aggregate)
         {
-            throw new NotImplementedException();
+            _context.KmStands.Remove(aggregate);
         }
 
         public KmStandView GetById(Guid id)
@@ -34,9 +33,14 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
             return _context.Find(typeof(KmStandView), id) as KmStandView;
         }
 
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
         public void Update(KmStandView aggregate)
         {
-            throw new NotImplementedException();
+            _context.KmStands.Update(aggregate);
         }
     }
 }

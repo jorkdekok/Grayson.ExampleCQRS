@@ -12,8 +12,8 @@
             where TAggregate : EventSourcedAggregate
 
         {
-            //((dynamic)aggregate).Apply((dynamic)@event);
-            RedirectToApply.InvokeEventOptional(aggregate, @event);
+            ((dynamic)aggregate).Apply((dynamic)@event);
+            //RedirectToApply.InvokeEventOptional(aggregate, @event); // dynamic seems faster
             EventSourcedAggregate eventSourcedAggregate = (EventSourcedAggregate)aggregate;
             eventSourcedAggregate.Version++;
             eventSourcedAggregate.AddChange(@event);
@@ -29,7 +29,8 @@
             where TAggregate : IEventSourcedAggregate
 
         {
-            RedirectToApply.InvokeEventOptional(aggregate, @event);
+            ((dynamic)aggregate).Apply((dynamic)@event);
+            //RedirectToApply.InvokeEventOptional(aggregate, @event); // dynamic seems faster
             IEventSourcedAggregate eventSourcedAggregate = (IEventSourcedAggregate)aggregate;
             eventSourcedAggregate.Version++;
         }

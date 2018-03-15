@@ -12,8 +12,6 @@ namespace Grayson.Utils.DDD.Domain
 
         IEnumerable<IDomainEvent> GetUncommittedEvents();
 
-        void LoadsFromHistory(IEnumerable<IDomainEvent> history);
-
         void MarkEventsAsCommitted();
     }
 }

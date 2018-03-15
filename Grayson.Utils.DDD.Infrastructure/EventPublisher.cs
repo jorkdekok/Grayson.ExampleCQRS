@@ -27,8 +27,7 @@ namespace Grayson.Utils.DDD.Infrastructure
 
             foreach (Object subscriber in subscribers)
             {
-                var minfo = subscriber.GetType().GetMethod("When", new Type[] { messageType });
-                minfo.Invoke(subscriber, new object[] { @event });
+                ((dynamic)subscriber).When((dynamic)@event);
             }
         }
     }

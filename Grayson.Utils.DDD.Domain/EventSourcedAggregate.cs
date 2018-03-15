@@ -25,26 +25,9 @@ namespace Grayson.Utils.DDD.Domain
             return _changes;
         }
 
-        public void LoadsFromHistory(IEnumerable<IDomainEvent> history)
-        {
-            foreach (var e in history) ApplyEvent(e, false);
-        }
-
         public void MarkEventsAsCommitted()
         {
             _changes.Clear();
-        }
-
-        protected void ApplyEvent(IDomainEvent @event)
-        {
-            ApplyEvent(@event, true);
-        }
-
-        // push atomic aggregate changes to local history for further processing (EventStore.SaveEvents)
-        private void ApplyEvent(IDomainEvent @event, bool isNew)
-        {
-            //this.AsDynamic().Apply(@event);
-            //if (isNew) _changes.Add(@event);
         }
     }
 }

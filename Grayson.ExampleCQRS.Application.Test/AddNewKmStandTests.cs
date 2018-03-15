@@ -1,8 +1,9 @@
 using System;
+using System.Linq;
 
 using Grayson.ExampleCQRS.Application.Commands;
+using Grayson.ExampleCQRS.Application.Services;
 using Grayson.ExampleCQRS.Domain.Model;
-using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
@@ -25,8 +26,7 @@ namespace Grayson.ExampleCQRS.Application.Test
         {
             Container container = new Container();
             container.Options.AllowResolvingFuncFactories();
-
-            container.RegisterSingleton<ICommandBus>(new SimpleBus(container));
+            container.Options.AllowOverridingRegistrations = true;
 
             ObjectFactory objectFactory = new ObjectFactory(container);
             container.RegisterSingleton<IObjectFactory>(objectFactory);
@@ -36,17 +36,28 @@ namespace Grayson.ExampleCQRS.Application.Test
 
             container.Register<IAggregateFactory, AggregateFactory>();
 
-            //var t = typeof(KmStand);
-            //container.Register<KmStand>();
             RepositoryRegistrations.Register(container);
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             // register command handlers
             container.Register(typeof(ICommandHandler<>), assemblies);
-            container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
+
+            var typesToRegister = container.GetTypesToRegister(
+                                            typeof(IDomainEventHandler<>),
+                                            new[] { typeof(RitAutoCreatorService).Assembly, typeof(KmStandService).Assembly },
+                                            new TypesToRegisterOptions
+                                            {
+                                                IncludeGenericTypeDefinitions = true,
+                                                IncludeComposites = false,
+                                            });
+
+            typesToRegister = typesToRegister.Append(typeof(SimpleBus));
+
+            container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
+
+            container.RegisterSingleton<ICommandBus>(new SimpleBus(container));
 
             ICommandBus bus = container.GetInstance<ICommandBus>();
-            container.GetInstance<IRepository<KmStand>>();
 
             bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
         }

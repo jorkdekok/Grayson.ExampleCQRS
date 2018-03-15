@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CommandDtos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EventDtos\Template1.tt">
+      <Generator></Generator>
+    </None>
+  </ItemGroup>
+
+</Project>

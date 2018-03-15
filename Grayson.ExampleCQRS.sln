@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Domain.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp", "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.csproj", "{57C927D9-B00A-4EA6-8B60-50FEF1E51274}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadModel.Domain", "Grayson.ExampleCQRS.ReadModel.Domain\Grayson.ExampleCQRS.ReadModel.Domain.csproj", "{11DB3223-3BEE-4C34-9C38-D421439982B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Domain.ReadModel", "Grayson.ExampleCQRS.ReadModel.Domain\Grayson.ExampleCQRS.Domain.ReadModel.csproj", "{11DB3223-3BEE-4C34-9C38-D421439982B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadModel.Infrastructure", "Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj", "{BB02CB2F-6806-42B0-80C0-B2A102108A07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Infrastructure.ReadModel", "Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.Infrastructure.ReadModel.csproj", "{BB02CB2F-6806-42B0-80C0-B2A102108A07}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadModel.Application", "Grayson.ExampleCQRS.ReadModel.Application\Grayson.ExampleCQRS.ReadModel.Application.csproj", "{F079C9F0-77EA-436D-81D4-4715EBE14A39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Application.ReadModel", "Grayson.ExampleCQRS.ReadModel.Application\Grayson.ExampleCQRS.Application.ReadModel.csproj", "{F079C9F0-77EA-436D-81D4-4715EBE14A39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9DBBB31A-C865-41DD-9A08-2D8246B48CC7}"
 EndProject

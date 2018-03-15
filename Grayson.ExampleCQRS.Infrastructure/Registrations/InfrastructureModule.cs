@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grayson.ExampleCQRS.Domain.Repository;
+
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD.Domain;
 using Grayson.Utils.DDD.Infrastructure;
+
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Registrations
@@ -49,7 +46,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
         public static void RegisterEventForwarder(Container container)
         {
             var typesToRegister = container.GetTypesToRegister(
-                                                       typeof(IDomainEventHandler<>),
+                                                       typeof(ICommittedEventHandler<>),
                                                        new[] { typeof(ImmediateEventForwarder).Assembly },
                                                        new TypesToRegisterOptions
                                                        {
@@ -59,7 +56,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 
             typesToRegister = new[] { typeof(ImmediateEventForwarder) };
 
-            container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
+            container.RegisterCollection(typeof(ICommittedEventHandler<>), typesToRegister);
         }
     }
 }

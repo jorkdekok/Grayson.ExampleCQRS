@@ -21,14 +21,22 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
         public async Task Consume(ConsumeContext<TRequest> context)
         {
-            Type messageType = context.Message.GetType();
-            Type commandhandlerType = typeof(ICommandHandler<>);
-            Type constructedType = commandhandlerType.MakeGenericType(messageType);
+            try
+            {
+                await Console.Out.WriteLineAsync($"Received command message: {context.Message.GetType()}");
 
-            var handler = _container.GetInstance(constructedType);
-            ((dynamic)handler).When(context.Message);
+                Type messageType = context.Message.GetType();
+                Type commandhandlerType = typeof(ICommandHandler<>);
+                Type constructedType = commandhandlerType.MakeGenericType(messageType);
 
-            await Console.Out.WriteLineAsync($"Received command message: {context.Message.GetType()}");
+                var handler = _container.GetInstance(constructedType);
+                ((dynamic)handler).When(context.Message);
+            }
+            catch (Exception ex)
+            {
+                await Console.Out.WriteLineAsync($"Exception: {ex.Message}");
+            }
+
         }
     }
 }

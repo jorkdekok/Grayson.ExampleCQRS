@@ -1,5 +1,4 @@
 ﻿using Grayson.ExampleCQRS.Domain.Services;
-using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.Utils.DDD.Domain;
 using Grayson.Utils.DDD.Infrastructure;
 
@@ -33,18 +32,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
                                                        });
 
             container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
-
-            //
-            var typesToRegister2 = container.GetTypesToRegister(
-                                                       typeof(ICommittedEventHandler<>),
-                                                       new[] { typeof(ImmediateEventForwarder).Assembly },
-                                                       new TypesToRegisterOptions
-                                                       {
-                                                           IncludeGenericTypeDefinitions = true,
-                                                           IncludeComposites = false,
-                                                       });
-
-            container.RegisterCollection(typeof(ICommittedEventHandler<>), typesToRegister2);
         }
     }
 }

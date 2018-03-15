@@ -8,9 +8,9 @@ namespace Grayson.ExampleCQRS.Application.ReadModel.Projections
 {
     public class KmStandProjectionService : ApplicationService, IDomainEventHandler<KmStandCreated>
     {
-        private readonly IKmStandRepository _kmStandRepository;
+        private readonly IKmStandViewRepository _kmStandRepository;
 
-        public KmStandProjectionService(IKmStandRepository kmStandRepository)
+        public KmStandProjectionService(IKmStandViewRepository kmStandRepository)
         {
             _kmStandRepository = kmStandRepository;
         }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
   </ItemGroup>
   
 </Project>

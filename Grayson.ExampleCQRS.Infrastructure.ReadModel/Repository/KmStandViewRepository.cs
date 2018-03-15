@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
 {
-    public class KmStandRepository : IKmStandRepository
+    public class KmStandViewRepository : IKmStandViewRepository
     {
         private readonly ReadModelDbContext _context;
         private readonly IDesignTimeDbContextFactory<ReadModelDbContext> _contextFactory;
 
-        public KmStandRepository(IDesignTimeDbContextFactory<ReadModelDbContext> contextFactory)
+        public KmStandViewRepository(IDesignTimeDbContextFactory<ReadModelDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
             _context = contextFactory.CreateDbContext(Array.Empty<string>());

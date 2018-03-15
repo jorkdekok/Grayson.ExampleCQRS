@@ -2,7 +2,7 @@
 
 namespace Grayson.ExampleCQRS.Domain.ReadModel.Repository
 {
-    public interface IKmStandRepository : IRepository<KmStandView>
+    public interface IKmStandViewRepository : IRepository<KmStandView>
     {
     }
 }

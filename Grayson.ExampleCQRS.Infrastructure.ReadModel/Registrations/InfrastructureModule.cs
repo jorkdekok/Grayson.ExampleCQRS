@@ -1,32 +1,30 @@
 ﻿using System.Linq;
 
+using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
+using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
+
 using Microsoft.EntityFrameworkCore.Design;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
+namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Registrations
 {
-    public static class RepositoryRegistrations
+    public static class InfrastructureModule
     {
-        public static void Register(Container container)
+        public static void RegisterAll(Container container)
         {
             RegisterDbContext(container);
             // repositories
             RegisterRepositories(container);
         }
 
-        private static void RegisterDbContext(Container container)
+        public static void RegisterRepositories(Container container)
         {
-            container.Register<IDesignTimeDbContextFactory<ReadModelDbContext>, ReadModelDbContextFactory>();
-        }
-
-        private static void RegisterRepositories(Container container)
-        {
-            var repositoryAssembly = typeof(KmStandRepository).Assembly;
+            var repositoryAssembly = typeof(KmStandViewRepository).Assembly;
 
             var registrations =
                 from type in repositoryAssembly.GetExportedTypes()
-                where type.Namespace == "Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository"
+                where type.Namespace == "Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository"
                 where type.GetInterfaces().Any()
                 select new
                 {
@@ -41,6 +39,11 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
                     container.Register(reg.Service, reg.Implementation, Lifestyle.Transient);
                 }
             }
+        }
+
+        private static void RegisterDbContext(Container container)
+        {
+            container.Register<IDesignTimeDbContextFactory<ReadModelDbContext>, ReadModelDbContextFactory>();
         }
     }
 }

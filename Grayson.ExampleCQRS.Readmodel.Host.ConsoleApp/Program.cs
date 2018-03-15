@@ -1,6 +1,6 @@
 ﻿using System;
+
 using Grayson.ExampleCQRS.Application.ReadModel.Services;
-using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
@@ -22,7 +22,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 container.Options.AllowResolvingFuncFactories();
 
                 RabbitMqModule.RegisterEventConsumers(container);
-                Infrastructure.ReadModel.Repository.RepositoryRegistrations.Register(container);
+                InfrastructureModule.RegisterAll(container);
 
                 var typesToRegister = container.GetTypesToRegister(
                                             typeof(IDomainEventHandler<>),
@@ -32,6 +32,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                                                 IncludeGenericTypeDefinitions = true,
                                                 IncludeComposites = false,
                                             });
+
                 container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
 
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
@@ -44,7 +45,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                     });
                 }));
 
-                container.Register<KmStand>();
+                //container.Register<KmStand>();
 
                 var bus = container.GetInstance<IBusControl>();
 

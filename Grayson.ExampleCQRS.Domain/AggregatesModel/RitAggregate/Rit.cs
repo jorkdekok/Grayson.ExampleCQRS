@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 using Grayson.Utils.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.Model
+namespace Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate
 {
     public class Rit : EventSourcedAggregate, IApplyEvent<RitCreated>, IApplyEvent<RitUpdated>
     {

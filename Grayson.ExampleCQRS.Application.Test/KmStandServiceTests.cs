@@ -3,12 +3,11 @@ using System.Linq;
 
 using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Application.Services;
-using Grayson.ExampleCQRS.Domain.Model;
+using Grayson.ExampleCQRS.Domain.Services;
 using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
-using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
 using Grayson.Utils.DDD.Infrastructure;

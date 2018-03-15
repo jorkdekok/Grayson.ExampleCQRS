@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Grayson.ExampleCQRS.Domain.Model;
+﻿using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
 using Grayson.Utils.DDD.Application;
@@ -7,7 +6,7 @@ using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.ReadModel.Projections
 {
-    public class KmStandProjectionService : ApplicationService, 
+    public class KmStandProjectionService : ApplicationService,
         IDomainEventHandler<KmStandCreated>,
         IDomainEventHandler<KmStandUpdated>
     {

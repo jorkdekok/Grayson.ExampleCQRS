@@ -1,6 +1,7 @@
-﻿using Grayson.Utils.DDD.Domain;
+﻿using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.Utils.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.Model
+namespace Grayson.ExampleCQRS.Domain.Services
 {
     public class RitAutoCreatorService : DomainService, IDomainEventHandler<KmStandCreated>
     {

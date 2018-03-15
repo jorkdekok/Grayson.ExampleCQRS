@@ -1,6 +1,6 @@
 ﻿using Grayson.Utils.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.Model
+namespace Grayson.ExampleCQRS.Domain.AggregatesModel.AdresAggregate
 {
     public class Adres : EventSourcedAggregate
     {

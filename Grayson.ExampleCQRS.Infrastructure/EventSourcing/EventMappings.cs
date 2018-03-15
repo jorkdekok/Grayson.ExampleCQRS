@@ -1,5 +1,5 @@
-﻿using Grayson.ExampleCQRS.Domain.Model;
-
+﻿using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
 using MongoDB.Bson.Serialization;
 
 namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
@@ -37,7 +37,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 
         private static void AutoMapClass<T>()
         {
-            if (!BsonClassMap.IsClassMapRegistered(typeof(T)) )
+            if (!BsonClassMap.IsClassMapRegistered(typeof(T)))
                 BsonClassMap.RegisterClassMap<T>(cm => cm.AutoMap());
         }
     }

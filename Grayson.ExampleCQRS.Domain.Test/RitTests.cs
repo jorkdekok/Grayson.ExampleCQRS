@@ -1,7 +1,5 @@
 using System;
-
-using Grayson.ExampleCQRS.Domain.Model;
-
+using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Grayson.ExampleCQRS.Domain.Test

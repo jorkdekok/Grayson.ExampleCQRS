@@ -1,4 +1,4 @@
-﻿using Grayson.ExampleCQRS.Domain.Model;
+﻿using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
 

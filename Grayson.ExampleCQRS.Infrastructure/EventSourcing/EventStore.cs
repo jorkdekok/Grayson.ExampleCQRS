@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.Utils.DDD.Domain;
 
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 

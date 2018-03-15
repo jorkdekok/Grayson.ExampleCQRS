@@ -1,7 +1,7 @@
-﻿using Grayson.ExampleCQRS.Domain.Model;
-using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+﻿using Grayson.ExampleCQRS.Domain.Services;
 using Grayson.Utils.DDD.Domain;
 using Grayson.Utils.DDD.Infrastructure;
+
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Registrations
@@ -30,9 +30,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
                                                            IncludeGenericTypeDefinitions = true,
                                                            IncludeComposites = false,
                                                        });
-            
+
             container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
         }
-
     }
 }

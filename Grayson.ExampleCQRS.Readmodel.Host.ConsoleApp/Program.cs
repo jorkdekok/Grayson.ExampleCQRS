@@ -1,10 +1,9 @@
 ﻿using System;
-
+using Grayson.ExampleCQRS.Application.ReadModel.Services;
 using Grayson.ExampleCQRS.Domain.Model;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
-using Grayson.ExampleCQRS.ReadModel.Application.Services;
 using Grayson.Utils.DDD.Domain;
 
 using MassTransit;
@@ -23,7 +22,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 container.Options.AllowResolvingFuncFactories();
 
                 RabbitMqModule.RegisterEventConsumers(container);
-                ReadModel.Infrastructure.Repository.RepositoryRegistrations.Register(container);
+                Infrastructure.ReadModel.Repository.RepositoryRegistrations.Register(container);
 
                 var typesToRegister = container.GetTypesToRegister(
                                             typeof(IDomainEventHandler<>),

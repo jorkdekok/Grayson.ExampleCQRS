@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Migrations
+namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Migrations
 {
     public partial class InitialCreate : Migration
     {

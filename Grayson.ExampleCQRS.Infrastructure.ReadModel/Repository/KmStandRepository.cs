@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Grayson.ExampleCQRS.ReadModel.Domain.Model;
-using Grayson.ExampleCQRS.ReadModel.Domain.Repository;
-using Microsoft.EntityFrameworkCore;
+
+using Grayson.ExampleCQRS.Domain.ReadModel.Model;
+using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
+
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
+namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
 {
     public class KmStandRepository : IKmStandRepository
     {
-        private readonly IDesignTimeDbContextFactory<ReadModelDbContext> _contextFactory;
         private readonly ReadModelDbContext _context;
+        private readonly IDesignTimeDbContextFactory<ReadModelDbContext> _contextFactory;
 
         public KmStandRepository(IDesignTimeDbContextFactory<ReadModelDbContext> contextFactory)
         {

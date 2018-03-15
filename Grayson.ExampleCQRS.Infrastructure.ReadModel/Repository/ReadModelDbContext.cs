@@ -1,8 +1,8 @@
-﻿using Grayson.ExampleCQRS.ReadModel.Domain.Model;
+﻿using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
+namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
 {
     public class ReadModelDbContext : DbContext
     {

@@ -23,14 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Domain.Host.ConsoleApp", "Grayson.ExampleCQRS.Domain.Host.ConsoleApp\Grayson.ExampleCQRS.Domain.Host.ConsoleApp.csproj", "{8AECAF29-F76A-4E52-B570-9FEC5789D76F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp", "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.csproj", "{57C927D9-B00A-4EA6-8B60-50FEF1E51274}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Domain.ReadModel", "Grayson.ExampleCQRS.ReadModel.Domain\Grayson.ExampleCQRS.Domain.ReadModel.csproj", "{11DB3223-3BEE-4C34-9C38-D421439982B9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Infrastructure.ReadModel", "Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.Infrastructure.ReadModel.csproj", "{BB02CB2F-6806-42B0-80C0-B2A102108A07}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Application.ReadModel", "Grayson.ExampleCQRS.ReadModel.Application\Grayson.ExampleCQRS.Application.ReadModel.csproj", "{F079C9F0-77EA-436D-81D4-4715EBE14A39}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9DBBB31A-C865-41DD-9A08-2D8246B48CC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratorApp", "CodeGeneratorApp\CodeGeneratorApp.csproj", "{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}"
@@ -42,6 +34,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.DDD.Application", "Grayson.Utils.DDD.Application\Grayson.Utils.DDD.Application.csproj", "{F6FF06A5-2F27-4B93-9C72-2A581BB76AF7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.DDD.Infrastructure", "Grayson.Utils.DDD.Infrastructure\Grayson.Utils.DDD.Infrastructure.csproj", "{AD67E734-3812-478B-9041-1331F7EF0FC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Application.ReadModel", "Grayson.ExampleCQRS.Application.ReadModel\Grayson.ExampleCQRS.Application.ReadModel.csproj", "{D6240E61-9A28-47D9-B434-1E350FBEB109}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Infrastructure.ReadModel", "Grayson.ExampleCQRS.Infrastructure.ReadModel\Grayson.ExampleCQRS.Infrastructure.ReadModel.csproj", "{48A7F42D-3E9F-4F96-934D-597CBC75570F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp", "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.csproj", "{F765939A-8435-49F2-BD1B-18DFD2846890}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,22 +87,6 @@ Global
 		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57C927D9-B00A-4EA6-8B60-50FEF1E51274}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11DB3223-3BEE-4C34-9C38-D421439982B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11DB3223-3BEE-4C34-9C38-D421439982B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11DB3223-3BEE-4C34-9C38-D421439982B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11DB3223-3BEE-4C34-9C38-D421439982B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB02CB2F-6806-42B0-80C0-B2A102108A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB02CB2F-6806-42B0-80C0-B2A102108A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB02CB2F-6806-42B0-80C0-B2A102108A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB02CB2F-6806-42B0-80C0-B2A102108A07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F079C9F0-77EA-436D-81D4-4715EBE14A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F079C9F0-77EA-436D-81D4-4715EBE14A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F079C9F0-77EA-436D-81D4-4715EBE14A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F079C9F0-77EA-436D-81D4-4715EBE14A39}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,6 +107,18 @@ Global
 		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD67E734-3812-478B-9041-1331F7EF0FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6240E61-9A28-47D9-B434-1E350FBEB109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6240E61-9A28-47D9-B434-1E350FBEB109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6240E61-9A28-47D9-B434-1E350FBEB109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6240E61-9A28-47D9-B434-1E350FBEB109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A7F42D-3E9F-4F96-934D-597CBC75570F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A7F42D-3E9F-4F96-934D-597CBC75570F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A7F42D-3E9F-4F96-934D-597CBC75570F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A7F42D-3E9F-4F96-934D-597CBC75570F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F765939A-8435-49F2-BD1B-18DFD2846890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F765939A-8435-49F2-BD1B-18DFD2846890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F765939A-8435-49F2-BD1B-18DFD2846890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F765939A-8435-49F2-BD1B-18DFD2846890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

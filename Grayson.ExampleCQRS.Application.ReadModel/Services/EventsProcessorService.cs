@@ -2,7 +2,7 @@
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.ReadModel.Application.Services
+namespace Grayson.ExampleCQRS.Application.ReadModel.Services
 {
     public class EventsProcessorService : ApplicationService, IDomainEventHandler<KmStandCreated>
     {

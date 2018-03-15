@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
+namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
 {
     public class ReadModelDbContextFactory : IDesignTimeDbContextFactory<ReadModelDbContext>
     {

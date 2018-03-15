@@ -1,8 +1,10 @@
 ﻿using System.Linq;
+
 using Microsoft.EntityFrameworkCore.Design;
+
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
+namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
 {
     public static class RepositoryRegistrations
     {

@@ -13,11 +13,11 @@ namespace Grayson.ExampleCQRS.Infrastructure.Test
         [TestMethod]
         public void TestMethod1()
         {
-            var bus = new AdvancedBus(AdvancedBus.ConfigureBus());
+            var bus = new AdvancedBus(RabbitMqConfiguration.ConfigureBus());
 
             bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
 
-            var bus2 = AdvancedBus.ConfigureBus((cfg, host) =>
+            var bus2 = RabbitMqConfiguration.ConfigureBus((cfg, host) =>
             {
                 cfg.ReceiveEndpoint(host,
                     RabbitMqConstants.CommandsQueue, e =>

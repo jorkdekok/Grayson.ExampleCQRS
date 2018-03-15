@@ -15,18 +15,19 @@ namespace Grayson.ExampleCQRS.TestConsoleApp
         {
             using (var container = new Container())
             {
+                Console.WriteLine("Starting command sender host...");
+
                 container.Options.AllowResolvingFuncFactories();
 
-                MessageBusRegistrations.Register(container);
-
-                container.RegisterSingleton(AdvancedBus.ConfigureBus());
+                container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus());
+                container.RegisterSingleton<ICommandBus, AdvancedBus>();
 
                 var bus = container.GetInstance<ICommandBus>();
 
                 bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
                 Console.WriteLine("AddNewKmStand Command was send");
 
-                bus.Send(new UpdateKmStand(Guid.Parse("d6a8eb8e-690a-4eea-94ab-d300458c4b10"),2000, DateTime.Now, Guid.Empty));
+                bus.Send(new UpdateKmStand(Guid.Parse("d6a8eb8e-690a-4eea-94ab-d300458c4b10"), 2000, DateTime.Now, Guid.Empty));
                 Console.WriteLine("UpdateKmStand Command was send");
 
                 Console.WriteLine("Press ENTER to quit");

@@ -2,24 +2,23 @@
 
 using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Domain.Model;
+using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
+namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 {
-    public static class MessageBusRegistrations
+    public static class RabbitMqModule
     {
-        public static void Register(Container container)
+        public static void RegisterAll(Container container)
         {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            // register command handlers
-            container.Register(typeof(ICommandHandler<>), assemblies);
-            //register event subscribers
-            container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
-
             container.Register<ICommandBus, AdvancedBus>();
+
+            RegisterCommandConsumers(container);
+
+            RegisterEventConsumers(container);
         }
 
         public static void RegisterCommandConsumers(Container container)

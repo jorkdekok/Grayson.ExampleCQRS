@@ -1,9 +1,9 @@
 ﻿using System;
 
 using Grayson.ExampleCQRS.Domain.Model;
-using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Infrastructure.Registrations;
 using Grayson.ExampleCQRS.ReadModel.Application.Services;
 using Grayson.Utils.DDD.Domain;
 
@@ -13,21 +13,29 @@ using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main(string[] args)
         {
             using (var container = new Container())
             {
+                Console.WriteLine("Starting readmodel host...");
                 container.Options.AllowResolvingFuncFactories();
 
-                var s = typeof(EventsProcessorService);
-
-                RegistrationModule.Register(container);
-                MessageBusRegistrations.RegisterEventConsumers(container);
+                RabbitMqModule.RegisterEventConsumers(container);
                 ReadModel.Infrastructure.Repository.RepositoryRegistrations.Register(container);
 
-                container.RegisterSingleton(AdvancedBus.ConfigureBus((cfg, host) =>
+                var typesToRegister = container.GetTypesToRegister(
+                                            typeof(IDomainEventHandler<>),
+                                            new[] { typeof(EventsProcessorService).Assembly },
+                                            new TypesToRegisterOptions
+                                            {
+                                                IncludeGenericTypeDefinitions = true,
+                                                IncludeComposites = false,
+                                            });
+                container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
+
+                container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {
                     cfg.ReceiveEndpoint(host, RabbitMqConstants.EventsQueue, e =>
                     {
@@ -39,14 +47,14 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
 
                 container.Register<KmStand>();
 
-                var bus2 = container.GetInstance<IBusControl>();
+                var bus = container.GetInstance<IBusControl>();
 
-                bus2.StartAsync();
+                bus.StartAsync();
 
                 Console.WriteLine("Listening for events.. Press enter to exit");
                 Console.ReadLine();
 
-                bus2.StopAsync();
+                bus.StopAsync();
             }
         }
     }

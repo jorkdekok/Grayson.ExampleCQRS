@@ -6,24 +6,38 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 {
     public static class EventMappings
     {
+        private static bool isConfigured = false;
+
+        private static object myLock = new object();
+
         public static void Configure()
         {
-            // generic event classes
-            AutoMapClass<EventStream>();
-            AutoMapClass<EventWrapper>();
+            lock (myLock)
+            {
+                if (isConfigured)
+                {
+                    return; // skip configuration
+                }
 
-            // Rit events
-            AutoMapClass<RitCreated>();
-            AutoMapClass<RitUpdated>();
+                // generic event classes
+                AutoMapClass<EventStream>();
+                AutoMapClass<EventWrapper>();
 
-            // KmStand events
-            AutoMapClass<KmStandCreated>();
-            AutoMapClass<KmStandUpdated>();
+                // Rit events
+                AutoMapClass<RitCreated>();
+                AutoMapClass<RitUpdated>();
+
+                // KmStand events
+                AutoMapClass<KmStandCreated>();
+                AutoMapClass<KmStandUpdated>();
+
+                isConfigured = true;
+            }
         }
 
         private static void AutoMapClass<T>()
         {
-            if (!BsonClassMap.IsClassMapRegistered(typeof(T)))
+            if (!BsonClassMap.IsClassMapRegistered(typeof(T)) )
                 BsonClassMap.RegisterClassMap<T>(cm => cm.AutoMap());
         }
     }

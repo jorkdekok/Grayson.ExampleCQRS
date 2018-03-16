@@ -12,7 +12,7 @@ namespace Grayson.ExampleCQRS.Domain.Test
         {
             Rit rit = new Rit(null);
 
-            rit.Apply(new RitCreated(Guid.NewGuid(), "test1"));
+            //rit.Apply(new RitCreated(Guid.NewGuid(), "test1"));
 
             Assert.IsNotNull(rit.Id);
         }
@@ -22,9 +22,9 @@ namespace Grayson.ExampleCQRS.Domain.Test
         {
             Rit rit = new Rit(null);
 
-            rit.Create(Guid.NewGuid(), "test1");
-            rit.Create(Guid.NewGuid(), "test2");
-            rit.Create(Guid.NewGuid(), "test3");
+            ////rit.Create(Guid.NewGuid(), "test1");
+            //rit.Create(Guid.NewGuid(), "test2");
+            //rit.Create(Guid.NewGuid(), "test3");
 
             Assert.AreNotEqual(Guid.Empty, rit.Id);
             Assert.AreEqual(3, rit.Version);
@@ -35,7 +35,7 @@ namespace Grayson.ExampleCQRS.Domain.Test
         {
             Rit rit = new Rit(null);
 
-            rit.Create(Guid.NewGuid(), "test1");
+            //rit.Create(Guid.NewGuid(), "test1");
 
             Assert.IsNotNull(rit.Id);
         }

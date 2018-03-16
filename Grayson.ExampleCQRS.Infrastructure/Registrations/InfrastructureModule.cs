@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;

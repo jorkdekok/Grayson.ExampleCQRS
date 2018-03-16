@@ -7,45 +7,46 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
 {
-    public class KmStandViewRepository : IKmStandViewRepository
+    public class RitViewRepository : IRitViewRepository
     {
         private readonly ReadModelDbContext _context;
         private readonly IDesignTimeDbContextFactory<ReadModelDbContext> _contextFactory;
 
-        public KmStandViewRepository(IDesignTimeDbContextFactory<ReadModelDbContext> contextFactory)
+        public RitViewRepository(IDesignTimeDbContextFactory<ReadModelDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
             _context = contextFactory.CreateDbContext(Array.Empty<string>());
         }
 
-        public void Add(KmStandView aggregate)
+        public void Add(RitView aggregate)
         {
-            _context.KmStands.Add(aggregate);
+            _context.Ritten.Add(aggregate);
         }
 
-        public void Delete(KmStandView aggregate)
+        public void Delete(RitView aggregate)
         {
-            _context.KmStands.Remove(aggregate);
+            _context.Ritten.Remove(aggregate);
         }
 
-        public KmStandView GetById(Guid id)
+        public RitView FindByLastKmStandId(Guid kmstandId)
         {
-            return _context.Find(typeof(KmStandView), id) as KmStandView;
+            return _context.Ritten.Where(r => r.EindStandId == kmstandId).SingleOrDefault();
         }
 
-        public KmStandView GetLastOne()
+        public RitView GetById(Guid id)
         {
-            return _context.KmStands.OrderBy(k => k.Datum).LastOrDefault();
+            return _context.Find(typeof(RitView), id) as RitView;
         }
+
 
         public void SaveChanges()
         {
             _context.SaveChanges();
         }
 
-        public void Update(KmStandView aggregate)
+        public void Update(RitView aggregate)
         {
-            _context.KmStands.Update(aggregate);
+            _context.Ritten.Update(aggregate);
         }
     }
 }

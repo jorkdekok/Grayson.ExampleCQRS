@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Diagnostics;
 using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.Utils.DDD.Infrastructure
@@ -27,6 +27,7 @@ namespace Grayson.Utils.DDD.Infrastructure
 
             foreach (Object subscriber in subscribers)
             {
+                Debug.WriteLine($"Publish event '{messageType.Name}' to '{subscriber.GetType().Name}'");
                 ((dynamic)subscriber).When((dynamic)@event);
             }
         }

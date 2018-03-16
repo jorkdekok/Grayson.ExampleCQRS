@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Grayson.ExampleCQRS.Application.Services;
+﻿using Grayson.ExampleCQRS.Application.Services;
+using Grayson.ExampleCQRS.Domain.Services;
 using Grayson.Utils.DDD.Application;
 using Grayson.Utils.DDD.Domain;
-using Grayson.Utils.DDD.Infrastructure;
+
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Registrations
@@ -20,8 +18,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 
         public static void RegisterCommandHandlers(Container container)
         {
-            container.Options.AllowOverridingRegistrations = true;
-
             var typesToRegister = container.GetTypesToRegister(
                                             typeof(ICommandHandler<>),
                                             new[] { typeof(KmStandService).Assembly },
@@ -36,11 +32,9 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 
         public static void RegisterEventHandlers(Container container)
         {
-            container.Options.AllowOverridingRegistrations = true;
-
             var typesToRegister = container.GetTypesToRegister(
                                                        typeof(IDomainEventHandler<>),
-                                                       new[] { typeof(KmStandService).Assembly },
+                                                       new[] { typeof(KmStandService).Assembly, typeof(RitAutoCreatorService).Assembly },
                                                        new TypesToRegisterOptions
                                                        {
                                                            IncludeGenericTypeDefinitions = false,
@@ -49,7 +43,5 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 
             container.RegisterCollection(typeof(IDomainEventHandler<>), typesToRegister);
         }
-
-       
     }
 }

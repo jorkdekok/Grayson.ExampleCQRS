@@ -19,9 +19,9 @@ namespace Grayson.ExampleCQRS.Application.BusinessUseCases
 
             Rit rit = repository.FindBy(id);
 
-            rit.Update(id, "test02");
+            //rit.Update(id, "test02");
 
-            repository.Save(rit);
+            repository.Update(rit);
         }
     }
 }

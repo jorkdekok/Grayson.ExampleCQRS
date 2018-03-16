@@ -11,9 +11,10 @@ using System;
 namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Migrations
 {
     [DbContext(typeof(ReadModelDbContext))]
-    partial class ReadModelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180316121607_AddRitten")]
+    partial class AddRitten
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

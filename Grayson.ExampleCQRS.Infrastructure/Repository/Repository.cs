@@ -59,7 +59,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             return rit;
         }
 
-        public void Save(TAggregate aggregate)
+        public void Update(TAggregate aggregate)
         {
             var streamName = StreamNameFor(aggregate.Id);
 

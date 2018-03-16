@@ -20,8 +20,16 @@ namespace Grayson.ExampleCQRS.Infrastructure.Extensions
                 }
 
                 Type serviceType = type.GetGenericArguments().First();
-
-                InstanceProducer registration = options.Container.GetRegistration(serviceType, true);
+                InstanceProducer registration = null;
+                try
+                {
+                    registration  = options.Container.GetRegistration(serviceType, true);
+                }
+                catch (ActivationException ex)
+                {
+                    serviceType = serviceType.GetInterfaces().FirstOrDefault();
+                    registration = options.Container.GetRegistration(serviceType, true);
+                }
 
                 Type funcType = typeof(Func<>).MakeGenericType(serviceType);
 

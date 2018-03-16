@@ -14,7 +14,7 @@ namespace Grayson.Utils.DDD.Application
 
             TAggregate aggregate = repository.FindBy(id);
             execute(aggregate);
-            repository.Save(aggregate);
+            repository.Update(aggregate);
         }
     }
 }

@@ -1,19 +1,29 @@
 ﻿using System;
 
-using Grayson.Utils.DDD;
 using Grayson.Utils.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate
 {
-    public class RitCreated : IDomainEvent
+    public class RitCreated : DomainEvent, IDomainEvent
     {
         public readonly string Name;
-        public Guid Id { get; set; }
 
-        public RitCreated(Guid id, string name)
+        public int BeginStand { get; private set; }
+
+        public Guid BeginStandId { get; private set; }
+
+        public int EindStand { get; private set; }
+
+        public Guid EindStandId { get; private set; }
+
+        public RitCreated(string name, int beginStand, Guid beginStandId, int eindStand, Guid eindStandId, Guid id)
         {
-            this.Id = id;
-            this.Name = name;
+            Name = name;
+            BeginStand = beginStand;
+            BeginStandId = beginStandId;
+            EindStand = eindStand;
+            EindStandId = eindStandId;
+            Id = id;
         }
     }
 }

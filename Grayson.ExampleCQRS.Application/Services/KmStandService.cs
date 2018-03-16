@@ -14,11 +14,16 @@ namespace Grayson.ExampleCQRS.Application.Services
     {
         private readonly Func<IRepository<KmStand>> _repositoryFactory;
         private readonly IAggregateFactory aggregateFactory;
+        private readonly IEventPublisher _eventPublisher;
 
-        public KmStandService(IAggregateFactory aggregateFactory, Func<IRepository<KmStand>> repositoryFactory)
+        public KmStandService(
+            IAggregateFactory aggregateFactory,
+            IEventPublisher eventPublisher,
+            Func<IRepository<KmStand>> repositoryFactory)
         {
             this.aggregateFactory = aggregateFactory;
             _repositoryFactory = repositoryFactory;
+            _eventPublisher = eventPublisher;
         }
 
         public void When(KmStandCreated @event)

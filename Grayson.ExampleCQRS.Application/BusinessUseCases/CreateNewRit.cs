@@ -20,7 +20,7 @@ namespace Grayson.ExampleCQRS.Application.BusinessUseCases
             var repository = _ritRepositoryFactory();
 
             Rit rit = aggregateFactory.Create<Rit>();
-            rit.Create(Guid.NewGuid(), "test01");
+            //rit.Create(Guid.NewGuid(), "test01");
 
             repository.Add(rit);
         }

@@ -7,8 +7,11 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
     public class ReadModelDbContext : DbContext
     {
         private const string TABLE_KMSTAND = "KmStand";
+        private const string TABLE_RIT = "Ritten";
 
         public DbSet<KmStandView> KmStands { get; set; }
+
+        public DbSet<RitView> Ritten { get; set; }
 
         public ReadModelDbContext(DbContextOptions<ReadModelDbContext> options)
             : base(options)
@@ -29,6 +32,10 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
             modelBuilder.Entity<KmStandView>()
                 .ToTable(TABLE_KMSTAND)
                 .HasKey(e => e.Id);
+
+            modelBuilder.Entity<RitView>()
+               .ToTable(TABLE_RIT)
+               .HasKey(e => e.Id);
         }
     }
 }

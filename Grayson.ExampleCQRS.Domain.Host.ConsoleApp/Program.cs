@@ -1,7 +1,10 @@
 ﻿using System;
-
+using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
+using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
 
 using MassTransit;
@@ -25,6 +28,11 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
                 InfrastructureModule.RegisterAll(container);
                 InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
+
+                Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
+
+                //container.Register<IKmStandRepository, KmStandRepository>();
+                //container.Register<IRitRepository, RitRepository>();
 
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {

@@ -8,6 +8,6 @@ namespace Grayson.Utils.DDD.Domain
 
         TAggregate FindBy(Guid id);
 
-        void Save(TAggregate aggregate);
+        void Update(TAggregate aggregate);
     }
 }

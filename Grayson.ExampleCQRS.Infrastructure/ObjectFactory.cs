@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Grayson.SeedWork.DDD.Infrastructure;
+
+using Grayson.SeedWork.DDD.Domain;
+
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure
@@ -15,6 +16,11 @@ namespace Grayson.ExampleCQRS.Infrastructure
             _container = container;
         }
 
+        public IEnumerable<object> GetAllInstances(Type instanceType)
+        {
+            return _container.GetAllInstances(instanceType);
+        }
+
         T IObjectFactory.GetInstance<T>()
         {
             return _container.GetInstance<T>();
@@ -23,11 +29,6 @@ namespace Grayson.ExampleCQRS.Infrastructure
         public object GetInstance(Type instanceType)
         {
             return _container.GetInstance(instanceType);
-        }
-
-        public IEnumerable<object> GetAllInstances(Type instanceType)
-        {
-            return _container.GetAllInstances(instanceType);
         }
     }
 }

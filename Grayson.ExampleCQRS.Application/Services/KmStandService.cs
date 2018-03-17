@@ -3,7 +3,6 @@
 using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.SeedWork.DDD.Application;
-using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.Services
@@ -13,9 +12,9 @@ namespace Grayson.ExampleCQRS.Application.Services
         ICommandHandler<UpdateKmStand>,
         IDomainEventHandler<KmStandCreated>
     {
+        private readonly IEventPublisher _eventPublisher;
         private readonly Func<IRepository<KmStand>> _repositoryFactory;
         private readonly IAggregateFactory aggregateFactory;
-        private readonly IEventPublisher _eventPublisher;
 
         public KmStandService(
             IAggregateFactory aggregateFactory,

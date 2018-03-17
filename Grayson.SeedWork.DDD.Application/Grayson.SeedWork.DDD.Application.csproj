@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.Utils.DDD.Domain\Grayson.Utils.DDD.Domain.csproj" />
+    <ProjectReference Include="..\Grayson.SeedWork.DDD.Domain\Grayson.SeedWork.DDD.Domain.csproj" />
   </ItemGroup>
 
 </Project>

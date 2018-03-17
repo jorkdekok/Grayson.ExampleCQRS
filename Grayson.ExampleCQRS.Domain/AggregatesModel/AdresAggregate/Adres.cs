@@ -1,4 +1,4 @@
-﻿using Grayson.Utils.DDD.Domain;
+﻿using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.AggregatesModel.AdresAggregate
 {

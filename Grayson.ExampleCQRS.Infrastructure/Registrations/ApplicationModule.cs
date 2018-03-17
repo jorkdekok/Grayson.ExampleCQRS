@@ -1,7 +1,7 @@
 ﻿using Grayson.ExampleCQRS.Application.Services;
 using Grayson.ExampleCQRS.Domain.Services;
-using Grayson.Utils.DDD.Application;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 

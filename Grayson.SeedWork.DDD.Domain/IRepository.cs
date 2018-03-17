@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Grayson.Utils.DDD.Domain
+namespace Grayson.SeedWork.DDD.Domain
 {
     public interface IRepository<TAggregate>
     {

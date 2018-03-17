@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Grayson.Utils.DDD.Infrastructure;
+using Grayson.SeedWork.DDD.Infrastructure;
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure

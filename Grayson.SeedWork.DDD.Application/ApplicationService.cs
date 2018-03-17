@@ -1,7 +1,7 @@
 ﻿using System;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.Utils.DDD.Application
+namespace Grayson.SeedWork.DDD.Application
 {
     public class ApplicationService
     {

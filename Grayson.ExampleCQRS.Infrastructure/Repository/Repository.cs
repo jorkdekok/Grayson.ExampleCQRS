@@ -2,7 +2,7 @@
 
 using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Repository
 {

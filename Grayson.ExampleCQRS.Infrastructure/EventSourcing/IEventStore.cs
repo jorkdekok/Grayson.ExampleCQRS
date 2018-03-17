@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 {

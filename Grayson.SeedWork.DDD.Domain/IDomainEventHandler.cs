@@ -1,4 +1,4 @@
-﻿namespace Grayson.Utils.DDD.Domain
+﻿namespace Grayson.SeedWork.DDD.Domain
 {
     public interface IDomainEventHandler<in TDomainEvent>
         where TDomainEvent : IDomainEvent

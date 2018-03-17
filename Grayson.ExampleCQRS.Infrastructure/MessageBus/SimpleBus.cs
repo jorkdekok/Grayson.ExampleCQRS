@@ -1,5 +1,5 @@
-﻿using Grayson.Utils.DDD.Application;
-using Grayson.Utils.DDD.Domain;
+﻿using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 

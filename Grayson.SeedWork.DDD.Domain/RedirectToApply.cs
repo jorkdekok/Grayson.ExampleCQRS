@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace Grayson.Utils.DDD.Domain
+namespace Grayson.SeedWork.DDD.Domain
 {
     public static class RedirectToApply
     {

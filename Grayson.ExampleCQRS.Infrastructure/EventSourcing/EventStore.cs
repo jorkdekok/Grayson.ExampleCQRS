@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Grayson.Utils.DDD
+namespace Grayson.SeedWork.DDD.Domain
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

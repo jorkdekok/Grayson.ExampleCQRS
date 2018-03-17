@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Application\Grayson.ExampleCQRS.Application.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
-    <ProjectReference Include="..\Grayson.Utils.DDD.Infrastructure\Grayson.Utils.DDD.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.Seedwork.DDD.Infrastructure\Grayson.SeedWork.DDD.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

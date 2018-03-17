@@ -1,6 +1,6 @@
 ﻿using System;
 
-using Grayson.Utils.DDD.Application;
+using Grayson.SeedWork.DDD.Application;
 
 namespace Grayson.ExampleCQRS.Application.Commands
 {

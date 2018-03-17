@@ -8,9 +8,9 @@ using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
-using Grayson.Utils.DDD.Application;
-using Grayson.Utils.DDD.Domain;
-using Grayson.Utils.DDD.Infrastructure;
+using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Domain;
+using Grayson.SeedWork.DDD.Infrastructure;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

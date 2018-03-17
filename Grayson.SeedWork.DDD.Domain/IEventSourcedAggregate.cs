@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Grayson.Utils.DDD.Domain
+namespace Grayson.SeedWork.DDD.Domain
 {
     public interface IEventSourcedAggregate
     {

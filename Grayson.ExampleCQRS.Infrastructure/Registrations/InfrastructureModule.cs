@@ -3,8 +3,8 @@ using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
-using Grayson.Utils.DDD.Domain;
-using Grayson.Utils.DDD.Infrastructure;
+using Grayson.SeedWork.DDD.Domain;
+using Grayson.SeedWork.DDD.Infrastructure;
 
 using SimpleInjector;
 

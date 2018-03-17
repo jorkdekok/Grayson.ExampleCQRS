@@ -1,6 +1,6 @@
 ﻿using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.Utils.DDD.Application;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.ReadModel.Services
 {

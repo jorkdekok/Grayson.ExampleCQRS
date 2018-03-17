@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.Utils.DDD.Infrastructure
+namespace Grayson.SeedWork.DDD.Infrastructure
 {
     /// <summary>
     /// Default implementation for IEventPublisher

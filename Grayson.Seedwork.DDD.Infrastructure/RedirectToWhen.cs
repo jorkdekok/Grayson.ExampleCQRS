@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace Grayson.Utils.DDD.Infrastructure
+namespace Grayson.SeedWork.DDD.Infrastructure
 {
     public static class RedirectToWhen
     {

@@ -2,8 +2,8 @@
 using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
 using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
-using Grayson.Utils.DDD.Application;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.ReadModel.Projections
 {

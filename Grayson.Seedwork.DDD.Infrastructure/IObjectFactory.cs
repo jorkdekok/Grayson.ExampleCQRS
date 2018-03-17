@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grayson.Utils.DDD.Infrastructure
+namespace Grayson.SeedWork.DDD.Infrastructure
 {
     public interface IObjectFactory
     {

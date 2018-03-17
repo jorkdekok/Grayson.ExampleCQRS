@@ -1,4 +1,4 @@
-﻿namespace Grayson.Utils.DDD.Application
+﻿namespace Grayson.SeedWork.DDD.Application
 {
     public interface ICommandHandler<TCommand>
         where TCommand : ICommand

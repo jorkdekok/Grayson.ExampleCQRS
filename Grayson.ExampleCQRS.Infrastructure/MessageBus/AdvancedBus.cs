@@ -1,6 +1,6 @@
 ﻿using System;
 
-using Grayson.Utils.DDD.Application;
+using Grayson.SeedWork.DDD.Application;
 
 using MassTransit;
 

@@ -1,6 +1,4 @@
-﻿using Grayson.Utils.DDD.Application;
-
-namespace Grayson.Utils.DDD.Application
+﻿namespace Grayson.SeedWork.DDD.Application
 {
     public interface ICommandBus
     {

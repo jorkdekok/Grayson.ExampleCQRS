@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate
 {

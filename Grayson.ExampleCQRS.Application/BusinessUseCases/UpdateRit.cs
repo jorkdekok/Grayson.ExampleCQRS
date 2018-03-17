@@ -1,6 +1,6 @@
 ﻿using System;
 using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
-using Grayson.Utils.DDD.Domain;
+using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Application.BusinessUseCases
 {

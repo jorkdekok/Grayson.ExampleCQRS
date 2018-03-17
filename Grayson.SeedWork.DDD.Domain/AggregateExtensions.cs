@@ -1,4 +1,4 @@
-﻿namespace Grayson.Utils.DDD.Domain
+﻿namespace Grayson.SeedWork.DDD.Domain
 {
     public static class AggregateExtensions
     {

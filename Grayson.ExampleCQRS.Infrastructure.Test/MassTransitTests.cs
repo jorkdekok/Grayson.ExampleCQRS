@@ -1,8 +1,8 @@
 using System;
-
+using System.Threading.Tasks;
 using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
-
+using Grayson.SeedWork.DDD.Application;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Test
@@ -13,9 +13,9 @@ namespace Grayson.ExampleCQRS.Infrastructure.Test
         [TestMethod]
         public void TestMethod1()
         {
-            var bus = new AdvancedBus(RabbitMqConfiguration.ConfigureBus());
+            ICommandBus bus = new AdvancedBus(RabbitMqConfiguration.ConfigureBus());
 
-            bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
+            Task.Factory.StartNew(() =>  bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty)));
 
             var bus2 = RabbitMqConfiguration.ConfigureBus((cfg, host) =>
             {

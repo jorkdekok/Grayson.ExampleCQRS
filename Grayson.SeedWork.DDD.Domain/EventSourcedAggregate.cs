@@ -17,7 +17,6 @@ namespace Grayson.SeedWork.DDD.Domain
         public void AddChange(IDomainEvent @event)
         {
             _changes.Add(@event);
-            _eventPublisher?.Publish(@event);
         }
 
         public IEnumerable<IDomainEvent> GetUncommittedEvents()
@@ -30,6 +29,7 @@ namespace Grayson.SeedWork.DDD.Domain
             // first publish commmitted events
             foreach (var @event in _changes)
             {
+                _eventPublisher?.Publish(@event);
                 _eventPublisher?.PublishCommitted(@event);
             }
             

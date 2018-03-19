@@ -1,9 +1,12 @@
-﻿namespace Grayson.SeedWork.DDD.Application
+﻿using System.Threading.Tasks;
+
+namespace Grayson.SeedWork.DDD.Application
 {
     public interface ICommandBus
     {
-        //void RegisterSaga<T>() where T : Saga;
-        
-        void Send<T>(T command) where T : class, ICommand;
+       void RegisterSaga<TSage>() where TSage : Saga;
+
+        Task Send<T>(T command)
+            where T : class, ICommand;
     }
 }

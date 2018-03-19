@@ -7,45 +7,42 @@ using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.Domain.Services
 {
-    public class RitAutoCreatorService : DomainService, IDomainEventHandler<KmStandCreated>
+    public class RitAutoCreatorService : DomainService
     {
         private readonly IAggregateFactory _aggregateFactory;
-        private readonly Func<SeedWork.DDD.Domain.IRepository<KmStand>> _kmStandRepositoryFactory;
-        private readonly Func<IKmStandViewRepository> _kmStandViewRepositoryFactory;
-        private readonly Func<SeedWork.DDD.Domain.IRepository<Rit>> _ritRepositoryFactory;
-        private readonly Func<IRitViewRepository> _ritViewRepositoryFactory;
+        private readonly SeedWork.DDD.Domain.IRepository<KmStand> _kmStandRepository;
+        private readonly IKmStandViewRepository _kmStandViewRepository;
+        private readonly SeedWork.DDD.Domain.IRepository<Rit> _ritRepository;
+        private readonly IRitViewRepository _ritViewRepository;
 
         public RitAutoCreatorService(
             IAggregateFactory aggregateFactory,
-            Func<IRitViewRepository> ritViewRepositoryFactory,
-            Func<IKmStandViewRepository> kmStandViewRepositoryFactory,
-            Func<SeedWork.DDD.Domain.IRepository<KmStand>> kmStandRepositoryFactory,
-            Func<SeedWork.DDD.Domain.IRepository<Rit>> ritRepositoryFactory)
+            IRitViewRepository ritViewRepository,
+            IKmStandViewRepository kmStandViewRepository,
+            SeedWork.DDD.Domain.IRepository<KmStand> kmStandRepository,
+            SeedWork.DDD.Domain.IRepository<Rit> ritRepository)
         {
             _aggregateFactory = aggregateFactory;
-            _ritViewRepositoryFactory = ritViewRepositoryFactory;
-            _kmStandViewRepositoryFactory = kmStandViewRepositoryFactory;
-            _kmStandRepositoryFactory = kmStandRepositoryFactory;
-            _ritRepositoryFactory = ritRepositoryFactory;
+            _ritRepository = ritRepository;
+            _kmStandRepository = kmStandRepository;
+            _kmStandViewRepository = kmStandViewRepository;
+            _ritViewRepository = ritViewRepository;
         }
 
-        public void When(KmStandCreated @event)
+        public void AutoCreateRitWhenNeeded(KmStandCreated @event)
         {
-            var ritViewRepository = _ritViewRepositoryFactory();
             // zoek laatste kmstand
-            var kmStandRepository = _kmStandViewRepositoryFactory();
-            var standView = kmStandRepository.GetLastOne();
+            var standView = _kmStandViewRepository.GetLastOne();
             if (standView != null)
             {
                 // is deze al gekoppeld aan een rit als eind stand?
-                var ritView = ritViewRepository.FindByLastKmStandId(@event.Id);
+                var ritView = _ritViewRepository.FindByLastKmStandId(@event.Id);
                 if (ritView == null)
                 {
                     // zo nee, dan rit aanmaken en de kmstandid koppelen als begin stand
                     Rit rit = _aggregateFactory.Create<Rit>();
                     rit.Create("Generated", standView.Stand, standView.Id, 0, Guid.Empty, Guid.NewGuid());
-                    var ritRepository = _ritRepositoryFactory();
-                    ritRepository.Add(rit);
+                    _ritRepository.Add(rit);
                 }
             }
         }

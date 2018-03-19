@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
@@ -16,6 +15,7 @@ namespace Grayson.ExampleCQRS.Application.Services
         private readonly IAggregateFactory _aggregateFactory;
         private readonly Func<SeedWork.DDD.Domain.IRepository<KmStand>> _kmStandRepositoryFactory;
         private readonly Func<IKmStandViewRepository> _kmStandViewRepositoryFactory;
+
         private readonly Func<SeedWork.DDD.Domain.IRepository<Rit>> _ritRepositoryFactory;
         private readonly Func<IRitViewRepository> _ritViewRepositoryFactory;
 
@@ -35,7 +35,13 @@ namespace Grayson.ExampleCQRS.Application.Services
 
         public void When(KmStandCreated @event)
         {
-            //var service = new RitAutoCreatorService(               );
+            var ritViewRepository = _ritViewRepositoryFactory();
+            var kmStandViewRepository = _kmStandViewRepositoryFactory();
+            var ritRepository = _ritRepositoryFactory();
+            var kmstandRepository = _kmStandRepositoryFactory();
+
+            var domainService = new RitAutoCreatorService(_aggregateFactory, ritViewRepository, kmStandViewRepository, kmstandRepository, ritRepository);
+            domainService.AutoCreateRitWhenNeeded(@event);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 using Grayson.SeedWork.DDD.Application;
 
 using MassTransit;
@@ -15,15 +15,19 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             _bus = bus;
         }
 
-        public async void Send<T>(T command)
-            where T : class, ICommand
+        public void RegisterSaga<TSage>() where TSage : Saga
+        {
+            throw new NotImplementedException();
+        }
+
+        async Task ICommandBus.Send<T>(T command)
         {
             var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" +
                 $"{RabbitMqConstants.CommandsQueue}");
             var endPoint = await _bus.GetSendEndpoint(sendToUri);
             // TODO: convert to DTO
-            await endPoint
-                .Send(command);
+            await endPoint.Send(command);
         }
+
     }
 }

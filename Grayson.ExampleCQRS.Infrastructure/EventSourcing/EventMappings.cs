@@ -31,6 +31,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
                 AutoMapClass<KmStandCreated>();
                 AutoMapClass<KmStandUpdated>();
 
+                AutoMapClass<SnapshotWrapper>();
+
                 isConfigured = true;
             }
         }

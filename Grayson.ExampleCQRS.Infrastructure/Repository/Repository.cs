@@ -33,30 +33,30 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             var fromEventNumber = 0;
             var toEventNumber = int.MaxValue;
 
-            //var snapshot = _eventStore.GetLatestSnapshot<PayAsYouGoAccountSnapshot>(streamName);
-            //if (snapshot != null)
-            //{
-            //    fromEventNumber = snapshot.Version + 1; // load only events after snapshot
-            //}
+            var snapshot = _eventStore.GetLatestSnapshot<TAggregate>(streamName);
+            if (snapshot != null)
+            {
+                fromEventNumber = snapshot.Version + 1; // load only events after snapshot
+            }
 
             var stream = _eventStore.GetStream(streamName, fromEventNumber, toEventNumber);
 
-            TAggregate rit = _aggregateFactory.Create<TAggregate>();
-            //if (snapshot != null)
-            //{
-            //    payAsYouGoAccount = new PayAsYouGoAccount(snapshot);
-            //}
-            //else
-            //{
-            //    payAsYouGoAccount = new PayAsYouGoAccount();
-            //}
+            TAggregate aggregate = null;
+            if (snapshot != null)
+            {
+                aggregate = snapshot;
+            }
+            else
+            {
+                aggregate = _aggregateFactory.Create<TAggregate>();
+            }
 
             foreach (var @event in stream)
             {
-                rit.Replay(@event);
+                aggregate.Replay(@event);
             }
 
-            return rit;
+            return aggregate;
         }
 
         public void Update(TAggregate aggregate)

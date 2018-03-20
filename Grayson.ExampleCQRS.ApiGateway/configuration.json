@@ -1,0 +1,32 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/v1/kmstanden",
+      "DownstreamScheme": "http",
+      "DownstreamHost": "localhost",
+      "DownstreamPort": 9001,
+      "UpstreamPathTemplate": "/kmstanden",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/kmstanden/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHost": "localhost",
+      "DownstreamPort": 9001,
+      "UpstreamPathTemplate": "/kmstanden/{id}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/ritten",
+      "DownstreamScheme": "http",
+      "DownstreamPort": 9002,
+      "DownstreamHost": "localhost",
+      "UpstreamPathTemplate": "/api/ritten",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
+  }
+}  

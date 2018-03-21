@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
+    <ProjectReference Include="..\Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj" />
+  </ItemGroup>
+
+</Project>

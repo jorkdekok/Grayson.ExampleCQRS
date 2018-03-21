@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="dotnet-codegen" Version="0.4.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Grayson.SeedWork.DDD.Domain\Grayson.SeedWork.DDD.Domain.csproj" />
+  </ItemGroup>
+</Project>

@@ -6,7 +6,7 @@ using MassTransit;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
+namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 {
     internal static class Program
     {
@@ -24,7 +24,7 @@ namespace Grayson.ExampleCQRS.Domain.Host.ConsoleApp
                 InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
 
-                Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
+                ExampleCQRS.Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
 
                 //container.Register<IKmStandRepository, KmStandRepository>();
                 //container.Register<IRitRepository, RitRepository>();

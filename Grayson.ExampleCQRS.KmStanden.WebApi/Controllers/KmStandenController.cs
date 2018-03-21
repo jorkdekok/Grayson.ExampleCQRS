@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Grayson.ExampleCQRS.KmStanden.Application.Commands;
-using Grayson.ExampleCQRS.WebApi.Models;
+using Grayson.ExampleCQRS.KmStanden.WebApi.Models;
 using Grayson.SeedWork.DDD.Application;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Grayson.ExampleCQRS.WebApi.Controllers
+namespace Grayson.ExampleCQRS.KmStanden.WebApi.Controllers
 {
     [Route("api/v1/[controller]")]
     public class KmStandenController : Controller

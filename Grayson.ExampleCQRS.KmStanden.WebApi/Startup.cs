@@ -19,7 +19,7 @@ using SimpleInjector.Integration.AspNetCore.Mvc;
 using SimpleInjector.Lifestyles;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Grayson.ExampleCQRS.WebApi
+namespace Grayson.ExampleCQRS.KmStanden.WebApi
 {
     public class Startup
     {

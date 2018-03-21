@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.DDD", "Grayso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.TestConsoleApp", "Grayson.ExampleCQRS.TestConsoleApp\Grayson.ExampleCQRS.TestConsoleApp.csproj", "{12269706-6D69-49FE-86C7-F5DD645D9FC8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Domain.Host.ConsoleApp", "Grayson.ExampleCQRS.Domain.Host.ConsoleApp\Grayson.ExampleCQRS.Domain.Host.ConsoleApp.csproj", "{8AECAF29-F76A-4E52-B570-9FEC5789D76F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9DBBB31A-C865-41DD-9A08-2D8246B48CC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratorApp", "CodeGeneratorApp\CodeGeneratorApp.csproj", "{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}"
@@ -26,8 +24,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.SeedWork.DDD.Application", "Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj", "{67A88450-61B2-454B-BD71-C2B75C87F975}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.SeedWork.DDD.Infrastructure", "Grayson.Seedwork.DDD.Infrastructure\Grayson.SeedWork.DDD.Infrastructure.csproj", "{BBDD1F5E-6247-4C47-A67D-35DAFFE2E02E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.WebApi", "Grayson.ExampleCQRS.WebApi\Grayson.ExampleCQRS.WebApi.csproj", "{30DBB1E6-2E64-4FCB-878A-FFDF488E6D75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KmStanden", "KmStanden", "{140921D2-94BA-4B00-BCD9-C688E4D9B673}"
 EndProject
@@ -69,6 +65,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadMod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadModel.Infrastructure", "Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj", "{11FE2357-CB08-4780-8090-74DC01FA7FD6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.KmStanden.WebApi", "Grayson.ExampleCQRS.KmStanden.WebApi\Grayson.ExampleCQRS.KmStanden.WebApi.csproj", "{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp", "Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp\Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp.csproj", "{CFF21C28-EE84-4898-84A9-1186592B515A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Ritten.Domain.Host.ConsoleApp", "Grayson.ExampleCQRS.Ritten.Host.ConsoleApp\Grayson.ExampleCQRS.Ritten.Domain.Host.ConsoleApp.csproj", "{E37E23D2-7610-40F3-A20A-4FAF612E6888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,10 +89,6 @@ Global
 		{12269706-6D69-49FE-86C7-F5DD645D9FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12269706-6D69-49FE-86C7-F5DD645D9FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12269706-6D69-49FE-86C7-F5DD645D9FC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AECAF29-F76A-4E52-B570-9FEC5789D76F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1B2C71D-2C9A-4C2C-92B7-8E8918EFE635}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -119,10 +117,6 @@ Global
 		{BBDD1F5E-6247-4C47-A67D-35DAFFE2E02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBDD1F5E-6247-4C47-A67D-35DAFFE2E02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBDD1F5E-6247-4C47-A67D-35DAFFE2E02E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30DBB1E6-2E64-4FCB-878A-FFDF488E6D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30DBB1E6-2E64-4FCB-878A-FFDF488E6D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30DBB1E6-2E64-4FCB-878A-FFDF488E6D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30DBB1E6-2E64-4FCB-878A-FFDF488E6D75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E2D9915D-B43C-4A9C-AF1A-7340FEBC5227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E2D9915D-B43C-4A9C-AF1A-7340FEBC5227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2D9915D-B43C-4A9C-AF1A-7340FEBC5227}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -191,6 +185,18 @@ Global
 		{11FE2357-CB08-4780-8090-74DC01FA7FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11FE2357-CB08-4780-8090-74DC01FA7FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11FE2357-CB08-4780-8090-74DC01FA7FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF21C28-EE84-4898-84A9-1186592B515A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF21C28-EE84-4898-84A9-1186592B515A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF21C28-EE84-4898-84A9-1186592B515A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF21C28-EE84-4898-84A9-1186592B515A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -212,6 +218,9 @@ Global
 		{88D35169-0531-4AFD-A429-3388BFCF92FC} = {95ECB565-239B-4A37-B334-6393015CF530}
 		{616EA638-F187-492D-A7F0-87DCCED248EA} = {95ECB565-239B-4A37-B334-6393015CF530}
 		{11FE2357-CB08-4780-8090-74DC01FA7FD6} = {95ECB565-239B-4A37-B334-6393015CF530}
+		{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6} = {140921D2-94BA-4B00-BCD9-C688E4D9B673}
+		{CFF21C28-EE84-4898-84A9-1186592B515A} = {140921D2-94BA-4B00-BCD9-C688E4D9B673}
+		{E37E23D2-7610-40F3-A20A-4FAF612E6888} = {103249F4-2D45-4D74-BB0A-BC899862126E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F491BA0F-9EFD-4827-BDF2-D74C87FB8AC1}

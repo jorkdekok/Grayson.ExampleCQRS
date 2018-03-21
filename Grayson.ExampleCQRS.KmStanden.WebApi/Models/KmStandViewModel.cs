@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grayson.ExampleCQRS.WebApi.Models
+namespace Grayson.ExampleCQRS.KmStanden.WebApi.Models
 {
     public class KmStandViewModel
     {

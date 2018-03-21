@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Infrastructure\Grayson.ExampleCQRS.KmStanden.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
+  </ItemGroup>
+
+</Project>

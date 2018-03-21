@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Grayson.ExampleCQRS.WebApi
+namespace Grayson.ExampleCQRS.KmStanden.WebApi
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

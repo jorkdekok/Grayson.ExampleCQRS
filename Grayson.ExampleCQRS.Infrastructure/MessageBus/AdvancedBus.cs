@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using Grayson.SeedWork.DDD.Application;
 
 using MassTransit;
@@ -28,6 +29,5 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             // TODO: convert to DTO
             await endPoint.Send(command);
         }
-
     }
 }

@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Application\Grayson.ExampleCQRS.Application.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Application\Grayson.ExampleCQRS.KmStanden.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

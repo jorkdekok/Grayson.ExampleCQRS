@@ -1,8 +1,8 @@
 ﻿using System;
 
-using Grayson.ExampleCQRS.Application.Commands;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.KmStanden.Application.Commands;
 using Grayson.SeedWork.DDD.Application;
 
 using SimpleInjector;

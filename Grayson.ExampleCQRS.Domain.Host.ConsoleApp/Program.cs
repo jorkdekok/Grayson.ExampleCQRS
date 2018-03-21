@@ -1,12 +1,7 @@
 ﻿using System;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
-using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
-using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
-using Grayson.ExampleCQRS.Infrastructure.Registrations;
-
+using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
 using MassTransit;
 
 using SimpleInjector;

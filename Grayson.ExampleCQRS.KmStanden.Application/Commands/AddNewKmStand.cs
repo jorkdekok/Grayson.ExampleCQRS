@@ -2,7 +2,7 @@
 
 using Grayson.SeedWork.DDD.Application;
 
-namespace Grayson.ExampleCQRS.Application.Commands
+namespace Grayson.ExampleCQRS.KmStanden.Application.Commands
 {
     public class AddNewKmStand : ICommand
     {

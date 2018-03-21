@@ -1,14 +1,14 @@
 ﻿using System;
 
-using Grayson.ExampleCQRS.Application.Commands;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Ritten.Application.Commands;
+using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.Registrations
+namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
 {
     public static class RabbitMqModule
     {
@@ -24,7 +24,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
         public static void RegisterCommandConsumers(Container container)
         {
             // create a generic consumer for each command and register
-            var assemblies = new[] { typeof(AddNewKmStand).Assembly };
+            var assemblies = new[] { typeof(AddNewRit).Assembly };
             var commands = container.GetTypesToRegister(typeof(ICommand), assemblies);
 
             Type mtc = typeof(MassTransitCommandHandler<>);
@@ -39,7 +39,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
         public static void RegisterEventConsumers(Container container)
         {
             // events
-            var assemblies = new[] { typeof(KmStand).Assembly };
+            var assemblies = new[] { typeof(Rit).Assembly };
             var events = container.GetTypesToRegister(typeof(IDomainEvent), assemblies);
 
             Type mte = typeof(MassTransitEventConsumer<>);

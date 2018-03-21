@@ -2,7 +2,7 @@
 
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate
+namespace Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate
 {
     public class RitCreated : DomainEvent, IDomainEvent
     {

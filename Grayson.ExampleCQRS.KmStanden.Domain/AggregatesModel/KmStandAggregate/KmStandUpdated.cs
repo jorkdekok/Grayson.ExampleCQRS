@@ -2,7 +2,7 @@
 
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate
+namespace Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate
 {
     public class KmStandUpdated : DomainEvent, IDomainEvent
     {

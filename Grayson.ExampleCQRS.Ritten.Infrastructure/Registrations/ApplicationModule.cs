@@ -1,11 +1,9 @@
-﻿using Grayson.ExampleCQRS.Application.Services;
-using Grayson.ExampleCQRS.Domain.Services;
-using Grayson.SeedWork.DDD.Application;
+﻿using Grayson.ExampleCQRS.Ritten.Domain.Services;
 using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.Registrations
+namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
 {
     public static class ApplicationModule
     {
@@ -18,23 +16,23 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 
         public static void RegisterCommandHandlers(Container container)
         {
-            var typesToRegister = container.GetTypesToRegister(
-                                            typeof(ICommandHandler<>),
-                                            new[] { typeof(KmStandService).Assembly },
-                                            new TypesToRegisterOptions
-                                            {
-                                                IncludeGenericTypeDefinitions = true,
-                                                IncludeComposites = false,
-                                            });
+            //var typesToRegister = container.GetTypesToRegister(
+            //                                typeof(ICommandHandler<>),
+            //                                new[] { typeof(KmStandService).Assembly },
+            //                                new TypesToRegisterOptions
+            //                                {
+            //                                    IncludeGenericTypeDefinitions = true,
+            //                                    IncludeComposites = false,
+            //                                });
 
-            container.Register(typeof(ICommandHandler<>), typesToRegister);
+            //container.Register(typeof(ICommandHandler<>), typesToRegister);
         }
 
         public static void RegisterEventHandlers(Container container)
         {
             var typesToRegister = container.GetTypesToRegister(
                                                        typeof(IDomainEventHandler<>),
-                                                       new[] { typeof(KmStandService).Assembly, typeof(RitAutoCreatorService).Assembly },
+                                                       new[] { typeof(RitAutoCreatorService).Assembly },
                                                        new TypesToRegisterOptions
                                                        {
                                                            IncludeGenericTypeDefinitions = false,

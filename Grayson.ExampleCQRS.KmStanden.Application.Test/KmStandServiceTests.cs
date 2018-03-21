@@ -1,13 +1,12 @@
 using System;
 using System.Linq;
 
-using Grayson.ExampleCQRS.Application.Commands;
-using Grayson.ExampleCQRS.Application.Services;
-using Grayson.ExampleCQRS.Domain.Services;
 using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
+using Grayson.ExampleCQRS.KmStanden.Application.Commands;
+using Grayson.ExampleCQRS.KmStanden.Application.Services;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 using Grayson.SeedWork.DDD.Infrastructure;
@@ -16,7 +15,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Application.Test
+namespace Grayson.ExampleCQRS.KmStanden.Application.Test
 {
     [TestClass]
     public class KmStandServiceTests
@@ -44,7 +43,8 @@ namespace Grayson.ExampleCQRS.Application.Test
 
             var typesToRegister = container.GetTypesToRegister(
                                             typeof(IDomainEventHandler<>),
-                                            new[] { typeof(RitAutoCreatorService).Assembly, typeof(KmStandService).Assembly },
+                                            //new[] { typeof(RitAutoCreatorService).Assembly, typeof(KmStandService).Assembly },
+                                            new[] { typeof(KmStandService).Assembly },
                                             new TypesToRegisterOptions
                                             {
                                                 IncludeGenericTypeDefinitions = true,
@@ -85,7 +85,8 @@ namespace Grayson.ExampleCQRS.Application.Test
 
             var typesToRegister = container.GetTypesToRegister(
                                             typeof(IDomainEventHandler<>),
-                                            new[] { typeof(RitAutoCreatorService).Assembly, typeof(KmStandService).Assembly },
+                                            //new[] { typeof(RitAutoCreatorService).Assembly, typeof(KmStandService).Assembly },
+                                            new[] { typeof(KmStandService).Assembly },
                                             new TypesToRegisterOptions
                                             {
                                                 IncludeGenericTypeDefinitions = true,

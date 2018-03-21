@@ -1,13 +1,12 @@
 ﻿using System;
-
-using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
-using Grayson.ExampleCQRS.Domain.Services;
+using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+using Grayson.ExampleCQRS.Ritten.Domain.Services;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Application.Services
+namespace Grayson.ExampleCQRS.Ritten.Application.Services
 {
     public class RitService : ApplicationService,
         IDomainEventHandler<KmStandCreated>

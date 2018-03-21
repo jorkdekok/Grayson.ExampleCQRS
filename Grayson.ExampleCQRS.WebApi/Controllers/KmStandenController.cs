@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Grayson.ExampleCQRS.Application.Commands;
+using Grayson.ExampleCQRS.KmStanden.Application.Commands;
 using Grayson.ExampleCQRS.WebApi.Models;
 using Grayson.SeedWork.DDD.Application;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Grayson.ExampleCQRS.WebApi.Controllers
@@ -18,6 +17,13 @@ namespace Grayson.ExampleCQRS.WebApi.Controllers
         {
             _commandBus = commandBus;
         }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -42,12 +48,6 @@ namespace Grayson.ExampleCQRS.WebApi.Controllers
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
         {
         }
     }

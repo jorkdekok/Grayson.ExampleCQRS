@@ -1,11 +1,10 @@
 ﻿using System;
-
-using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
+using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.Services
+namespace Grayson.ExampleCQRS.Ritten.Domain.Services
 {
     public class RitAutoCreatorService : DomainService
     {

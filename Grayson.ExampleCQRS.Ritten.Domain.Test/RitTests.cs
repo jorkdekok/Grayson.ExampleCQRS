@@ -1,8 +1,8 @@
 using System;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.RitAggregate;
+using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Grayson.ExampleCQRS.Domain.Test
+namespace Grayson.ExampleCQRS.Ritten.Domain.Test
 {
     [TestClass]
     public class RitTests

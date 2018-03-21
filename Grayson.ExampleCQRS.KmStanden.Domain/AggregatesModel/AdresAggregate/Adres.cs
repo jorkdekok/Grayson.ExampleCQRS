@@ -1,6 +1,6 @@
 ﻿using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Domain.AggregatesModel.AdresAggregate
+namespace Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.AdresAggregate
 {
     public class Adres : EventSourcedAggregate
     {

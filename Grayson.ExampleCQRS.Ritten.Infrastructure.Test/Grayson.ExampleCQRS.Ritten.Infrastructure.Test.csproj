@@ -15,8 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Application\Grayson.ExampleCQRS.Application.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Application\Grayson.ExampleCQRS.Ritten.Application.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Infrastructure\Grayson.ExampleCQRS.Ritten.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

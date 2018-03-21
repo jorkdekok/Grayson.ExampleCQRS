@@ -1,11 +1,10 @@
 ﻿using System;
-
-using Grayson.ExampleCQRS.Application.Commands;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.KmStanden.Application.Commands;
+using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.Application.Services
+namespace Grayson.ExampleCQRS.KmStanden.Application.Services
 {
     public class KmStandService : ApplicationService,
         ICommandHandler<AddNewKmStand>,

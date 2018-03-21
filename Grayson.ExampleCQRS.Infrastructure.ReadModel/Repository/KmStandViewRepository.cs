@@ -2,7 +2,6 @@
 using System.Linq;
 using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
-
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository

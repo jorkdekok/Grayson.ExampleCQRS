@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Grayson.ExampleCQRS.Application.Test
+namespace Grayson.ExampleCQRS.Ritten.Application.Test
 {
     [TestClass]
     public class UnitTest1

@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 
-using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
 using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
 
 using Microsoft.EntityFrameworkCore.Design;

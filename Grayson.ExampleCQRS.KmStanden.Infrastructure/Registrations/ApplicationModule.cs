@@ -1,11 +1,10 @@
-﻿using Grayson.ExampleCQRS.Application.Services;
-using Grayson.ExampleCQRS.Domain.Services;
+﻿using Grayson.ExampleCQRS.KmStanden.Application.Services;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.Registrations
+namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations
 {
     public static class ApplicationModule
     {
@@ -34,7 +33,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
         {
             var typesToRegister = container.GetTypesToRegister(
                                                        typeof(IDomainEventHandler<>),
-                                                       new[] { typeof(KmStandService).Assembly, typeof(RitAutoCreatorService).Assembly },
+                                                       new[] { typeof(KmStandService).Assembly },
                                                        new TypesToRegisterOptions
                                                        {
                                                            IncludeGenericTypeDefinitions = false,

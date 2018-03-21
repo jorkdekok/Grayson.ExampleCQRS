@@ -1,9 +1,10 @@
-﻿using Grayson.SeedWork.DDD.Domain;
+﻿using Grayson.ExampleCQRS.Infrastructure;
+using Grayson.SeedWork.DDD.Domain;
 using Grayson.SeedWork.DDD.Infrastructure;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.Registrations
+namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
 {
     public static class DomainModule
     {

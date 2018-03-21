@@ -13,9 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Application\Grayson.ExampleCQRS.Ritten.Application.csproj" />
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Domain\Grayson.ExampleCQRS.Ritten.Domain.csproj" />
     <ProjectReference Include="..\Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj" />
     <ProjectReference Include="..\Grayson.Seedwork.DDD.Infrastructure\Grayson.SeedWork.DDD.Infrastructure.csproj" />
   </ItemGroup>

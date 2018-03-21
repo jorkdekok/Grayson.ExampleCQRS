@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Domain\Grayson.ExampleCQRS.KmStanden.Domain.csproj" />
     <ProjectReference Include="..\Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj" />
   </ItemGroup>
 

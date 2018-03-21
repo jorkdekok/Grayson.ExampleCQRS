@@ -4,6 +4,7 @@ using Grayson.ExampleCQRS.Application.ReadModel.Services;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Registrations;
+using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;

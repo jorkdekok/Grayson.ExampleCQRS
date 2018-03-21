@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+
 using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
 
@@ -37,7 +38,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
         {
             return _context.Find(typeof(RitView), id) as RitView;
         }
-
 
         public void SaveChanges()
         {

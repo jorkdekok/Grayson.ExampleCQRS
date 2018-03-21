@@ -1,5 +1,5 @@
 ﻿using System;
-using Grayson.ExampleCQRS.Infrastructure;
+
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
@@ -7,7 +7,7 @@ using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
+namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 {
     public static class InfrastructureModule
     {

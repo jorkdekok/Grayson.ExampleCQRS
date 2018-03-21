@@ -1,14 +1,14 @@
 ﻿using System;
 
-using Grayson.ExampleCQRS.Application.Commands;
-using Grayson.ExampleCQRS.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.KmStanden.Application.Commands;
+using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.Registrations
+namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations
 {
     public static class RabbitMqModule
     {

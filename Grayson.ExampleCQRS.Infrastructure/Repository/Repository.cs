@@ -1,6 +1,5 @@
 ﻿using System;
 
-using Grayson.ExampleCQRS.Domain.Repository;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.SeedWork.DDD.Domain;
 

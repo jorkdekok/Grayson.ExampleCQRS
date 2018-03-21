@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Grayson.SeedWork.DDD.Application;
 
-namespace Grayson.ExampleCQRS.Application.Commands
+namespace Grayson.ExampleCQRS.KmStanden.Application.Commands
 {
     public class UpdateKmStand : ICommand
     {

@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Application\Grayson.ExampleCQRS.KmStanden.Application.csproj" />
     <ProjectReference Include="..\Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj" />
   </ItemGroup>
 

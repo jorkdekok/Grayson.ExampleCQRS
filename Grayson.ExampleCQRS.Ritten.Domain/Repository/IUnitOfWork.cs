@@ -1,4 +1,4 @@
-﻿namespace Grayson.ExampleCQRS.Domain.Repository
+﻿namespace Grayson.ExampleCQRS.Ritten.Domain.Repository
 {
     public interface IUnitOfWork
     {

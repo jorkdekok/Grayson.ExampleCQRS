@@ -10,9 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Application\Grayson.ExampleCQRS.Application.csproj" />
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Domain\Grayson.ExampleCQRS.Domain.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Application\Grayson.ExampleCQRS.KmStanden.Application.csproj" />
     <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
   </ItemGroup>
 

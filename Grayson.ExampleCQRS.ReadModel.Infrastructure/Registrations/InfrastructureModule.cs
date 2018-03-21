@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Design;
 
 using SimpleInjector;
 
-namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Registrations
+namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Registrations
 {
     public static class InfrastructureModule
     {

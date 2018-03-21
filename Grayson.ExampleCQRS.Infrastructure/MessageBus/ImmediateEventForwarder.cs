@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
@@ -15,11 +15,11 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             _bus = bus;
         }
 
-        public void When(IDomainEvent @event)
+        public async Task When(IDomainEvent @event)
         {
             var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
             // TODO: convert to DTO (external event)
-            _bus.Publish(@event, @event.GetType());
+            await _bus.Publish(@event, @event.GetType());
         }
     }
 }

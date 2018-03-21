@@ -1,8 +1,10 @@
-﻿namespace Grayson.SeedWork.DDD.Application
+﻿using System.Threading.Tasks;
+
+namespace Grayson.SeedWork.DDD.Application
 {
     public interface ICommandHandler<TCommand>
         where TCommand : ICommand
     {
-        void When(TCommand command);
+        Task When(TCommand command);
     }
 }

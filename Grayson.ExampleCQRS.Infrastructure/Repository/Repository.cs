@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.SeedWork.DDD.Domain;
 
@@ -17,7 +17,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             _aggregateFactory = aggregateFactory;
         }
 
-        public void Add(TAggregate aggregate)
+        public async Task Add(TAggregate aggregate)
         {
             var streamName = StreamNameFor(aggregate.Id);
 
@@ -26,7 +26,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             aggregate.MarkEventsAsCommitted();
         }
 
-        public TAggregate FindBy(Guid id)
+        public async Task<TAggregate> FindBy(Guid id)
         {
             var streamName = StreamNameFor(id);
 
@@ -59,7 +59,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             return aggregate;
         }
 
-        public void Update(TAggregate aggregate)
+        public async Task Update(TAggregate aggregate)
         {
             var streamName = StreamNameFor(aggregate.Id);
 

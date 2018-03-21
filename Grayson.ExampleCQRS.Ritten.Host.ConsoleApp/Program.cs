@@ -1,7 +1,8 @@
 ﻿using System;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
-using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
+using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
+using Grayson.SeedWork.DDD.Domain;
 using MassTransit;
 
 using SimpleInjector;
@@ -14,7 +15,7 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
         {
             using (var container = new Container())
             {
-                Console.WriteLine("Starting domain host...");
+                Console.WriteLine("Starting BC 'Ritten' host...");
 
                 container.Options.AllowResolvingFuncFactories();
 
@@ -23,8 +24,9 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 InfrastructureModule.RegisterAll(container);
                 InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
+                RabbitMqModule.RegisterEventConsumers(container);
 
-                Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
+                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
                 //container.Register<IKmStandRepository, KmStandRepository>();
                 //container.Register<IRitRepository, RitRepository>();
@@ -37,6 +39,13 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                         {
                             e.LoadFrom(container);
                         });
+                    // events queue
+                    cfg.ReceiveEndpoint(host, RabbitMqConstants.EventsQueue, e =>
+                    {
+                        e.Handler<IDomainEvent>(context =>
+                            Console.Out.WriteLineAsync($"Event received : {context.Message.GetType()}"));
+                        e.LoadFrom(container);
+                    });
                 }));
 
                 var bus = container.GetInstance<IBusControl>();

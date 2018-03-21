@@ -1,4 +1,5 @@
-﻿using Grayson.ExampleCQRS.Ritten.Domain.Services;
+﻿using Grayson.ExampleCQRS.Ritten.Application.Services;
+using Grayson.ExampleCQRS.Ritten.Domain.Services;
 using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
@@ -32,7 +33,7 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
         {
             var typesToRegister = container.GetTypesToRegister(
                                                        typeof(IDomainEventHandler<>),
-                                                       new[] { typeof(RitAutoCreatorService).Assembly },
+                                                       new[] { typeof(RitService).Assembly },
                                                        new TypesToRegisterOptions
                                                        {
                                                            IncludeGenericTypeDefinitions = false,

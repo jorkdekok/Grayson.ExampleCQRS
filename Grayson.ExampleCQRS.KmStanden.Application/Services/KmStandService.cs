@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Grayson.ExampleCQRS.KmStanden.Application.Commands;
 using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.SeedWork.DDD.Application;
@@ -29,17 +30,17 @@ namespace Grayson.ExampleCQRS.KmStanden.Application.Services
         {
         }
 
-        public void When(AddNewKmStand command)
+        public async Task When(AddNewKmStand command)
         {
             var repository = _repositoryFactory();
 
             KmStand kmStand = aggregateFactory.Create<KmStand>();
             kmStand.Create(command.Stand, command.Datum, command.AdresId);
 
-            repository.Add(kmStand);
+            await Task.Run(() => repository.Add(kmStand) );
         }
 
-        public void When(UpdateKmStand command)
+        public async Task When(UpdateKmStand command)
         {
             //var repository = _repositoryFactory();
 

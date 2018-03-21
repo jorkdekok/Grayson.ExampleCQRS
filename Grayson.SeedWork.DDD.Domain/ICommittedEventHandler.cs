@@ -9,6 +9,6 @@ namespace Grayson.SeedWork.DDD.Domain
     public interface ICommittedEventHandler<in TDomainEvent>
         where TDomainEvent : IDomainEvent
     {
-        void When(TDomainEvent @event);
+        Task When(TDomainEvent @event);
     }
 }

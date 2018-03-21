@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Grayson.SeedWork.DDD.Domain
 {
     public interface IRepository<TAggregate>
     {
-        void Add(TAggregate aggregate);
+        Task Add(TAggregate aggregate);
 
-        TAggregate FindBy(Guid id);
+        Task<TAggregate> FindBy(Guid id);
 
-        void Update(TAggregate aggregate);
+        Task Update(TAggregate aggregate);
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Ritten.Application.Commands;
+using Grayson.ExampleCQRS.Ritten.Application.Services;
 using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
@@ -39,7 +41,7 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
         public static void RegisterEventConsumers(Container container)
         {
             // events
-            var assemblies = new[] { typeof(Rit).Assembly };
+            var assemblies = new[] { typeof(Rit).Assembly, typeof(KmStand).Assembly };
             var events = container.GetTypesToRegister(typeof(IDomainEvent), assemblies);
 
             Type mte = typeof(MassTransitEventConsumer<>);

@@ -14,7 +14,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
         {
             using (var container = new Container())
             {
-                Console.WriteLine("Starting domain host...");
+                Console.WriteLine("Starting BC 'KmStanden' host...");
 
                 container.Options.AllowResolvingFuncFactories();
 
@@ -24,7 +24,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
 
-                ExampleCQRS.Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
+                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
                 //container.Register<IKmStandRepository, KmStandRepository>();
                 //container.Register<IRitRepository, RitRepository>();

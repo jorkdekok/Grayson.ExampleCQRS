@@ -10,6 +10,7 @@ using Grayson.SeedWork.DDD.Domain;
 using MassTransit;
 
 using SimpleInjector;
+using Grayson.ExampleCQRS.Infrastructure.ReadModel;
 
 namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
 {
@@ -23,7 +24,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 container.Options.AllowResolvingFuncFactories();
 
                 RabbitMqModule.RegisterEventConsumers(container);
-                Infrastructure.ReadModel.Registrations.InfrastructureModule.RegisterAll(container);
+                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
                 var typesToRegister = container.GetTypesToRegister(
                                             typeof(IDomainEventHandler<>),

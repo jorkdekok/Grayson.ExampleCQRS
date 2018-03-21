@@ -23,6 +23,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             var streamName = StreamNameFor(aggregate.Id);
 
             _eventStore.CreateNewStream(streamName, aggregate.GetUncommittedEvents());
+            _eventStore.AddSnapshot<TAggregate>(streamName, aggregate);
             aggregate.MarkEventsAsCommitted();
         }
 

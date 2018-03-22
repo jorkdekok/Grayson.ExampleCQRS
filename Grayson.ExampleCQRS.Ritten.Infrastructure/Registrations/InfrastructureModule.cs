@@ -3,6 +3,8 @@ using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
+using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+using Grayson.ExampleCQRS.Ritten.Domain.Repository;
 using Grayson.SeedWork.DDD.Domain;
 
 using SimpleInjector;
@@ -16,6 +18,8 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations
             // factories
             ObjectFactory objectFactory = new ObjectFactory(container);
             container.RegisterSingleton<IObjectFactory>(objectFactory);
+
+            container.Register(typeof(IRitRepository), typeof(RitRepository));
 
             // repository / eventstore
             container.Register(typeof(IRepository<>), typeof(Repository<>));

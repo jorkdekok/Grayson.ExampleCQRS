@@ -8,8 +8,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
     public class Repository<TAggregate> : IRepository<TAggregate>
         where TAggregate : class, IEventSourcedAggregate
     {
-        private readonly IAggregateFactory _aggregateFactory;
-        private readonly IEventStore _eventStore;
+        protected readonly IAggregateFactory _aggregateFactory;
+        protected readonly IEventStore _eventStore;
 
         public Repository(IAggregateFactory aggregateFactory, IEventStore eventStore)
         {
@@ -82,7 +82,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             }
         }
 
-        private string StreamNameFor(Guid id)
+        protected string StreamNameFor(Guid id)
         {
             // Stream per-aggregate: {AggregateType}-{AggregateId}
             return string.Format("{0}-{1}", typeof(TAggregate).Name, id);

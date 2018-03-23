@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="MassTransit" Version="4.0.1" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="4.0.1" />
     <PackageReference Include="MassTransit.SimpleInjector" Version="4.0.1" />
@@ -14,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.Integration\Grayson.ExampleCQRS.Integration.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Application\Grayson.ExampleCQRS.KmStanden.Application.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Domain\Grayson.ExampleCQRS.KmStanden.Domain.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Domain\Grayson.ExampleCQRS.Ritten.Domain.csproj" />

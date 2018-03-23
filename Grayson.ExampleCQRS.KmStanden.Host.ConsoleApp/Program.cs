@@ -1,10 +1,13 @@
-﻿using System;
-using Grayson.ExampleCQRS.Infrastructure.Extensions;
+﻿using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.KmStanden.Infrastructure.Integration;
 using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
+
 using MassTransit;
 
 using SimpleInjector;
+
+using System;
 
 namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 {
@@ -16,6 +19,8 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
             {
                 Console.WriteLine("Starting BC 'KmStanden' host...");
 
+                EventsMapping.Configure();
+
                 container.Options.AllowResolvingFuncFactories();
 
                 DomainModule.RegisterAll(container);
@@ -25,9 +30,6 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 RabbitMqModule.RegisterCommandConsumers(container);
 
                 ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
-
-                //container.Register<IKmStandRepository, KmStandRepository>();
-                //container.Register<IRitRepository, RitRepository>();
 
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {

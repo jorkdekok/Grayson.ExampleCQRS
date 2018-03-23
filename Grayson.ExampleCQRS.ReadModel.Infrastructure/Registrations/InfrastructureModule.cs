@@ -23,7 +23,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Registrations
 
             var registrations =
                 from type in repositoryAssembly.GetExportedTypes()
-                where type.Namespace == "Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository"
+                where type.Namespace == "Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository"
                 where type.GetInterfaces().Any()
                 select new
                 {

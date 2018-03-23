@@ -1,11 +1,13 @@
-﻿using System;
-using Grayson.ExampleCQRS.Infrastructure.Extensions;
+﻿using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Domain;
+
 using MassTransit;
 
 using SimpleInjector;
+
+using System;
 
 namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
 {
@@ -22,14 +24,12 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
                 InfrastructureModule.RegisterAll(container);
-                InfrastructureModule.RegisterEventForwarder(container);
+                //InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
                 RabbitMqModule.RegisterEventConsumers(container);
 
-                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
+                //ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
-                //container.Register<IKmStandRepository, KmStandRepository>();
-                //container.Register<IRitRepository, RitRepository>();
 
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {

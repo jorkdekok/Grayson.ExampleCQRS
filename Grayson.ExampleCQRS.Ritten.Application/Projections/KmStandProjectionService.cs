@@ -1,10 +1,10 @@
-﻿using Grayson.ExampleCQRS.Domain.ReadModel.Model;
-using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
-using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
+﻿using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.Ritten.Domain.ReadModel.Model;
+using Grayson.ExampleCQRS.Ritten.Domain.ReadModel.Repository;
 using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
+namespace Grayson.ExampleCQRS.Ritten.Application.Projections
 {
     public class KmStandProjectionService : ApplicationService,
         IDomainEventHandler<KmStandCreated>,

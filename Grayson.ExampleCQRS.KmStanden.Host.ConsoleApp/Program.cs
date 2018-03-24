@@ -13,7 +13,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             using (var container = new Container())
             {

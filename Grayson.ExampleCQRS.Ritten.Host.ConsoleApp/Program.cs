@@ -13,6 +13,8 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
 {
     public class Program
     {
+        private const string BoundedContextName = "Ritten";
+
         private static void Main()
         {
             using (var container = new Container())
@@ -47,7 +49,7 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                             e.LoadFrom(container);
                         });
                     // events queue
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.EventsQueue, e =>
+                    cfg.ReceiveEndpoint(host, RabbitMqConstants.GetEventsQueue(BoundedContextName), e =>
                     {
                         e.Handler<IDomainEvent>(context =>
                             Console.Out.WriteLineAsync($"Event received : {context.Message.GetType()}"));

@@ -7,5 +7,15 @@
         public const string Password = "guest";
         public const string RabbitMqUri = "rabbitmq://localhost/grayson/";
         public const string UserName = "guest";
+
+        public static string GetCommandsQueue(string boundedContextName)
+        {
+            return $"{CommandsQueue}.{boundedContextName}";
+        }
+
+        public static string GetEventsQueue(string boundedContextName)
+        {
+            return $"{EventsQueue}.{boundedContextName}";
+        }
     }
 }

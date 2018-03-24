@@ -4,20 +4,25 @@ using Grayson.ExampleCQRS.KmStanden.Infrastructure.Integration;
 using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
 
 using MassTransit;
-
+using Microsoft.Extensions.Logging;
 using SimpleInjector;
 
 using System;
 
 namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 {
-    internal static class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
             using (var container = new Container())
             {
-                Console.WriteLine("Starting BC 'KmStanden' host...");
+                ILoggerFactory loggerFactory = new LoggerFactory()
+                    .AddConsole()
+                    .AddDebug();
+                ILogger logger = loggerFactory.CreateLogger<Program>();
+                container.RegisterSingleton<ILogger>(logger);
+                logger.LogInformation("Starting BC 'KmStanden' host...");
 
                 EventsMapping.Configure();
 

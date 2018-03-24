@@ -21,7 +21,7 @@ namespace Grayson.ExampleCQRS.Ritten.Application.Services
         private readonly ILogger _logger;
 
         public RitService(
-            //ILogger logger,
+            ILogger logger,
             IAggregateFactory aggregateFactory,
             Func<IRitViewRepository> ritViewRepositoryFactory,
             Func<IKmStandViewRepository> kmStandViewRepositoryFactory,
@@ -33,11 +33,12 @@ namespace Grayson.ExampleCQRS.Ritten.Application.Services
             _kmStandViewRepositoryFactory = kmStandViewRepositoryFactory;
             _kmStandRepositoryFactory = kmStandRepositoryFactory;
             _ritRepositoryFactory = ritRepositoryFactory;
-            //_logger = logger;
+            _logger = logger;
         }
 
         public void When(KmStandCreated @event)
         {
+            _logger.LogInformation($"Recieved event: {nameof(@event)}");
             var ritViewRepository = _ritViewRepositoryFactory();
             var kmStandViewRepository = _kmStandViewRepositoryFactory();
             var ritRepository = _ritRepositoryFactory();

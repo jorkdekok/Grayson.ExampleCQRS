@@ -1,10 +1,13 @@
-﻿using System.Linq;
-
-using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
+﻿using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
 
 using Microsoft.EntityFrameworkCore.Design;
 
 using SimpleInjector;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Registrations
 {
@@ -15,6 +18,29 @@ namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Registrations
             RegisterDbContext(container);
             // repositories
             RegisterRepositories(container);
+        }
+
+        public static void RegisterByConvention(Container container, Assembly[] assemblies)
+        {
+            Dictionary<Type, Type> registrations = new Dictionary<Type, Type>();
+
+            foreach (var assembly in assemblies)
+            {
+                var regs =
+                    from type in assembly.GetExportedTypes()
+                        //where type.Namespace.StartsWith("Services.Interfaces")
+                    where type.GetInterfaces().Any()
+                    select new { Service = type.GetInterfaces().FirstOrDefault(), Implementation = type };
+                foreach (var item in regs)
+                {
+                    registrations.Add(item.Service, item.Implementation);
+                }
+            }
+
+            foreach (var reg in registrations)
+            {
+                container.Register(reg.Key, reg.Value);
+            }
         }
 
         public static void RegisterRepositories(Container container)
@@ -42,7 +68,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Registrations
 
         private static void RegisterDbContext(Container container)
         {
-            container.Register<IDesignTimeDbContextFactory<ReadModelDbContext>, ReadModelDbContextFactory>();
+            //container.Register<IDesignTimeDbContextFactory<ReadModelDbContext>, ReadModelDbContextFactory>();
         }
     }
 }

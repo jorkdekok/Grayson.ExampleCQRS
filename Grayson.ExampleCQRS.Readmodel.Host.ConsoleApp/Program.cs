@@ -11,17 +11,30 @@ using MassTransit;
 
 using SimpleInjector;
 using Grayson.ExampleCQRS.Infrastructure.ReadModel;
+using Microsoft.Extensions.Logging;
+using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
+using System.Reflection;
 
 namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
 {
-    internal static class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
             using (var container = new Container())
             {
-                Console.WriteLine("Starting readmodel host...");
+                ILoggerFactory loggerFactory = new LoggerFactory()
+                    .AddConsole()
+                    .AddDebug();
+                ILogger logger = loggerFactory.CreateLogger<Program>();
+                container.RegisterSingleton<ILogger>(logger);
+                logger.LogInformation("Starting BC 'ReadModel' host...");
+
                 container.Options.AllowResolvingFuncFactories();
+
+                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterByConvention(
+                    container,
+                    new []{ typeof(KmStandViewRepository).Assembly });
 
                 RabbitMqModule.RegisterEventConsumers(container);
                 ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);

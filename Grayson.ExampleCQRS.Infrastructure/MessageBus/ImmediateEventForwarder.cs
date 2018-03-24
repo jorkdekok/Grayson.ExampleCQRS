@@ -3,20 +3,24 @@ using System.Threading.Tasks;
 using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
+using Microsoft.Extensions.Logging;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
     public class ImmediateEventForwarder : ICommittedEventHandler<IDomainEvent>
     {
         private readonly IBusControl _bus;
+        private readonly ILogger _logger;
 
-        public ImmediateEventForwarder(IBusControl bus)
+        public ImmediateEventForwarder(ILogger logger, IBusControl bus)
         {
             _bus = bus;
+            _logger = logger;
         }
 
         public async Task When(IDomainEvent @event)
         {
+            _logger.LogInformation($"Sending event: {@event.GetType()}");
             var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.EventsQueue}");
             // TODO: convert to DTO (external event)
             await _bus.Publish(@event, @event.GetType());

@@ -4,20 +4,25 @@ using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
-
+using Microsoft.Extensions.Logging;
 using SimpleInjector;
 
 using System;
 
 namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
 {
-    internal static class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             using (var container = new Container())
             {
-                Console.WriteLine("Starting BC 'Ritten' host...");
+                ILoggerFactory loggerFactory = new LoggerFactory()
+                    .AddConsole()
+                    .AddDebug();
+                ILogger logger = loggerFactory.CreateLogger<Program>();
+                container.RegisterSingleton<ILogger>(logger);
+                logger.LogInformation("Starting BC 'Ritten' host...");
 
                 container.Options.AllowResolvingFuncFactories();
 
@@ -37,6 +42,8 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                     cfg.ReceiveEndpoint(host,
                         RabbitMqConstants.CommandsQueue, e =>
                         {
+                            e.Handler<IDomainEvent>(context =>
+                            Console.Out.WriteLineAsync($"Command received : {context.Message.GetType()}"));
                             e.LoadFrom(container);
                         });
                     // events queue

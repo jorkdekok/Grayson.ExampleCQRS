@@ -22,6 +22,10 @@ namespace Grayson.ExampleCQRS.TestConsoleApp
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus());
                 container.RegisterSingleton<ICommandBus, AdvancedBus>();
 
+                Console.WriteLine("Press ENTER to send commands");
+                Console.ReadLine();
+                Console.WriteLine("Sending commands...");
+
                 var bus = container.GetInstance<ICommandBus>();
 
                 bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));

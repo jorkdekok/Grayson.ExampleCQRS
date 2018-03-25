@@ -1,35 +1,44 @@
-﻿using System;
-using Grayson.ExampleCQRS.Infrastructure.Extensions;
+﻿using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
+using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
+
 using MassTransit;
+
+using Microsoft.Extensions.Logging;
 
 using SimpleInjector;
 
+using System;
+
 namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
 {
-    internal static class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        private const string BoundedContextName = "Ritten";
+
+        private static void Main()
         {
             using (var container = new Container())
             {
-                Console.WriteLine("Starting BC 'Ritten' host...");
+                ILoggerFactory loggerFactory = new LoggerFactory()
+                    .AddConsole()
+                    .AddDebug();
+                ILogger logger = loggerFactory.CreateLogger<Program>();
+                container.RegisterSingleton<ILogger>(logger);
+                logger.LogInformation("Starting BC 'Ritten' host...");
 
                 container.Options.AllowResolvingFuncFactories();
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
                 InfrastructureModule.RegisterAll(container);
-                InfrastructureModule.RegisterEventForwarder(container);
+                //InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
                 RabbitMqModule.RegisterEventConsumers(container);
 
-                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
-
-                //container.Register<IKmStandRepository, KmStandRepository>();
-                //container.Register<IRitRepository, RitRepository>();
+                //ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {
@@ -37,10 +46,12 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                     cfg.ReceiveEndpoint(host,
                         RabbitMqConstants.CommandsQueue, e =>
                         {
-                            e.LoadFrom(container);
+                            e.Handler<ICommand>(context =>
+                            Console.Out.WriteLineAsync($"Command received : {context.Message.GetType()}"));
+                            //e.LoadFrom(container);// TODO: prevent receiving same events
                         });
                     // events queue
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.EventsQueue, e =>
+                    cfg.ReceiveEndpoint(host, RabbitMqConstants.GetEventsQueue(BoundedContextName), e =>
                     {
                         e.Handler<IDomainEvent>(context =>
                             Console.Out.WriteLineAsync($"Event received : {context.Message.GetType()}"));

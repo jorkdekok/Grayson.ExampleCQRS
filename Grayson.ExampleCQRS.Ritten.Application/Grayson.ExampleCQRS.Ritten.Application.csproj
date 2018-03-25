@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Domain\Grayson.ExampleCQRS.KmStanden.Domain.csproj" />
-    <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Domain\Grayson.ExampleCQRS.ReadModel.Domain.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Domain\Grayson.ExampleCQRS.Ritten.Domain.csproj" />
     <ProjectReference Include="..\Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj" />
   </ItemGroup>

@@ -1,11 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grayson.SeedWork.DDD.Domain;
+﻿using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
 
+using Microsoft.Extensions.Logging;
+
 using SimpleInjector;
+
+using System;
+using System.Threading.Tasks;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
@@ -13,24 +15,34 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         where TRequest : class
     {
         private readonly Container _container;
+        private readonly ILogger _logger;
 
-        public MassTransitEventConsumer(Container container)
+        public MassTransitEventConsumer(ILogger logger, Container container)
         {
             _container = container;
+            _logger = logger;
         }
 
         public async Task Consume(ConsumeContext<TRequest> context)
         {
-            await Console.Out.WriteLineAsync($"Received event message: {context.Message.GetType()}");
-
-            Type messageType = context.Message.GetType();
-            Type eventSubscriverType = typeof(IDomainEventHandler<>);
-            Type constructedType = eventSubscriverType.MakeGenericType(messageType);
-
-            var subscribers = _container.GetAllInstances(constructedType);
-            foreach (var subscriber in subscribers)
+            try
             {
-                ((dynamic)subscriber).When(context.Message);
+                _logger.LogInformation($"Received event message: {context.Message.GetType()}");
+
+                Type messageType = context.Message.GetType();
+                Type eventSubscriverType = typeof(IDomainEventHandler<>);
+                Type constructedType = eventSubscriverType.MakeGenericType(messageType);
+
+                var subscribers = _container.GetAllInstances(constructedType);
+                foreach (var subscriber in subscribers)
+                {
+                    _logger.LogInformation($"Event '{context.Message.GetType().Name}' -> '{subscriber.GetType().Name}'");
+                    ((dynamic)subscriber).When(context.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex, "Exception");
             }
         }
     }

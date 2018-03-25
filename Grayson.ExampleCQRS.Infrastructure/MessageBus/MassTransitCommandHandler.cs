@@ -1,11 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grayson.SeedWork.DDD.Application;
+﻿using Grayson.SeedWork.DDD.Application;
 
 using MassTransit;
 
+using Microsoft.Extensions.Logging;
+
 using SimpleInjector;
+
+using System;
+using System.Threading.Tasks;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
@@ -13,17 +15,19 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         where TRequest : class
     {
         private readonly Container _container;
+        private readonly ILogger _logger;
 
-        public MassTransitCommandHandler(Container container)
+        public MassTransitCommandHandler(ILogger logger, Container container)
         {
             _container = container;
+            _logger = logger;
         }
 
         public async Task Consume(ConsumeContext<TRequest> context)
         {
             try
             {
-                await Console.Out.WriteLineAsync($"Received command message: {context.Message.GetType()}");
+                _logger.LogInformation($"Received command message: {context.Message.GetType()}");
 
                 Type messageType = context.Message.GetType();
                 Type commandhandlerType = typeof(ICommandHandler<>);
@@ -34,9 +38,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             }
             catch (Exception ex)
             {
-                await Console.Out.WriteLineAsync($"Exception: {ex.Message}");
+                _logger.LogError(ex, "Exception");
             }
-
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
+using Grayson.SeedWork.DDD.Application;
 using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
+
 using Microsoft.Extensions.Logging;
+
 using SimpleInjector;
 
 using System;
@@ -37,16 +40,15 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
 
                 //ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
-
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {
                     // command queue
                     cfg.ReceiveEndpoint(host,
                         RabbitMqConstants.CommandsQueue, e =>
                         {
-                            e.Handler<IDomainEvent>(context =>
+                            e.Handler<ICommand>(context =>
                             Console.Out.WriteLineAsync($"Command received : {context.Message.GetType()}"));
-                            e.LoadFrom(container);
+                            //e.LoadFrom(container);// TODO: prevent receiving same events
                         });
                     // events queue
                     cfg.ReceiveEndpoint(host, RabbitMqConstants.GetEventsQueue(BoundedContextName), e =>

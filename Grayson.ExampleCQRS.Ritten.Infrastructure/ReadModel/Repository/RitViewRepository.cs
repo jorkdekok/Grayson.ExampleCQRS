@@ -29,6 +29,11 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.ReadModel.Repository
             _context.Ritten.Remove(aggregate);
         }
 
+        public RitView FindByFirstKmStandId(Guid kmstandId)
+        {
+            return _context.Ritten.Where(r => r.BeginStandId == kmstandId).SingleOrDefault();
+        }
+
         public RitView FindByLastKmStandId(Guid kmstandId)
         {
             return _context.Ritten.Where(r => r.EindStandId == kmstandId).SingleOrDefault();

@@ -39,6 +39,11 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.ReadModel.Repository
             return _context.KmStands.OrderBy(k => k.Datum).LastOrDefault();
         }
 
+        public KmStandView GetPrevious()
+        {
+            return _context.KmStands.OrderByDescending(k => k.Datum).Skip(1).SingleOrDefault();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

@@ -32,18 +32,43 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
         public void AutoCreateRitWhenNeeded(KmStandCreated @event)
         {
             // zoek laatste kmstand
-            var standView = _kmStandViewRepository.GetLastOne();
-            if (standView != null)
+            var lastStandView = _kmStandViewRepository.GetLastOne();
+            if (lastStandView != null)
             {
+                // get previous
+                var prevStandView = _kmStandViewRepository.GetPrevious();
+
+                var ritViewPrevFirst = _ritViewRepository.FindByFirstKmStandId(prevStandView?.Id ?? Guid.Empty);
+
+                // is deze gekoppeld als eerste stand aan een rit?
+                var ritViewFirst = _ritViewRepository.FindByFirstKmStandId(@event.Id);
+
                 // is deze al gekoppeld aan een rit als eind stand?
-                var ritView = _ritViewRepository.FindByLastKmStandId(@event.Id);
-                if (ritView == null)
+                var ritViewLast = _ritViewRepository.FindByLastKmStandId(@event.Id);
+
+                if (ritViewPrevFirst == null && ritViewFirst == null && ritViewLast == null)
                 {
-                    // zo nee, dan rit aanmaken en de kmstandid koppelen als begin stand
+                    // niet gekoppeld dan rit aanmaken en koppelen als eerste stand
                     Rit rit = _aggregateFactory.Create<Rit>();
-                    rit.Create("Generated", standView.Stand, standView.Id, 0, Guid.Empty, Guid.NewGuid());
+                    rit.Create("Generated", lastStandView.Stand, lastStandView.Id, 0, Guid.Empty, Guid.NewGuid());
                     _ritRepository.Add(rit);
                 }
+                else
+                {
+                    var ritv = _ritViewRepository.FindByFirstKmStandId(prevStandView.Id);
+                    // rit updaten en kmstand als laatste stand
+                    Rit rit = _ritRepository.FindBy(ritv.Id).Result;
+                    rit.Update(rit.Name, rit.BeginStand, rit.BeginStandId, @event.Stand, @event.Id, rit.Id);
+                    
+
+                }
+            }
+            else
+            { // eerste stand
+                // zo nee, dan rit aanmaken en de kmstandid koppelen als begin stand
+                Rit rit = _aggregateFactory.Create<Rit>();
+                rit.Create("First Generated", lastStandView.Stand, lastStandView.Id, 0, Guid.Empty, Guid.NewGuid());
+                _ritRepository.Add(rit);
             }
         }
     }

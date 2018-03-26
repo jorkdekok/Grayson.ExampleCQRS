@@ -11,7 +11,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 {
     public class EventStore : IEventStore
     {
-        private const string DATABASE = "GrasysonTestDB";
+        private const string DATABASE = "GraysonTestDB";
         private const string EVENTS = "Events";
         private const string EVENTSTREAMS = "EventStreams";
         private const string SNAPSHOTS = "Snapshots";

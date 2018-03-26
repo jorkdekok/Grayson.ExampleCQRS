@@ -29,7 +29,14 @@ namespace Grayson.ExampleCQRS.TestConsoleApp
                 var bus = container.GetInstance<ICommandBus>();
 
                 bus.Send(new AddNewKmStand(1000, DateTime.Now, Guid.Empty));
-                Console.WriteLine("AddNewKmStand Command was send");
+                Console.WriteLine("AddNewKmStand 1 Command was send");
+
+                Console.WriteLine("Press ENTER to send commands");
+                Console.ReadLine();
+                Console.WriteLine("Sending commands...");
+
+                bus.Send(new AddNewKmStand(1100, DateTime.Now, Guid.Empty));
+                Console.WriteLine("AddNewKmStand 2 Command was send");
 
                 ////d30780b9-e989-43f9-9fea-f14dfec58fee
                 //bus.Send(new UpdateKmStand(Guid.Parse("d30780b9-e989-43f9-9fea-f14dfec58fee"), 2000, DateTime.Now, Guid.Empty));

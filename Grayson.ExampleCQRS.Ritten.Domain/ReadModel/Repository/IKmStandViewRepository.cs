@@ -6,5 +6,7 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.ReadModel.Repository
     public interface IKmStandViewRepository : IRepository<KmStandView>
     {
         KmStandView GetLastOne();
+
+        KmStandView GetPrevious();
     }
 }

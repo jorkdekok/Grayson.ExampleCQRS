@@ -31,13 +31,13 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
 
         public void AutoCreateRitWhenNeeded(KmStandCreated @event)
         {
+            // get previous
+            var prevStandView = _kmStandViewRepository.GetPrevious();
+
             // zoek laatste kmstand
             var lastStandView = _kmStandViewRepository.GetLastOne();
-            if (lastStandView != null)
+            if (prevStandView != null)
             {
-                // get previous
-                var prevStandView = _kmStandViewRepository.GetPrevious();
-
                 var ritViewPrevFirst = _ritViewRepository.FindByFirstKmStandId(prevStandView?.Id ?? Guid.Empty);
 
                 // is deze gekoppeld als eerste stand aan een rit?

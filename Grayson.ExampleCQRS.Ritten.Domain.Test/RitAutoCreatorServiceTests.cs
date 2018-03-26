@@ -1,14 +1,16 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
+
 using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
 using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using Grayson.ExampleCQRS.Ritten.Domain.Services;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Moq;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Grayson.ExampleCQRS.Ritten.Domain.Test
 {
@@ -22,12 +24,13 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Test
             var fixture = new Fixture();
             fixture.Customize(new AutoMoqCustomization() { ConfigureMembers = true });
 
-            var ritRepositoryMock = fixture.Create<IRitRepository>();
-            fixture.Inject<IRitRepository>(ritRepositoryMock);
+            var ritRepositoryMock = new Mock<IRitRepository>();
+            ritRepositoryMock.Setup(m => m.Add(It.IsAny<Rit>())).Callback<Rit>((r) => { Debug.WriteLine($"{r.Id}"); });
+
+            fixture.Inject<IRitRepository>(ritRepositoryMock.Object);
 
             var sut = fixture.Create<RitAutoCreatorService>();
             sut.AutoCreateRitWhenNeeded(new KmStandCreated(Guid.NewGuid(), 1234, DateTime.Now, Guid.Empty));
-
         }
     }
 }

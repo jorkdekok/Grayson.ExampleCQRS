@@ -43,13 +43,13 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {
                     // command queue
-                    cfg.ReceiveEndpoint(host,
-                        RabbitMqConstants.CommandsQueue, e =>
-                        {
-                            e.Handler<ICommand>(context =>
-                            Console.Out.WriteLineAsync($"Command received : {context.Message.GetType()}"));
-                            //e.LoadFrom(container);// TODO: prevent receiving same events
-                        });
+                    //cfg.ReceiveEndpoint(host,
+                    //    RabbitMqConstants.CommandsQueue, e =>
+                    //    {
+                    //        e.Handler<ICommand>(context =>
+                    //        Console.Out.WriteLineAsync($"Command received : {context.Message.GetType()}"));
+                    //        //e.LoadFrom(container);// TODO: prevent receiving same events
+                    //    });
                     // events queue
                     cfg.ReceiveEndpoint(host, RabbitMqConstants.GetEventsQueue(BoundedContextName), e =>
                     {

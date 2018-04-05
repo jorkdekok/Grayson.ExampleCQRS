@@ -25,7 +25,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Extensions
                 {
                     registration  = options.Container.GetRegistration(serviceType, true);
                 }
-                catch (ActivationException ex)
+                catch (ActivationException)
                 {
                     serviceType = serviceType.GetInterfaces().FirstOrDefault();
                     registration = options.Container.GetRegistration(serviceType, true);

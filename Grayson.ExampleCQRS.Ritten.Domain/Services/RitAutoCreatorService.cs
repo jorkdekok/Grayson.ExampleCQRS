@@ -1,5 +1,4 @@
-﻿using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+﻿using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using Grayson.ExampleCQRS.Ritten.Domain.ReadModel.Repository;
 using Grayson.SeedWork.DDD.Domain;
 
@@ -10,7 +9,6 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
     public class RitAutoCreatorService : DomainService
     {
         private readonly IAggregateFactory _aggregateFactory;
-        private readonly SeedWork.DDD.Domain.IRepository<KmStand> _kmStandRepository;
         private readonly IKmStandViewRepository _kmStandViewRepository;
         private readonly SeedWork.DDD.Domain.IRepository<Rit> _ritRepository;
         private readonly IRitViewRepository _ritViewRepository;
@@ -19,17 +17,15 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
             IAggregateFactory aggregateFactory,
             IRitViewRepository ritViewRepository,
             IKmStandViewRepository kmStandViewRepository,
-            SeedWork.DDD.Domain.IRepository<KmStand> kmStandRepository,
             SeedWork.DDD.Domain.IRepository<Rit> ritRepository)
         {
             _aggregateFactory = aggregateFactory;
             _ritRepository = ritRepository;
-            _kmStandRepository = kmStandRepository;
             _kmStandViewRepository = kmStandViewRepository;
             _ritViewRepository = ritViewRepository;
         }
 
-        public void AutoCreateRitWhenNeeded(KmStandCreated @event)
+        public void AutoCreateRitWhenNeeded(Guid id, int stand, DateTime datum, Guid adresId)
         {
             // get previous
             var prevStandView = _kmStandViewRepository.GetPrevious();
@@ -41,10 +37,10 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
                 var ritViewPrevFirst = _ritViewRepository.FindByFirstKmStandId(prevStandView?.Id ?? Guid.Empty);
 
                 // is deze gekoppeld als eerste stand aan een rit?
-                var ritViewFirst = _ritViewRepository.FindByFirstKmStandId(@event.Id);
+                var ritViewFirst = _ritViewRepository.FindByFirstKmStandId(id);
 
                 // is deze al gekoppeld aan een rit als eind stand?
-                var ritViewLast = _ritViewRepository.FindByLastKmStandId(@event.Id);
+                var ritViewLast = _ritViewRepository.FindByLastKmStandId(id);
 
                 if (ritViewPrevFirst == null && ritViewFirst == null && ritViewLast == null)
                 {
@@ -58,9 +54,7 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
                     var ritv = _ritViewRepository.FindByFirstKmStandId(prevStandView.Id);
                     // rit updaten en kmstand als laatste stand
                     Rit rit = _ritRepository.FindBy(ritv.Id).Result;
-                    rit.Update(rit.Name, rit.BeginStand, rit.BeginStandId, @event.Stand, @event.Id, rit.Id);
-                    
-
+                    rit.Update(rit.Name, rit.BeginStand, rit.BeginStandId, stand, id, rit.Id);
                 }
             }
             else

@@ -30,7 +30,7 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Test
             fixture.Inject<IRitRepository>(ritRepositoryMock.Object);
 
             var sut = fixture.Create<RitAutoCreatorService>();
-            sut.AutoCreateRitWhenNeeded(new KmStandCreated(Guid.NewGuid(), 1234, DateTime.Now, Guid.Empty));
+            sut.AutoCreateRitWhenNeeded(Guid.NewGuid(), 1234, DateTime.Now, Guid.Empty);
         }
     }
 }

@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
-    <ProjectReference Include="..\Grayson.ExampleCQRS.Integration\Grayson.ExampleCQRS.Integration.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Application\Grayson.ExampleCQRS.KmStanden.Application.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Domain\Grayson.ExampleCQRS.KmStanden.Domain.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Domain\Grayson.ExampleCQRS.Ritten.Domain.csproj" />

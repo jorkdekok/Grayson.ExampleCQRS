@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.MessagesMapper", "G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp", "Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.csproj", "{F765939A-8435-49F2-BD1B-18DFD2846890}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Integration", "Grayson.ExampleCQRS.Integration\Grayson.ExampleCQRS.Integration.csproj", "{A923D696-FE0A-455F-BB86-ED38A006D60B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.SeedWork.DDD.Domain", "Grayson.SeedWork.DDD.Domain\Grayson.SeedWork.DDD.Domain.csproj", "{AFDFEA06-4AF9-4728-B20E-27372F001FC1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.SeedWork.DDD.Application", "Grayson.SeedWork.DDD.Application\Grayson.SeedWork.DDD.Application.csproj", "{67A88450-61B2-454B-BD71-C2B75C87F975}"
@@ -101,10 +99,6 @@ Global
 		{F765939A-8435-49F2-BD1B-18DFD2846890}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F765939A-8435-49F2-BD1B-18DFD2846890}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F765939A-8435-49F2-BD1B-18DFD2846890}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A923D696-FE0A-455F-BB86-ED38A006D60B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A923D696-FE0A-455F-BB86-ED38A006D60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A923D696-FE0A-455F-BB86-ED38A006D60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A923D696-FE0A-455F-BB86-ED38A006D60B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AFDFEA06-4AF9-4728-B20E-27372F001FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AFDFEA06-4AF9-4728-B20E-27372F001FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFDFEA06-4AF9-4728-B20E-27372F001FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU

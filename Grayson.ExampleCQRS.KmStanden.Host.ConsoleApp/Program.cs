@@ -38,6 +38,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 
                 container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
                 {
+                    cfg.SeparatePublishFromSendTopology();
                     // command queue
                     cfg.ReceiveEndpoint(host,
                         RabbitMqConstants.CommandsQueue, e =>

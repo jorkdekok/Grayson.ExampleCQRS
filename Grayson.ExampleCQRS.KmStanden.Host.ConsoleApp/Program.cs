@@ -2,9 +2,10 @@
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.KmStanden.Infrastructure.Integration;
 using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
-
+using Grayson.SeedWork.DDD.Application.Integration;
 using MassTransit;
 using Microsoft.Extensions.Logging;
+using RabbitMQ.Client;
 using SimpleInjector;
 
 using System;
@@ -24,9 +25,12 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'KmStanden' host...");
 
-                EventsMapping.Configure();
-
                 container.Options.AllowResolvingFuncFactories();
+
+                container.Register<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
+                container.Register<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+                container.Register<IConnectionFactory, ConnectionFactory>();
+                container.Register<IIntegrationEventBus, EventBusRabbitMQ>();
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);

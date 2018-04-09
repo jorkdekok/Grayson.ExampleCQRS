@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.IntegrationEvents
+namespace Grayson.ExampleCQRS.KmStanden.Application.IntegrationEvents
 {
     public class KmStandUpdated : IntegrationEvent
     {

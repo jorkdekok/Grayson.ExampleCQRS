@@ -1,4 +1,5 @@
 ﻿using Grayson.SeedWork.DDD.Application.Integration;
+using Grayson.SeedWork.DDD.Domain;
 
 using Microsoft.Extensions.Logging;
 
@@ -23,7 +24,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
     {
         private const string BROKER_NAME = "eshop_event_bus";
 
-        private readonly ILogger<EventBusRabbitMQ> _logger;
+        private readonly ILogger _logger;
+        private readonly IObjectFactory _objectFactory;
         private readonly IRabbitMQPersistentConnection _persistentConnection;
         private readonly int _retryCount;
         private readonly IEventBusSubscriptionsManager _subsManager;
@@ -31,19 +33,21 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         private string _queueName;
 
         public EventBusRabbitMQ(
+            IObjectFactory objectFactory,
             IRabbitMQPersistentConnection persistentConnection,
-            ILogger<EventBusRabbitMQ> logger,
-            IEventBusSubscriptionsManager subsManager,
-            string queueName = null,
-            int retryCount = 5)
+            ILogger logger,
+            IEventBusSubscriptionsManager subsManager)
+            //string queueName = BROKER_NAME,
+            //int retryCount = 5)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? new InMemoryEventBusSubscriptionsManager();
-            _queueName = queueName;
+            _queueName = BROKER_NAME; // queueName;
             _consumerChannel = CreateConsumerChannel();
-            _retryCount = retryCount;
+            _retryCount = 5; // retryCount;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
+            _objectFactory = objectFactory;
         }
 
         public void Dispose()
@@ -191,24 +195,26 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             {
                 //using (var scope = _autofac.BeginLifetimeScope(AUTOFAC_SCOPE_NAME))
                 //{
-                    var subscriptions = _subsManager.GetHandlersForEvent(eventName);
-                    foreach (var subscription in subscriptions)
+                var subscriptions = _subsManager.GetHandlersForEvent(eventName);
+                foreach (var subscription in subscriptions)
+                {
+                    if (subscription.IsDynamic)
                     {
-                        if (subscription.IsDynamic)
-                        {
-                            var handler = scope.ResolveOptional(subscription.HandlerType) as IDynamicIntegrationEventHandler;
-                            dynamic eventData = JObject.Parse(message);
-                            await handler.When(eventData);
-                        }
-                        else
-                        {
-                            var eventType = _subsManager.GetEventTypeByName(eventName);
-                            var integrationEvent = JsonConvert.DeserializeObject(message, eventType);
-                            var handler = scope.ResolveOptional(subscription.HandlerType);
-                            var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
-                            await (Task)concreteType.GetMethod("When").Invoke(handler, new object[] { integrationEvent });
-                        }
+                        //var handler = scope.ResolveOptional(subscription.HandlerType) as IDynamicIntegrationEventHandler;
+                        var handler = _objectFactory.GetInstance(subscription.HandlerType) as IDynamicIntegrationEventHandler;
+                        dynamic eventData = JObject.Parse(message);
+                        await handler.When(eventData);
                     }
+                    else
+                    {
+                        var eventType = _subsManager.GetEventTypeByName(eventName);
+                        var integrationEvent = JsonConvert.DeserializeObject(message, eventType);
+                        //var handler = scope.ResolveOptional(subscription.HandlerType);
+                        var handler = _objectFactory.GetInstance(subscription.HandlerType);
+                        var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
+                        await (Task)concreteType.GetMethod("When").Invoke(handler, new object[] { integrationEvent });
+                    }
+                }
                 //}
             }
         }

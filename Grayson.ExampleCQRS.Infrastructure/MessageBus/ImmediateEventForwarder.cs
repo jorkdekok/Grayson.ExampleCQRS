@@ -1,9 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Grayson.SeedWork.DDD.Domain;
+﻿using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
+
 using Microsoft.Extensions.Logging;
+
+using System;
+using System.Threading.Tasks;
 
 namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {

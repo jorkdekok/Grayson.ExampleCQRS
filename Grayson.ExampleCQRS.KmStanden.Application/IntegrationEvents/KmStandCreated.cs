@@ -2,7 +2,7 @@
 using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.SeedWork.DDD.Domain;
 
-namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.IntegrationEvents
+namespace Grayson.ExampleCQRS.KmStanden.Application.IntegrationEvents
 {
     public class KmStandCreated : IntegrationEvent
     {

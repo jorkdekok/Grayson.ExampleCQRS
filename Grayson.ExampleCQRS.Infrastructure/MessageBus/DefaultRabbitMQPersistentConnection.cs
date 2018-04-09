@@ -35,7 +35,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         public DefaultRabbitMQPersistentConnection(
             IConnectionFactory connectionFactory,
             ILogger logger)
-            //int retryCount = 5)
         {
             _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));

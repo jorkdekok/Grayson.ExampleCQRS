@@ -37,8 +37,6 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             IRabbitMQPersistentConnection persistentConnection,
             ILogger logger,
             IEventBusSubscriptionsManager subsManager)
-            //string queueName = BROKER_NAME,
-            //int retryCount = 5)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));

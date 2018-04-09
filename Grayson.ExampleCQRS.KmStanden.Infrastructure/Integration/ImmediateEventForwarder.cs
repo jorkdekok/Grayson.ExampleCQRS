@@ -26,7 +26,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.Integration
         {
             _logger.LogInformation($"Sending event: {@event.GetType()}");
 
-            // translate to integration event?
+            // translate to integration event
             IntegrationEvent integrationEvent = null;
             switch (@event)
             {

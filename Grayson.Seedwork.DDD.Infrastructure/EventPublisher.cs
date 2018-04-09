@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Grayson.SeedWork.DDD.Domain;
+
+using System;
 using System.Diagnostics;
-using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.SeedWork.DDD.Infrastructure
 {

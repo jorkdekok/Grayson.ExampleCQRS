@@ -1,12 +1,17 @@
 ﻿using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
+using Grayson.ExampleCQRS.Ritten.Application.IntegrationEvents;
+using Grayson.ExampleCQRS.Ritten.Application.Services;
+using Grayson.ExampleCQRS.Ritten.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
-using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.SeedWork.DDD.Domain;
 
 using MassTransit;
 
 using Microsoft.Extensions.Logging;
+
+using RabbitMQ.Client;
 
 using SimpleInjector;
 
@@ -30,6 +35,11 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 logger.LogInformation("Starting BC 'Ritten' host...");
 
                 container.Options.AllowResolvingFuncFactories();
+
+                container.RegisterSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
+                container.RegisterSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+                container.RegisterSingleton<IConnectionFactory, ConnectionFactory>();
+                container.RegisterSingleton<IIntegrationEventBus, EventBusRabbitMQ>();
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
@@ -59,14 +69,19 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                     });
                 }));
 
-                var bus = container.GetInstance<IBusControl>();
+                EventMappings.Configure();
 
-                bus.StartAsync();
+                var eventBus = container.GetInstance<IIntegrationEventBus>();
+                eventBus.Subscribe<KmStandCreated, RitService>();
+
+                //var bus = container.GetInstance<IBusControl>();
+
+                //bus.StartAsync();
 
                 Console.WriteLine("Listening for commands.. Press enter to exit");
                 Console.ReadLine();
 
-                bus.StopAsync();
+                //bus.StopAsync();
             }
         }
     }

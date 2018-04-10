@@ -10,11 +10,16 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
     {
         protected readonly IAggregateFactory _aggregateFactory;
         protected readonly IEventStore _eventStore;
+        private readonly IEventPublisher _eventPublisher;
 
-        public Repository(IAggregateFactory aggregateFactory, IEventStore eventStore)
+        public Repository(
+            IAggregateFactory aggregateFactory,
+            IEventStore eventStore,
+            IEventPublisher eventPublisher)
         {
             _eventStore = eventStore;
             _aggregateFactory = aggregateFactory;
+            _eventPublisher = eventPublisher;
         }
 
         public async Task Add(TAggregate aggregate)
@@ -45,6 +50,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.Repository
             if (snapshot != null)
             {
                 aggregate = snapshot;
+                aggregate.SetEventPublisher(_eventPublisher);
             }
             else
             {

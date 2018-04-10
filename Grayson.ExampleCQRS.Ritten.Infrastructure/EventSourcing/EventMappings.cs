@@ -1,4 +1,5 @@
 ﻿using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+
 using MongoDB.Bson.Serialization;
 
 namespace Grayson.ExampleCQRS.Ritten.Infrastructure.EventSourcing
@@ -22,6 +23,14 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.EventSourcing
                 AutoMapClass<RitCreated>();
                 AutoMapClass<RitUpdated>();
 
+                if (IsMapped<Rit>())
+                {
+                    BsonClassMap.RegisterClassMap<Rit>(cm =>
+                    {
+                        cm.AutoMap();
+                    });
+                }
+
                 isConfigured = true;
             }
         }
@@ -30,6 +39,11 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.EventSourcing
         {
             if (!BsonClassMap.IsClassMapRegistered(typeof(T)))
                 BsonClassMap.RegisterClassMap<T>(cm => cm.AutoMap());
+        }
+
+        private static bool IsMapped<T>()
+        {
+            return !BsonClassMap.IsClassMapRegistered(typeof(T));
         }
     }
 }

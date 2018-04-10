@@ -147,12 +147,19 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += async (model, ea) =>
             {
-                var eventName = ea.RoutingKey;
-                var message = Encoding.UTF8.GetString(ea.Body);
+                try
+                {
+                    var eventName = ea.RoutingKey;
+                    var message = Encoding.UTF8.GetString(ea.Body);
 
-                await ProcessEvent(eventName, message);
+                    await ProcessEvent(eventName, message);
 
-                channel.BasicAck(ea.DeliveryTag, multiple: false);
+                    channel.BasicAck(ea.DeliveryTag, multiple: false);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Eventhandler throws exception");
+                }
             };
 
             channel.BasicConsume(queue: _queueName,

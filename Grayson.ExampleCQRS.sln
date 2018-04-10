@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.KmStand
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp", "Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp\Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp.csproj", "{CFF21C28-EE84-4898-84A9-1186592B515A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Ritten.Domain.Host.ConsoleApp", "Grayson.ExampleCQRS.Ritten.Host.ConsoleApp\Grayson.ExampleCQRS.Ritten.Domain.Host.ConsoleApp.csproj", "{E37E23D2-7610-40F3-A20A-4FAF612E6888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Ritten.Host.ConsoleApp", "Grayson.ExampleCQRS.Ritten.Host.ConsoleApp\Grayson.ExampleCQRS.Ritten.Host.ConsoleApp.csproj", "{E37E23D2-7610-40F3-A20A-4FAF612E6888}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

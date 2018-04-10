@@ -19,6 +19,10 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate
         {
         }
 
+        private Rit()
+        {
+        }
+
         public void Apply(RitCreated @event)
         {
             this.Id = @event.Id;

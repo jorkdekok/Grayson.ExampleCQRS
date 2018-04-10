@@ -9,7 +9,10 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.Repository
 {
     public class RitRepository : Repository<Rit>, IRitRepository
     {
-        public RitRepository(IAggregateFactory aggregateFactory, IEventStore eventStore) : base(aggregateFactory, eventStore)
+        public RitRepository(
+            IAggregateFactory aggregateFactory,
+            IEventStore eventStore,
+            IEventPublisher eventPublisher) : base(aggregateFactory, eventStore, eventPublisher)
         {
         }
 

@@ -13,5 +13,7 @@ namespace Grayson.SeedWork.DDD.Domain
         IEnumerable<IDomainEvent> GetUncommittedEvents();
 
         void MarkEventsAsCommitted();
+
+        void SetEventPublisher(IEventPublisher eventPublisher);
     }
 }

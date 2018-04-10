@@ -38,6 +38,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
         {
             var wrapper = new SnapshotWrapper
             {
+                Id = streamName,
                 StreamName = streamName,
                 Snapshot = snapshot as IEventSourcedAggregate,
                 Created = DateTime.Now
@@ -97,7 +98,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
 
             if (events.Count == 0)
             {
-                return null;
+                return new List<IDomainEvent>();
             }
 
             var domainevents = events.Select(e => e.Event).ToList();

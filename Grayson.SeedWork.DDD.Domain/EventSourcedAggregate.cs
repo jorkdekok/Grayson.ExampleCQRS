@@ -4,12 +4,17 @@ namespace Grayson.SeedWork.DDD.Domain
 {
     public abstract class EventSourcedAggregate : Entity, IEventSourcedAggregate
     {
-        private readonly List<IDomainEvent> _changes = new List<IDomainEvent>();
-        private readonly IEventPublisher _eventPublisher;
+        private readonly List<IDomainEvent> _changes;
+        private IEventPublisher _eventPublisher;
 
         public int Version { get; set; }
 
-        public EventSourcedAggregate(IEventPublisher eventPublisher)
+        public EventSourcedAggregate()
+        {
+            _changes = new List<IDomainEvent>();
+        }
+
+        public EventSourcedAggregate(IEventPublisher eventPublisher) : this()
         {
             _eventPublisher = eventPublisher;
         }
@@ -34,6 +39,14 @@ namespace Grayson.SeedWork.DDD.Domain
             }
             
             _changes.Clear();
+        }
+
+        public void SetEventPublisher(IEventPublisher eventPublisher)
+        {
+            if (_eventPublisher == null)
+            {
+                _eventPublisher = eventPublisher;
+            }
         }
     }
 }

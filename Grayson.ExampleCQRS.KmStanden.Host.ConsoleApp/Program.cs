@@ -4,6 +4,7 @@ using Grayson.ExampleCQRS.KmStanden.Infrastructure.Integration;
 using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Application.Integration;
 using MassTransit;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using SimpleInjector;
@@ -50,6 +51,11 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                             e.LoadFrom(container);
                         });
                 }));
+
+                // config
+                IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
 
                 var eventBus = container.GetInstance<IIntegrationEventBus>();
                 var bus = container.GetInstance<IBusControl>();

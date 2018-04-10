@@ -178,22 +178,15 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += async (model, ea) =>
             {
-                try
-                {
-                    var eventName = ea.RoutingKey;
-                    var message = Encoding.UTF8.GetString(ea.Body);
+                var eventName = ea.RoutingKey;
+                var message = Encoding.UTF8.GetString(ea.Body);
 
-                    await ProcessEvent(eventName, message);
+                await ProcessEvent(eventName, message);
 
-                    channel.BasicAck(ea.DeliveryTag, multiple: false);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Eventhandler throws exception");
-                }
+                channel.BasicAck(ea.DeliveryTag, multiple: false);
             };
 
-            channel.BasicConsume(queue: _queueName,
+            channel.BasicConsume(queue: queueName,
                                  autoAck: false,
                                  consumer: consumer);
 
@@ -230,6 +223,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             _logger.LogInformation($"process event: {eventName}");
             if (_subsManager.HasSubscriptionsForEvent(eventName))
             {
+                _logger.LogInformation($"found eventhandler for: {eventName}");
                 //using (var scope = _autofac.BeginLifetimeScope(AUTOFAC_SCOPE_NAME))
                 //{
                 var subscriptions = _subsManager.GetHandlersForEvent(eventName);

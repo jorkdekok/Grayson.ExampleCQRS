@@ -69,6 +69,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.KmStand
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Ritten.Host.ConsoleApp", "Grayson.ExampleCQRS.Ritten.Host.ConsoleApp\Grayson.ExampleCQRS.Ritten.Host.ConsoleApp.csproj", "{E37E23D2-7610-40F3-A20A-4FAF612E6888}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.Configuration", "Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj", "{059D4653-86DE-48F5-82A1-9DEBEC3833E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +193,10 @@ Global
 		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E37E23D2-7610-40F3-A20A-4FAF612E6888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{059D4653-86DE-48F5-82A1-9DEBEC3833E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{059D4653-86DE-48F5-82A1-9DEBEC3833E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{059D4653-86DE-48F5-82A1-9DEBEC3833E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{059D4653-86DE-48F5-82A1-9DEBEC3833E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -55,6 +55,7 @@ namespace Grayson.ExampleCQRS.Ritten.Domain.Services
                     // rit updaten en kmstand als laatste stand
                     Rit rit = _ritRepository.FindBy(ritv.Id).Result;
                     rit.Update(rit.Name, rit.BeginStand, rit.BeginStandId, stand, id, rit.Id);
+                    _ritRepository.Update(rit);
                 }
             }
             else

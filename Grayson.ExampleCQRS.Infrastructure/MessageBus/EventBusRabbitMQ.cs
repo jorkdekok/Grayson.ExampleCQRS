@@ -27,6 +27,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
         private readonly ILogger _logger;
         private readonly IObjectFactory _objectFactory;
         private readonly IRabbitMQPersistentConnection _persistentConnection;
+        private readonly string _queueNameConsumer = "eshop_event_bus_consumer_queue";
         private readonly int _retryCount;
         private readonly IEventBusSubscriptionsManager _subsManager;
         private IModel _consumerChannel;
@@ -42,6 +43,8 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? new InMemoryEventBusSubscriptionsManager();
             _queueName = BROKER_NAME; // queueName;
+            ConfigureEventBus();
+
             _consumerChannel = CreateConsumerChannel();
             _retryCount = 5; // retryCount;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
@@ -77,8 +80,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                 var eventName = @event.GetType()
                     .Name;
 
-                channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                    type: "direct");
+                ConfigureExchange(channel);
 
                 var message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);
@@ -126,6 +128,31 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             _subsManager.RemoveDynamicSubscription<TH>(eventName);
         }
 
+        private void ConfigureEventBus()
+        {
+            if (!_persistentConnection.IsConnected)
+            {
+                _persistentConnection.TryConnect();
+            }
+
+            using (var channel = _persistentConnection.CreateModel())
+            {
+                ConfigureExchange(channel);
+            }
+        }
+
+        private void ConfigureExchange(IModel channel)
+        {
+            channel.ExchangeDeclare(exchange: BROKER_NAME,
+                                                type: "fanout");
+
+            channel.QueueDeclare(queue: _queueName,
+                                 durable: true,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
+        }
+
         private IModel CreateConsumerChannel()
         {
             if (!_persistentConnection.IsConnected)
@@ -135,14 +162,18 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
             var channel = _persistentConnection.CreateModel();
 
-            channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                 type: "direct");
+            //channel.QueueDeclare(queue: _queueNameConsumer,
+            //                     durable: true,
+            //                     exclusive: false,
+            //                     autoDelete: false,
+            //                     arguments: null);
 
-            channel.QueueDeclare(queue: _queueName,
-                                 durable: true,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
+            // generate queuename for consumer
+            var queueName = channel.QueueDeclare().QueueName;
+
+            channel.QueueBind(queue: queueName,
+                  exchange: BROKER_NAME,
+                  routingKey: "");
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += async (model, ea) =>
@@ -196,6 +227,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
         private async Task ProcessEvent(string eventName, string message)
         {
+            _logger.LogInformation($"process event: {eventName}");
             if (_subsManager.HasSubscriptionsForEvent(eventName))
             {
                 //using (var scope = _autofac.BeginLifetimeScope(AUTOFAC_SCOPE_NAME))

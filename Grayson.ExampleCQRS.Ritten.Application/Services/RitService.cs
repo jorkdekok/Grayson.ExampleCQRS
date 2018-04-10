@@ -53,6 +53,8 @@ namespace Grayson.ExampleCQRS.Ritten.Application.Services
 
             var domainService = new RitAutoCreatorService(_aggregateFactory, ritViewRepository, kmStandViewRepository, ritRepository);
             domainService.AutoCreateRitWhenNeeded(@event.Id, @event.Stand, @event.Datum, @event.AdresId);
+
+            
         }
     }
 }

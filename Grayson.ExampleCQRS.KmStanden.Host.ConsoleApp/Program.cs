@@ -27,10 +27,10 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 
                 container.Options.AllowResolvingFuncFactories();
 
-                container.Register<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
-                container.Register<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-                container.Register<IConnectionFactory, ConnectionFactory>();
-                container.Register<IIntegrationEventBus, EventBusRabbitMQ>();
+                container.RegisterSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
+                container.RegisterSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+                container.RegisterSingleton<IConnectionFactory, ConnectionFactory>();
+                container.RegisterSingleton<IIntegrationEventBus, EventBusRabbitMQ>();
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
@@ -51,6 +51,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                         });
                 }));
 
+                var eventBus = container.GetInstance<IIntegrationEventBus>();
                 var bus = container.GetInstance<IBusControl>();
 
                 bus.StartAsync();

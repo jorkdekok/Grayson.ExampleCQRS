@@ -7,7 +7,7 @@ using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.SeedWork.DDD.Domain;
 using Grayson.Utils.Configuration;
-
+using Grayson.Utils.Logging;
 using MassTransit;
 
 using Microsoft.Extensions.Configuration;
@@ -41,14 +41,13 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 ILoggerFactory loggerFactory = new LoggerFactory()
                     .AddConsole()
                     .AddDebug();
+                container.Options.DependencyInjectionBehavior = new MsContextualLoggerInjectionBehavior(loggerFactory, container);
+
                 ILogger logger = loggerFactory.CreateLogger<Program>();
-                container.RegisterSingleton<ILogger>(logger);
+                //container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'Ritten' host...");
 
-                container.RegisterSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
-                container.RegisterSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-                container.RegisterSingleton<IConnectionFactory, ConnectionFactory>();
-                container.RegisterSingleton<IIntegrationEventBus, EventBusRabbitMQ>();
+                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container);
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);

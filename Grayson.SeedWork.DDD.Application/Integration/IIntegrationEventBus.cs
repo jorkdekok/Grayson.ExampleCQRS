@@ -1,6 +1,8 @@
-﻿namespace Grayson.SeedWork.DDD.Application.Integration
+﻿using System;
+
+namespace Grayson.SeedWork.DDD.Application.Integration
 {
-    public interface IIntegrationEventBus
+    public interface IIntegrationEventBus : IDisposable
     {
         void Publish(IntegrationEvent @event);
 

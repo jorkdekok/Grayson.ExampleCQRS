@@ -35,7 +35,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Application.Test
 
             container.Register<IAggregateFactory, AggregateFactory>();
 
-            InfrastructureModule.RegisterAll(container);
+            InfrastructureModule.RegisterServices(container);
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             // register command handlers
@@ -77,7 +77,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Application.Test
 
             container.Register<IAggregateFactory, AggregateFactory>();
 
-            InfrastructureModule.RegisterAll(container);
+            InfrastructureModule.RegisterServices(container);
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             // register command handlers

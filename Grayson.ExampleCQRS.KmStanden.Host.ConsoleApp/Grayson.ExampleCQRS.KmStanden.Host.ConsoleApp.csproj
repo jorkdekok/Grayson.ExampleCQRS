@@ -29,6 +29,7 @@
     <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj" />
     <ProjectReference Include="..\Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj" />
     <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.Logging\Grayson.Utils.Logging.csproj" />
   </ItemGroup>
 
   <ItemGroup>

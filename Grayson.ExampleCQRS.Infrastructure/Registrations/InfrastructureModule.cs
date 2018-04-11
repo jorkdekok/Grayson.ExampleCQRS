@@ -3,15 +3,16 @@
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
+using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.SeedWork.DDD.Domain;
-
+using RabbitMQ.Client;
 using SimpleInjector;
 
 namespace Grayson.ExampleCQRS.Infrastructure.Registrations
 {
     public static class InfrastructureModule
     {
-        public static void RegisterAll(Container container)
+        public static void RegisterServices(Container container)
         {
             // factories
             ObjectFactory objectFactory = new ObjectFactory(container);
@@ -40,6 +41,14 @@ namespace Grayson.ExampleCQRS.Infrastructure.Registrations
                     e.Register(r);
                 }
             };
+        }
+
+        public static void RegisterEventBus(Container container)
+        {
+            container.RegisterSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
+            container.RegisterSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+            container.RegisterSingleton<IConnectionFactory, ConnectionFactory>();
+            container.RegisterSingleton<IIntegrationEventBus, EventBusRabbitMQ>();
         }
 
         public static void RegisterEventForwarder(Container container)

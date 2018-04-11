@@ -3,13 +3,11 @@ using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.KmStanden.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.Utils.Configuration;
-
+using Grayson.Utils.Logging;
 using MassTransit;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-
-using RabbitMQ.Client;
 
 using SimpleInjector;
 
@@ -35,14 +33,14 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 ILoggerFactory loggerFactory = new LoggerFactory()
                     .AddConsole()
                     .AddDebug();
+
+                container.Options.DependencyInjectionBehavior = new MsContextualLoggerInjectionBehavior(loggerFactory, container);
+
                 ILogger logger = loggerFactory.CreateLogger<Program>();
-                container.RegisterSingleton<ILogger>(logger);
+                //container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'KmStanden' host...");
 
-                container.RegisterSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
-                container.RegisterSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-                container.RegisterSingleton<IConnectionFactory, ConnectionFactory>();
-                container.RegisterSingleton<IIntegrationEventBus, EventBusRabbitMQ>();
+                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container);
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
@@ -63,15 +61,17 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                         });
                 }));
 
-                var eventBus = container.GetInstance<IIntegrationEventBus>();
-                var bus = container.GetInstance<IBusControl>();
+                using (var eventBus = container.GetInstance<IIntegrationEventBus>())
+                {
+                    var bus = container.GetInstance<IBusControl>();
 
-                bus.StartAsync();
+                    bus.StartAsync();
 
-                Console.WriteLine("Listening for commands.. Press enter to exit");
-                Console.ReadLine();
+                    Console.WriteLine("Listening for commands.. Press enter to exit");
+                    Console.ReadLine();
 
-                bus.StopAsync();
+                    bus.StopAsync();
+                }
             }
         }
     }

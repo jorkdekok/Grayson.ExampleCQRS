@@ -6,12 +6,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit" Version="4.0.1" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="4.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.1" />
-    <PackageReference Include="SimpleInjector" Version="4.0.12" />
+    <PackageReference Include="SimpleInjector" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +31,8 @@
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Infrastructure\Grayson.ExampleCQRS.KmStanden.Infrastructure.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Application\Grayson.ExampleCQRS.ReadModel.Application.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.Logging\Grayson.Utils.Logging.csproj" />
   </ItemGroup>
 
 </Project>

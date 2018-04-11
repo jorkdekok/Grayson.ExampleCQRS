@@ -11,6 +11,7 @@ namespace Grayson.Utils.Configuration
     public interface IParameterConvention
     {
         bool CanResolve(InjectionTargetInfo target);
+
         Expression BuildExpression(InjectionConsumerInfo consumer);
     }
 }

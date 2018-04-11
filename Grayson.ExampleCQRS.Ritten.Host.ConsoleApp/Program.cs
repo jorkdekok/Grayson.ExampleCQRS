@@ -6,9 +6,11 @@ using Grayson.ExampleCQRS.Ritten.Infrastructure.EventSourcing;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.Registrations;
 using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.SeedWork.DDD.Domain;
+using Grayson.Utils.Configuration;
 
 using MassTransit;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 using RabbitMQ.Client;
@@ -16,6 +18,7 @@ using RabbitMQ.Client;
 using SimpleInjector;
 
 using System;
+using System.IO;
 
 namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
 {
@@ -27,14 +30,20 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
         {
             using (var container = new Container())
             {
+                container.Options.AllowResolvingFuncFactories();
+                // configuration appsettings convention
+                IConfiguration config = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+                    .Build();
+                container.Options.RegisterParameterConvention(new AppSettingsConvention(key => config[key]));
+
                 ILoggerFactory loggerFactory = new LoggerFactory()
                     .AddConsole()
                     .AddDebug();
                 ILogger logger = loggerFactory.CreateLogger<Program>();
                 container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'Ritten' host...");
-
-                container.Options.AllowResolvingFuncFactories();
 
                 container.RegisterSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
                 container.RegisterSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();

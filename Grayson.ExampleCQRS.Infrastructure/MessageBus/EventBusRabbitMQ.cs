@@ -22,12 +22,12 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 {
     public class EventBusRabbitMQ : IIntegrationEventBus, IDisposable
     {
-        private const string BROKER_NAME = "eshop_event_bus";
+        private const string BROKER_NAME = "event_bus";
 
         private readonly ILogger _logger;
         private readonly IObjectFactory _objectFactory;
         private readonly IRabbitMQPersistentConnection _persistentConnection;
-        private readonly string _queueNameConsumer = "eshop_event_bus_consumer_queue";
+        private readonly string _queueNameConsumer;
         private readonly int _retryCount;
         private readonly IEventBusSubscriptionsManager _subsManager;
         private IModel _consumerChannel;
@@ -37,14 +37,16 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             IObjectFactory objectFactory,
             IRabbitMQPersistentConnection persistentConnection,
             ILogger logger,
-            IEventBusSubscriptionsManager subsManager)
+            IEventBusSubscriptionsManager subsManager,
+            string producerQueueNameAppSetting,
+            string consumerQueueNameAppSetting)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? new InMemoryEventBusSubscriptionsManager();
-            _queueName = BROKER_NAME; // queueName;
+            _queueName = producerQueueNameAppSetting ?? BROKER_NAME;
             ConfigureEventBus();
-
+            _queueNameConsumer = consumerQueueNameAppSetting;
             _consumerChannel = CreateConsumerChannel();
             _retryCount = 5; // retryCount;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
@@ -90,7 +92,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                     var properties = channel.CreateBasicProperties();
                     properties.DeliveryMode = 2; // persistent
 
-                    channel.BasicPublish(exchange: BROKER_NAME,
+                    channel.BasicPublish(exchange: _queueName,
                                      routingKey: eventName,
                                      mandatory: true,
                                      basicProperties: properties,
@@ -143,7 +145,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
         private void ConfigureExchange(IModel channel)
         {
-            channel.ExchangeDeclare(exchange: BROKER_NAME,
+            channel.ExchangeDeclare(exchange: _queueName,
                                                 type: "fanout");
 
             channel.QueueDeclare(queue: _queueName,
@@ -161,18 +163,19 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             }
 
             var channel = _persistentConnection.CreateModel();
+            string consumerQueueName = _queueNameConsumer;
 
-            //channel.QueueDeclare(queue: _queueNameConsumer,
-            //                     durable: true,
-            //                     exclusive: false,
-            //                     autoDelete: false,
-            //                     arguments: null);
+            channel.QueueDeclare(queue: consumerQueueName,
+                                 durable: true,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
 
             // generate queuename for consumer
-            var queueName = channel.QueueDeclare().QueueName;
+            //queueName = channel.QueueDeclare().QueueName;
 
-            channel.QueueBind(queue: queueName,
-                  exchange: BROKER_NAME,
+            channel.QueueBind(queue: consumerQueueName,
+                  exchange: _queueName,
                   routingKey: "");
 
             var consumer = new EventingBasicConsumer(channel);
@@ -186,7 +189,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                 channel.BasicAck(ea.DeliveryTag, multiple: false);
             };
 
-            channel.BasicConsume(queue: queueName,
+            channel.BasicConsume(queue: consumerQueueName,
                                  autoAck: false,
                                  consumer: consumer);
 
@@ -212,7 +215,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
                 using (var channel = _persistentConnection.CreateModel())
                 {
                     channel.QueueBind(queue: _queueName,
-                                      exchange: BROKER_NAME,
+                                      exchange: _queueName,
                                       routingKey: eventName);
                 }
             }
@@ -260,7 +263,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
             using (var channel = _persistentConnection.CreateModel())
             {
                 channel.QueueUnbind(queue: _queueName,
-                    exchange: BROKER_NAME,
+                    exchange: _queueName,
                     routingKey: eventName);
 
                 if (_subsManager.IsEmpty)

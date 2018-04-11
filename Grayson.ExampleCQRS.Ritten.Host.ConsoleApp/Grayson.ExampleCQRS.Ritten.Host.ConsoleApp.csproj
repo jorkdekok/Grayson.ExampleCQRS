@@ -6,6 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.1" />
   </ItemGroup>
@@ -13,7 +26,14 @@
   <ItemGroup>
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.Ritten.Infrastructure\Grayson.ExampleCQRS.Ritten.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj" />
     <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.configuration\2.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

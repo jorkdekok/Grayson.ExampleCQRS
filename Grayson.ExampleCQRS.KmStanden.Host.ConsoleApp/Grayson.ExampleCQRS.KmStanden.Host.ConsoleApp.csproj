@@ -12,6 +12,7 @@
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
@@ -26,6 +27,7 @@
     <ProjectReference Include="..\Grayson.ExampleCQRS.Infrastructure\Grayson.ExampleCQRS.Infrastructure.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.KmStanden.Infrastructure\Grayson.ExampleCQRS.KmStanden.Infrastructure.csproj" />
     <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj" />
     <ProjectReference Include="..\Grayson.Utils.DDD\Grayson.Utils.DDD.csproj" />
   </ItemGroup>
 

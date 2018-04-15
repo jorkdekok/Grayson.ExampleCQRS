@@ -71,7 +71,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.Ritten.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.Configuration", "Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj", "{059D4653-86DE-48F5-82A1-9DEBEC3833E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grayson.Utils.Logging", "Grayson.Utils.Logging\Grayson.Utils.Logging.csproj", "{BE12D899-318E-4FDB-83D4-02B1E3016B1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.Utils.Logging", "Grayson.Utils.Logging\Grayson.Utils.Logging.csproj", "{BE12D899-318E-4FDB-83D4-02B1E3016B1D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{B673D001-E5CD-405B-B748-88A0E441DF11}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\mysql-deployment.yaml = k8s\mysql-deployment.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -203,6 +210,10 @@ Global
 		{BE12D899-318E-4FDB-83D4-02B1E3016B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE12D899-318E-4FDB-83D4-02B1E3016B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE12D899-318E-4FDB-83D4-02B1E3016B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,6 +24,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 IConfiguration config = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+                    .AddEnvironmentVariables()
                     .Build();
                 container.Options.RegisterParameterConvention(new AppSettingsConvention(key => config[key]));
 
@@ -43,7 +44,7 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
                 ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterServices(container);
-                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container);
+                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container, config);
 
                 using (var eventBus = container.GetInstance<IIntegrationEventBus>())
                 {

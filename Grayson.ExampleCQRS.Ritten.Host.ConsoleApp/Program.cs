@@ -35,6 +35,7 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 IConfiguration config = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+                    .AddEnvironmentVariables()
                     .Build();
                 container.Options.RegisterParameterConvention(new AppSettingsConvention(key => config[key]));
 
@@ -47,7 +48,7 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 //container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'Ritten' host...");
 
-                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container);
+                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container, config);
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);

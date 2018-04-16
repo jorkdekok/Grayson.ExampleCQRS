@@ -25,8 +25,10 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 container.Options.AllowResolvingFuncFactories();
                 // configuration appsettings convention
                 IConfiguration config = new ConfigurationBuilder()
+                    
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+                    .AddEnvironmentVariables()
                     .Build();
                 container.Options.RegisterParameterConvention(new AppSettingsConvention(key => config[key]));
 
@@ -40,7 +42,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 //container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'KmStanden' host...");
 
-                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container);
+                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container, config);
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);

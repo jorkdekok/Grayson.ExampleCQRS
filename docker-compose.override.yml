@@ -5,11 +5,17 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - EventBusConnection=rabbitmq://10.0.75.1:5672/
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
       - EventBusUserName=guest
       - EventBusPassword=guest
     ports:
       - "6001:80"
+
+  grayson.examplecqrs.kmstanden.host.consoleapp:
+    environment:
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
+      - EventBusUserName=guest
+      - EventBusPassword=guest
 
   rabbitmq:
     ports:

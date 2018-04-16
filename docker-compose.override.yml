@@ -4,6 +4,11 @@ services:
   grayson.examplecqrs.kmstanden.webapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     ports:
-      - "80"
+      - "6001:80"
 
+  rabbitmq:
+    ports:
+      - "15672:15672"
+      - "5672:5672"

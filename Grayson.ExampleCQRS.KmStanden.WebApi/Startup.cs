@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Grayson.ExampleCQRS.Infrastructure.Extensions;
 using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.SeedWork.DDD.Application;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -92,7 +93,18 @@ namespace Grayson.ExampleCQRS.KmStanden.WebApi
             // Add application services. For instance:
             container.Options.AllowResolvingFuncFactories();
 
-            container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus());
+            // commandbus
+            var bus = Bus.Factory.CreateUsingRabbitMq(cfg =>
+            {
+                var host = cfg.Host(new Uri(Configuration["CommandBusConnection"]), hst =>
+                {
+                    hst.Username(Configuration["CommandBusUserName"]);
+                    hst.Password(Configuration["CommandPassword"]);
+                });
+
+            });
+
+            container.RegisterSingleton(bus);
             container.RegisterSingleton<ICommandBus, AdvancedBus>();
 
             // Cross-wire ASP.NET services (if any). For instance:

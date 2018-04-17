@@ -8,6 +8,9 @@ services:
       - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
       - EventBusUserName=guest
       - EventBusPassword=guest
+      - CommandBusConnection=rabbitmq://rabbitmq:5672/
+      - CommandBusUserName=guest
+      - CommandBusPassword=guest
     ports:
       - "6001:80"
 
@@ -16,6 +19,9 @@ services:
       - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
       - EventBusUserName=guest
       - EventBusPassword=guest
+      - CommandBusConnection=rabbitmq://${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}:5672
+      - CommandBusUserName=guest
+      - CommandBusPassword=guest
 
   rabbitmq:
     ports:

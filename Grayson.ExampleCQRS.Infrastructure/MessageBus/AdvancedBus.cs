@@ -23,7 +23,7 @@ namespace Grayson.ExampleCQRS.Infrastructure.MessageBus
 
         async Task ICommandBus.Send<T>(T command)
         {
-            var sendToUri = new Uri($"{RabbitMqConstants.RabbitMqUri}" + $"{RabbitMqConstants.CommandsQueue}");
+            var sendToUri = new Uri(_bus.Address, RabbitMqConstants.CommandsQueue);
             var endPoint = await _bus.GetSendEndpoint(sendToUri);
             // TODO: convert to DTO
             await endPoint.Send(command);

@@ -18,22 +18,22 @@ services:
       - rabbitmq
 
 
-  grayson.examplecqrs.readmodel.host.consoleapp:
-    image: graysonexamplecqrsreadmodelhostconsoleapp
-    build:
-      context: .
-      dockerfile: Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp/Dockerfile
-    depends_on:
-      - rabbitmq
+#  grayson.examplecqrs.readmodel.host.consoleapp:
+#    image: graysonexamplecqrsreadmodelhostconsoleapp
+#    build:
+#      context: .
+#      dockerfile: Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp/Dockerfile
+#    depends_on:
+#      - rabbitmq
 
 
-  grayson.examplecqrs.ritten.host.consoleapp:
-    image: graysonexamplecqrsrittenhostconsoleapp
-    build:
-      context: .
-      dockerfile: Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/Dockerfile
-    depends_on:
-      - rabbitmq
+#  grayson.examplecqrs.ritten.host.consoleapp:
+#    image: graysonexamplecqrsrittenhostconsoleapp
+#    build:
+#      context: .
+#      dockerfile: Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/Dockerfile
+#    depends_on:
+#      - rabbitmq
 #
   rabbitmq:
     image: rabbitmq:3-management-alpine

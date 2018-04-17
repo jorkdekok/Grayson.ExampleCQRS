@@ -24,13 +24,13 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
             {
                 container.Options.AllowResolvingFuncFactories();
                 // configuration appsettings convention
-                IConfiguration config = new ConfigurationBuilder()
+                IConfiguration configuration = new ConfigurationBuilder()
                     
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
                     .AddEnvironmentVariables()
                     .Build();
-                container.Options.RegisterParameterConvention(new AppSettingsConvention(key => config[key]));
+                container.Options.RegisterParameterConvention(new AppSettingsConvention(key => configuration[key]));
 
                 ILoggerFactory loggerFactory = new LoggerFactory()
                     .AddConsole()
@@ -42,7 +42,7 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 //container.RegisterSingleton<ILogger>(logger);
                 logger.LogInformation("Starting BC 'KmStanden' host...");
 
-                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container, config);
+                ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container, configuration);
 
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
@@ -52,8 +52,14 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
 
                 ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
-                container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
+                var bus = Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
+                    var host = cfg.Host(new Uri(configuration["CommandBusConnection"]), hst =>
+                    {
+                        hst.Username(configuration["CommandBusUserName"]);
+                        hst.Password(configuration["CommandPassword"]);
+                    });
+
                     cfg.SeparatePublishFromSendTopology();
                     // command queue
                     cfg.ReceiveEndpoint(host,
@@ -61,18 +67,31 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                         {
                             e.LoadFrom(container);
                         });
-                }));
+                });
+
+                container.RegisterSingleton(bus);
+
+                //container.RegisterSingleton(RabbitMqConfiguration.ConfigureBus((cfg, host) =>
+                //{
+                //    cfg.SeparatePublishFromSendTopology();
+                //    // command queue
+                //    cfg.ReceiveEndpoint(host,
+                //        RabbitMqConstants.CommandsQueue, e =>
+                //        {
+                //            e.LoadFrom(container);
+                //        });
+                //}));
 
                 using (var eventBus = container.GetInstance<IIntegrationEventBus>())
                 {
-                    var bus = container.GetInstance<IBusControl>();
+                    var cbus = container.GetInstance<IBusControl>();
 
-                    bus.StartAsync();
+                    cbus.StartAsync();
 
                     Console.WriteLine("Listening for commands.. Press enter to exit");
                     Console.ReadLine();
 
-                    bus.StopAsync();
+                    cbus.StopAsync();
                 }
             }
         }

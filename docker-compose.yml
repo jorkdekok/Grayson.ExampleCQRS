@@ -16,7 +16,17 @@ services:
       dockerfile: Grayson.ExampleCQRS.KmStanden.WebApi/Dockerfile
     depends_on:
       - rabbitmq
+      - events.data
 
+  grayson.examplecqrs.ritten.host.consoleapp:
+    image: graysonexamplecqrsrittenhostconsoleapp
+    build:
+      context: .
+      dockerfile: Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/Dockerfile
+    depends_on:
+      - rabbitmq
+      - events.data
+      - sql.data
 
 #  grayson.examplecqrs.readmodel.host.consoleapp:
 #    image: graysonexamplecqrsreadmodelhostconsoleapp
@@ -26,18 +36,8 @@ services:
 #    depends_on:
 #      - rabbitmq
 
-
-#  grayson.examplecqrs.ritten.host.consoleapp:
-#    image: graysonexamplecqrsrittenhostconsoleapp
-#    build:
-#      context: .
-#      dockerfile: Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/Dockerfile
-#    depends_on:
-#      - rabbitmq
-#
-
-#  sql.data:
-#    image: microsoft/mssql-server-linux:2017-latest
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
 
   events.data:
     image: mongo

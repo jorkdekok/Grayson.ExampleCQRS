@@ -24,12 +24,24 @@ services:
       - CommandBusPassword=guest
       - MongoDbUri=mongodb://events.data:27017
 
-#  sql.data:
-#    environment:
-#      - SA_PASSWORD=Pass@word
-#      - ACCEPT_EULA=Y
-#    ports:
-#      - "5433:1433"
+  grayson.examplecqrs.ritten.host.consoleapp:
+    environment:
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
+      - EventBusUserName=guest
+      - EventBusPassword=guest
+      - CommandBusConnection=rabbitmq://${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}:5672
+      - CommandBusUserName=guest
+      - CommandBusPassword=guest
+      - MongoDbUri=mongodb://events.data:27017
+      - SqlDbConnection=${ESHOP_AZURE_IDENTITY_DB:-Server=sql.data;Database=Microsoft.eShopOnContainers.Service.IdentityDb;User Id=sa;Password=Pass@word} 
+
+
+  sql.data:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
 #
   events.data:
     ports:

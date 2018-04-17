@@ -22,9 +22,10 @@ namespace Grayson.ExampleCQRS.Infrastructure.EventSourcing
         private IMongoCollection<EventStream> _eventStreams;
         private IMongoCollection<SnapshotWrapper> _snapshots;
 
-        public EventStore()
+        public EventStore(string mongoDbUriAppSetting)
         {
-            _client = new MongoClient("mongodb://localhost:27017");
+            //_client = new MongoClient("mongodb://localhost:27017");
+            _client = new MongoClient(mongoDbUriAppSetting);
             _database = _client.GetDatabase(DATABASE);
 
             _eventStreams = _database.GetCollection<EventStream>(EVENTSTREAMS);

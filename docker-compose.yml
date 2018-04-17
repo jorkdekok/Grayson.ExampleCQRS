@@ -35,5 +35,12 @@ services:
 #    depends_on:
 #      - rabbitmq
 #
+
+#  sql.data:
+#    image: microsoft/mssql-server-linux:2017-latest
+
+  events.data:
+    image: mongo
+
   rabbitmq:
     image: rabbitmq:3-management-alpine

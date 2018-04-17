@@ -8,7 +8,7 @@ services:
       - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
       - EventBusUserName=guest
       - EventBusPassword=guest
-      - CommandBusConnection=rabbitmq://rabbitmq:5672/
+      - CommandBusConnection=rabbitmq://${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}:5672
       - CommandBusUserName=guest
       - CommandBusPassword=guest
     ports:
@@ -22,6 +22,18 @@ services:
       - CommandBusConnection=rabbitmq://${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}:5672
       - CommandBusUserName=guest
       - CommandBusPassword=guest
+      - MongoDbUri=mongodb://events.data:27017
+
+#  sql.data:
+#    environment:
+#      - SA_PASSWORD=Pass@word
+#      - ACCEPT_EULA=Y
+#    ports:
+#      - "5433:1433"
+#
+  events.data:
+    ports:
+      - "27017:27017"
 
   rabbitmq:
     ports:

@@ -33,7 +33,7 @@ services:
       - CommandBusUserName=guest
       - CommandBusPassword=guest
       - MongoDbUri=mongodb://events.data:27017
-      - SqlDbConnection=${ESHOP_AZURE_IDENTITY_DB:-Server=sql.data;Database=Microsoft.eShopOnContainers.Service.IdentityDb;User Id=sa;Password=Pass@word} 
+      - SqlDbConnection=${ESHOP_AZURE_IDENTITY_DB:-Server=sql.data;Database=Grayson.Ritm.Ritten.ReadModel;User Id=sa;Password=Pass@word} 
 
 
   sql.data:

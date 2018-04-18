@@ -19,7 +19,9 @@ namespace Grayson.ExampleCQRS.Ritten.Infrastructure.ReadModel.Repository
             var optionsBuilder = new DbContextOptionsBuilder<ReadModelDbContext>();
             optionsBuilder.UseSqlServer(connection);
 
-            return new ReadModelDbContext(optionsBuilder.Options);
+            var context = new ReadModelDbContext(optionsBuilder.Options);
+            context.Database.Migrate();
+            return context;
         }
     }
 }

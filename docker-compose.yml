@@ -38,9 +38,14 @@ services:
 
   sql.data:
     image: microsoft/mssql-server-linux:2017-latest
+    volumes:
+      - sqlvolume:/var/opt/mssql
 
   events.data:
     image: mongo
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
+
+volumes:
+  sqlvolume:

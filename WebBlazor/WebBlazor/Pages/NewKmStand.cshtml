@@ -1,0 +1,15 @@
+﻿@page "/newkmstand"
+@inject HttpClient Http
+
+<h1>New KmStand</h1>
+
+<EditKmStand></EditKmStand>
+
+@functions {
+
+    protected override async Task OnInitAsync()
+    {
+        //forecasts = await Http.GetJsonAsync<WeatherForecast[]>("/sample-data/weather.json");
+    }
+
+}

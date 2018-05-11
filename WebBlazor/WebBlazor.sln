@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27617.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBlazor", "WebBlazor\WebBlazor.csproj", "{84B18F2F-3942-481D-9E9D-A1689FBC0C40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84B18F2F-3942-481D-9E9D-A1689FBC0C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B18F2F-3942-481D-9E9D-A1689FBC0C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B18F2F-3942-481D-9E9D-A1689FBC0C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B18F2F-3942-481D-9E9D-A1689FBC0C40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {879394FE-8C38-4430-A183-478783545618}
+	EndGlobalSection
+EndGlobal

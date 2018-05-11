@@ -1,0 +1,25 @@
+﻿<label>Stand</label>
+<input type="number" placeholder="stand" bind="@newKmStand.Stand" />
+
+<button class="btn btn-primary" onclick="@AddKmStand">Add</button>
+
+<p>@status</p>
+
+@functions {
+    KmStand newKmStand = new KmStand();
+    string status;
+
+    public Action OnAdded { get; set; }
+
+    void AddKmStand()
+    {
+        status = "test";
+        OnAdded?.Invoke();
+    }
+
+    class KmStand
+    {
+        public DateTime Datum { get; set; }
+        public int Stand { get; set; }
+    }
+}

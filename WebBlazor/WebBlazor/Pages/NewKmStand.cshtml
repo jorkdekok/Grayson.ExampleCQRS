@@ -3,7 +3,7 @@
 
 <h1>New KmStand</h1>
 
-<EditKmStand></EditKmStand>
+<EditKmStand OnAdded="@Added"></EditKmStand>
 
 @functions {
 
@@ -12,4 +12,8 @@
         //forecasts = await Http.GetJsonAsync<WeatherForecast[]>("/sample-data/weather.json");
     }
 
+    public void Added()
+    { 
+
+    }
 }

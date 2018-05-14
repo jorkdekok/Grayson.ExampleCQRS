@@ -33,9 +33,9 @@ namespace Grayson.ExampleCQRS.KmStanden.WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public KmStandViewModel Get(Guid id)
         {
-            return "value";
+            return new KmStandViewModel();
         }
 
         // POST api/values

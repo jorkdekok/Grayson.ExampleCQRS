@@ -80,6 +80,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{B673D001-E5C
 		k8s\mysql-deployment.yaml = k8s\mysql-deployment.yaml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{C49908AF-974E-4A9E-8D8D-88419E583655}"
+	ProjectSection(SolutionItems) = preProject
+		Architecture-1.dgml = Architecture-1.dgml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

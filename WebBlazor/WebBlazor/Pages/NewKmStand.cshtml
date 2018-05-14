@@ -5,7 +5,10 @@
 
 <EditKmStand OnAdded="@Added"></EditKmStand>
 
+<span>@status</span>
+
 @functions {
+    string status;
 
     protected override async Task OnInitAsync()
     {
@@ -13,7 +16,7 @@
     }
 
     public void Added()
-    { 
-
+    {
+        status = "added.";
     }
 }

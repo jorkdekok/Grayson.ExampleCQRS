@@ -1,5 +1,8 @@
 ﻿@page "/newkmstand"
+@inherits WebBlazor.Redux.MyAppComponent
 @inject HttpClient Http
+@using WebBlazor.ViewModel
+@using WebBlazor.Redux
 
 <h1>New KmStand</h1>
 
@@ -10,13 +13,21 @@
 @functions {
     string status;
 
-    protected override async Task OnInitAsync()
-    {
-        //forecasts = await Http.GetJsonAsync<WeatherForecast[]>("/sample-data/weather.json");
-    }
-
-    public void Added()
+    public void Added(KmStand kmstand)
     {
         status = "added.";
+        //Dispatch(new AddNewKmStandAction(kmstand));
+        //ActionCreators.AddKmStand(kmstand, Store.Dispatch, Http).Wait();
+        KmStandPost data = new KmStandPost() { stand = kmstand.stand, datum = kmstand.datum };
+
+
+        Http.PostJsonAsync<KmStandPost>("http://localhost:6001/api/v1/KmStanden", data).Wait();
+    }
+
+    class KmStandPost
+    {
+        public int stand { get; set; }
+        public DateTime datum { get; set; }
+
     }
 }

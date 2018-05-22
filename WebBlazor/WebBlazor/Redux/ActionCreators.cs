@@ -23,5 +23,13 @@ namespace WebBlazor.Redux
                 KmStanden = kmstanden.ToList()
             });
         }
+
+        public static async Task AddKmStand(KmStand kmstand, Dispatcher<IAction> dispatch, HttpClient http)
+        {
+            //dispatch(new AddNewKmStandAction(kmstand));
+
+            await http.PostJsonAsync<KmStand>("http://localhost:6001/api/v1/KmStanden", kmstand);
+
+        }
     }
 }

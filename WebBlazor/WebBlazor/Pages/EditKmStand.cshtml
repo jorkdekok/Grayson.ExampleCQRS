@@ -1,26 +1,29 @@
-﻿<label>Stand</label>
-<input type="number" placeholder="stand" bind="@newKmStand.Stand" />
-
+﻿@using WebBlazor.ViewModel
+<div class="form-row">
+    <div class="form-group">
+        <label>Stand</label>
+        <input class="form-control" type="number" placeholder="stand" bind="@newKmStand.stand" />
+    </div>
+    <div class="form-group">
+        <label>Datum</label>
+        <input class="form-control" type="date" placeholder="datum" bind="@newKmStand.datum" />
+    </div>
+</div>
 <button class="btn btn-primary" onclick="@AddKmStand">Add</button>
 
 <p>@status</p>
 
 @functions {
-    KmStand newKmStand = new KmStand();
-    string status;
+KmStand newKmStand = new KmStand();
+string status;
 
-    [Parameter]
-    private Action OnAdded { get; set; }
+[Parameter]
+private Action<KmStand> OnAdded { get; set; }
 
-    void AddKmStand()
-    {
-        status = "test";
-        OnAdded?.Invoke();
-    }
+void AddKmStand()
+{
+    status = "added.";
+    OnAdded?.Invoke(newKmStand);
+}
 
-    class KmStand
-    {
-        public DateTime Datum { get; set; }
-        public int Stand { get; set; }
-    }
 }

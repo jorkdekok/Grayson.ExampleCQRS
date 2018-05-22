@@ -16,4 +16,13 @@ namespace WebBlazor.Redux
     {
         public IEnumerable<KmStand> KmStanden { get; set; }
     }
+
+    public class AddNewKmStandAction : IAction
+    {
+        public AddNewKmStandAction(KmStand kmStand)
+        {
+            NewKmStand = kmStand;
+        }
+        public KmStand NewKmStand { get; set; }
+    }
 }

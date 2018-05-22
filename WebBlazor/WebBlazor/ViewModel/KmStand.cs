@@ -10,7 +10,7 @@ namespace WebBlazor.ViewModel
     {
         public string adresId { get; set; }
         public string id { get; set; }
-        public string datum { get; set; }
+        public DateTime datum { get; set; }
         public int stand { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
+namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 {
     public class ReadModelDbContext : DbContext
     {

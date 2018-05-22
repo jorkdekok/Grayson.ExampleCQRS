@@ -1,10 +1,14 @@
-﻿using System;
-using System.Linq;
-using Grayson.ExampleCQRS.Domain.ReadModel.Model;
+﻿using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
+using Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository;
+
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Grayson.ExampleCQRS.Readmodel.Infrastructure.Repository
 {
     public class KmStandViewRepository : IKmStandViewRepository
     {
@@ -25,6 +29,12 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
         public void Delete(KmStandView aggregate)
         {
             _context.KmStands.Remove(aggregate);
+        }
+
+        public IEnumerable<KmStandView> GetAll(int page, int pageSize)
+        {
+            var list = _context.KmStands.Skip(page * pageSize).Take(pageSize).ToList();
+            return list;
         }
 
         public KmStandView GetById(Guid id)

@@ -1,6 +1,4 @@
-﻿using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
-
-using Microsoft.EntityFrameworkCore.Design;
+﻿using Grayson.ExampleCQRS.Readmodel.Infrastructure.Repository;
 
 using SimpleInjector;
 

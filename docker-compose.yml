@@ -1,19 +1,19 @@
-version: '3.4'
+version: '3.6'
 
 services:
   grayson.examplecqrs.kmstanden.host.consoleapp:
     image: graysonexamplecqrskmstandenhostconsoleapp
     build:
-      context: .
-      dockerfile: Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp/Dockerfile
+      context: ./Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
+      #dockerfile: ./Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp/Dockerfile
     depends_on:
       - rabbitmq
 #
   grayson.examplecqrs.kmstanden.webapi:
     image: graysonexamplecqrskmstandenwebapi
     build:
-      context: .
-      dockerfile: Grayson.ExampleCQRS.KmStanden.WebApi/Dockerfile
+      context: ./Grayson.ExampleCQRS.KmStanden.WebApi
+      #dockerfile: 
     depends_on:
       - rabbitmq
       - events.data
@@ -21,20 +21,27 @@ services:
   grayson.examplecqrs.ritten.host.consoleapp:
     image: graysonexamplecqrsrittenhostconsoleapp
     build:
-      context: .
-      dockerfile: Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/Dockerfile
+      context: ./Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
+      #dockerfile: Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/Dockerfile
     depends_on:
       - rabbitmq
       - events.data
       - sql.data
 
-#  grayson.examplecqrs.readmodel.host.consoleapp:
-#    image: graysonexamplecqrsreadmodelhostconsoleapp
-#    build:
-#      context: .
-#      dockerfile: Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp/Dockerfile
-#    depends_on:
-#      - rabbitmq
+  grayson.examplecqrs.readmodel.host.consoleapp:
+    image: graysonexamplecqrsreadmodelhostconsoleapp
+    build:
+      context: ./Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
+      #dockerfile: Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sql.data
+
+  grayson.examplecqrs.readmodel.wepapi:
+    image: graysonexamplecqrsreadmodelwepapi
+    build:
+      context: ./Grayson.ExampleCQRS.ReadModel.WepApi
+      #dockerfile: Grayson.ExampleCQRS.ReadModel.WepApi/Dockerfile
 
   sql.data:
     image: microsoft/mssql-server-linux:2017-latest
@@ -49,3 +56,4 @@ services:
 
 volumes:
   sqlvolume:
+

@@ -85,6 +85,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{C4
 		Architecture-1.dgml = Architecture-1.dgml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadModel.WepApi", "Grayson.ExampleCQRS.ReadModel.WepApi\Grayson.ExampleCQRS.ReadModel.WepApi.csproj", "{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8EBBDED-1410-49D7-9D27-B9DCB02759B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -243,6 +249,7 @@ Global
 		{D2D80E49-9F4A-44F1-B720-8DAA11EB29A6} = {140921D2-94BA-4B00-BCD9-C688E4D9B673}
 		{CFF21C28-EE84-4898-84A9-1186592B515A} = {140921D2-94BA-4B00-BCD9-C688E4D9B673}
 		{E37E23D2-7610-40F3-A20A-4FAF612E6888} = {103249F4-2D45-4D74-BB0A-BC899862126E}
+		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD} = {95ECB565-239B-4A37-B334-6393015CF530}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F491BA0F-9EFD-4827-BDF2-D74C87FB8AC1}

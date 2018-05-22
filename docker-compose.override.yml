@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.6'
 
 services:
   grayson.examplecqrs.kmstanden.webapi:
@@ -35,6 +35,16 @@ services:
       - MongoDbUri=mongodb://events.data:27017
       - SqlDbConnection=${ESHOP_AZURE_IDENTITY_DB:-Server=sql.data;Database=Grayson.Ritm.Ritten.ReadModel;User Id=sa;Password=Pass@word} 
 
+  grayson.examplecqrs.readmodel.host.consoleapp:
+    environment:
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
+      - EventBusUserName=guest
+      - EventBusPassword=guest
+      - CommandBusConnection=rabbitmq://${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}:5672
+      - CommandBusUserName=guest
+      - CommandBusPassword=guest
+      - MongoDbUri=mongodb://events.data:27017
+      - SqlDbConnection=${ESHOP_AZURE_IDENTITY_DB:-Server=sql.data;Database=Grayson.Ritm.ReadModel;User Id=sa;Password=Pass@word} 
 
   sql.data:
     environment:
@@ -51,3 +61,12 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+
+  grayson.examplecqrs.readmodel.wepapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - SqlDbConnection=${ESHOP_AZURE_IDENTITY_DB:-Server=sql.data;Database=Grayson.Ritm.ReadModel;User Id=sa;Password=Pass@word} 
+    ports:
+      - "6002:80"
+

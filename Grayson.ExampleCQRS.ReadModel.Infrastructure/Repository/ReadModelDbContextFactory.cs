@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
+namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 {
     public class ReadModelDbContextFactory : IDesignTimeDbContextFactory<ReadModelDbContext>
     {
+        private readonly string _sqlDbConnectionAppSetting;
 
-            public ReadModelDbContext CreateDbContext(string[] args)
-            {
-            var connection = @"Data Source=.\SQLEXPRESS;Initial Catalog=Grayson.Ritm.ReadModel;Integrated Security=True;MultipleActiveResultSets=True";
+        public ReadModelDbContextFactory(string sqlDbConnectionAppSetting)
+        {
+            _sqlDbConnectionAppSetting = sqlDbConnectionAppSetting;
+        }
+
+        public ReadModelDbContext CreateDbContext(string[] args)
+        {
+            var connection = _sqlDbConnectionAppSetting;
             var optionsBuilder = new DbContextOptionsBuilder<ReadModelDbContext>();
-                optionsBuilder.UseSqlServer(connection);
+            optionsBuilder.UseSqlServer(connection);
 
-                return new ReadModelDbContext(optionsBuilder.Options);
-            }
+            var context = new ReadModelDbContext(optionsBuilder.Options);
+            context.Database.Migrate();
+            return context;
+        }
     }
 }

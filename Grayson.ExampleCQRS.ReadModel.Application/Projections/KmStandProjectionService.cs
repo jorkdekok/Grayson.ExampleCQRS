@@ -1,14 +1,16 @@
-﻿using Grayson.ExampleCQRS.Domain.ReadModel.Model;
+﻿using System.Threading.Tasks;
+using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
-using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
+using Grayson.ExampleCQRS.ReadModel.Application.IntegrationEvents;
 using Grayson.SeedWork.DDD.Application;
+using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.SeedWork.DDD.Domain;
 
 namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
 {
     public class KmStandProjectionService : ApplicationService,
-        IDomainEventHandler<KmStandCreated>,
-        IDomainEventHandler<KmStandUpdated>
+        IIntegrationEventHandler<KmStandCreated>,
+        IIntegrationEventHandler<KmStandUpdated>
     {
         private readonly IKmStandViewRepository _kmStandRepository;
 
@@ -17,7 +19,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
             _kmStandRepository = kmStandRepository;
         }
 
-        public void When(KmStandCreated @event)
+        public async Task When(KmStandCreated @event)
         {
             var kmstandView = _kmStandRepository.GetById(@event.Id);
             if (kmstandView == null)
@@ -27,7 +29,7 @@ namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
             }
         }
 
-        public void When(KmStandUpdated @event)
+        public async Task When(KmStandUpdated @event)
         {
             var kmstandView = _kmStandRepository.GetById(@event.Id);
             if (kmstandView != null)
@@ -39,5 +41,6 @@ namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
                 _kmStandRepository.SaveChanges();
             }
         }
+
     }
 }

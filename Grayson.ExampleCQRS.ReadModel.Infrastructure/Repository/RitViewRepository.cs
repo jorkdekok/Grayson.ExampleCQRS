@@ -1,12 +1,13 @@
-﻿using System;
-using System.Linq;
-
-using Grayson.ExampleCQRS.Domain.ReadModel.Model;
+﻿using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
 
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Grayson.ExampleCQRS.ReadModel.Infrastructure.Repository
 {
     public class RitViewRepository : IRitViewRepository
     {
@@ -32,6 +33,11 @@ namespace Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository
         public RitView FindByLastKmStandId(Guid kmstandId)
         {
             return _context.Ritten.Where(r => r.EindStandId == kmstandId).SingleOrDefault();
+        }
+
+        public IEnumerable<RitView> GetAll(int page, int pageSize)
+        {
+            throw new NotImplementedException();
         }
 
         public RitView GetById(Guid id)

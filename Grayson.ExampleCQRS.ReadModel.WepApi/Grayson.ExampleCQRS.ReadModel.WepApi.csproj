@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <DockerComposeProjectPath>..\Grayson.ExampleCQRS\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="SimpleInjector" Version="4.3.0" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc.Core" Version="4.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Domain\Grayson.ExampleCQRS.ReadModel.Domain.csproj" />
+    <ProjectReference Include="..\Grayson.ExampleCQRS.ReadModel.Infrastructure\Grayson.ExampleCQRS.ReadModel.Infrastructure.csproj" />
+    <ProjectReference Include="..\Grayson.Utils.Configuration\Grayson.Utils.Configuration.csproj" />
+  </ItemGroup>
+
+</Project>

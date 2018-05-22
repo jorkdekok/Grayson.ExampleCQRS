@@ -1,5 +1,7 @@
 ﻿using Grayson.ExampleCQRS.Infrastructure.Extensions;
-using Grayson.ExampleCQRS.Infrastructure.ReadModel.Repository;
+using Grayson.ExampleCQRS.Readmodel.Infrastructure.Repository;
+using Grayson.ExampleCQRS.ReadModel.Application.IntegrationEvents;
+using Grayson.ExampleCQRS.ReadModel.Application.Projections;
 using Grayson.SeedWork.DDD.Application.Integration;
 using Grayson.Utils.Configuration;
 using Grayson.Utils.Logging;
@@ -41,14 +43,15 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                     container,
                     new[] { typeof(KmStandViewRepository).Assembly });
 
-                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
+                //ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
 
                 ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterServices(container);
                 ExampleCQRS.Infrastructure.Registrations.InfrastructureModule.RegisterEventBus(container, config);
 
                 using (var eventBus = container.GetInstance<IIntegrationEventBus>())
                 {
-
+                    eventBus.Subscribe<KmStandCreated, KmStandProjectionService>();
+                    
                     Console.WriteLine("Listening for events.. Press enter to exit");
                     Console.ReadLine();
                 }

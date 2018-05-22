@@ -1,11 +1,13 @@
 ﻿@page "/fetchdata"
+@inherits WebBlazor.Redux.MyAppComponent
 @inject HttpClient Http
+@using WebBlazor.Redux
 
-<h1>Weather forecast</h1>
+<h1>Km standen</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (forecasts == null)
+@if (State.Kmstanden == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -14,39 +16,29 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>Stand</th>
                 <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Id</th>
+                <th>Adres</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var kmstand in State.Kmstanden)
             {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
+            <tr>
+                <td>@kmstand.stand</td>
+                <td>@kmstand.datum</td>
+                <td>@kmstand.id</td>
+                <td>@kmstand.adresId</td>
+            </tr>
             }
         </tbody>
     </table>
 }
 
 @functions {
-    WeatherForecast[] forecasts;
-
     protected override async Task OnInitAsync()
     {
-        forecasts = await Http.GetJsonAsync<WeatherForecast[]>("/sample-data/weather.json");
-    }
-
-    class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-        public int TemperatureC { get; set; }
-        public int TemperatureF { get; set; }
-        public string Summary { get; set; }
+        await ActionCreators.LoadKmStanden(Store.Dispatch, Http);
     }
 }

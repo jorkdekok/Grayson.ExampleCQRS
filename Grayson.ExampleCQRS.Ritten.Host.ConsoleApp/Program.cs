@@ -53,7 +53,7 @@ namespace Grayson.ExampleCQRS.Ritten.Host.ConsoleApp
                 DomainModule.RegisterAll(container);
                 ApplicationModule.RegisterAll(container);
                 InfrastructureModule.RegisterAll(container);
-                //InfrastructureModule.RegisterEventForwarder(container);
+                InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
                 RabbitMqModule.RegisterEventConsumers(container);
 

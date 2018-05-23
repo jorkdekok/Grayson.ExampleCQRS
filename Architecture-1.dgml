@@ -1,42 +1,195 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph DataVirtualized="True" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="(@1)" Category="CodeSchema_Assembly" Bounds="-4.9769600025229E-05,165.899421049642,173.266666666667,25" CodeSchemaProperty_StrongName="Grayson.Utils.DDD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(d7e481a3-db0f-4906-9ab5-7c9543d0e962.OutputPath)" Group="Collapsed" Label="Grayson.Utils.DDD.dll" />
-    <Node Id="(@4)" Category="CodeSchema_Assembly" Bounds="266.727464140934,140.283277090907,191.75,25" CodeSchemaProperty_StrongName="Grayson.Utils.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="NotFetched" FilePath="$(be12d899-318e-4fdb-83d4-02b1e3016b1d.OutputPath)" Group="Collapsed" Label="Grayson.Utils.Logging.dll" />
-    <Node Id="(@7 Namespace=Grayson.SeedWork.DDD.Application.Integration)" Category="CodeSchema_Namespace" Bounds="-221.465540995223,-25.9106874217712,310.333333333333,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Grayson‎.SeedWork‎.DDD‎.Application‎.Integration" />
-    <Node Id="(@9)" Category="CodeSchema_Assembly" Bounds="0,220.899521049642,221.243333333333,25" CodeSchemaProperty_StrongName="Grayson.Utils.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(059d4653-86de-48f5-82a1-9debec3833e9.OutputPath)" Group="Collapsed" Label="Grayson.Utils.Configuration.dll" />
-    <Node Id="@10" Category="CodeSchema_Namespace" Bounds="-221.465540995223,-80.9107874217712,248.783333333333,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Grayson‎.SeedWork‎.DDD‎.Application" />
-    <Node Id="@11" Category="CodeSchema_Namespace" Bounds="-13.3329070013727,89.1066701011122,230.113333333333,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Grayson‎.SeedWork‎.DDD‎.Domain" />
-    <Node Id="@12" Category="CodeSchema_Namespace" Bounds="158.86779233811,-25.8167665466239,259.746666666667,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Grayson‎.SeedWork‎.DDD‎.Infrastructure" />
-    <Node Id="@3" Category="CodeSchema_Assembly" Bounds="138.936147871224,-65.7522113884881,299.746666666667,85.0002" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" FilePath="$(bbdd1f5e-6247-4c47-a67d-35daffe2e02e.OutputPath)" Group="Expanded" Label="Grayson.SeedWork.DDD.Infrastructure.dll" UseManualLocation="True" />
-    <Node Id="@6" Category="CodeSchema_Assembly" Bounds="-33.3859691924001,49.1519734533761,270.113333333333,85" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" FilePath="$(afdfea06-4af9-4728-b20e-27372f001fc1.OutputPath)" Group="Expanded" Label="Grayson.SeedWork.DDD.Domain.dll" UseManualLocation="True" />
-    <Node Id="@8" Category="CodeSchema_Assembly" Bounds="-241.465540995223,-120.910887421771,350.333333333333,140.0003" CodeSchemaProperty_StrongName="Grayson.SeedWork.DDD.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="2" FilePath="$(67a88450-61b2-454b-bd71-c2b75c87f975.OutputPath)" Group="Expanded" Label="Grayson.SeedWork.DDD.Application.dll" UseManualLocation="True" />
+    <Node Id="@10" Category="CodeSchema_Assembly" Bounds="1592.27340490798,513.140557291164,303.073333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(01327226-6b43-4fca-a489-0756e6635f97.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Infrastructure.dll" />
+    <Node Id="@12" Category="CodeSchema_Assembly" Bounds="731.931604530439,30.482712555112,302.946666666667,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(d2d80e49-9f4a-44f1-b720-8daa11eb29a6.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.WebApi.dll" />
+    <Node Id="@14" Category="CodeSchema_Assembly" Bounds="731.776308006921,479.85859271669,302.9,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.ReadModel.WepApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(0791be65-0386-40db-af4e-b3b7667c9cbd.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.ReadModel.WepApi.dll" />
+    <Node Id="@16" Category="CodeSchema_Assembly" Bounds="534.869641340254,589.85859271669,302.713333333334,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.ReadModel.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(88d35169-0531-4afd-a429-3388bfcf92fc.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.ReadModel.Domain.dll" />
+    <Node Id="@18" Category="CodeSchema_Assembly" Bounds="1472.02493786377,140.482712555112,302.760000000001,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(e3c582da-f244-4b77-8a6b-2d28be2cb1bf.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Domain.dll" />
+    <Node Id="@20" Category="CodeSchema_Assembly" Bounds="1606.97840490798,568.140557291164,273.663333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(749195eb-33c0-4618-965d-f30db706d5a4.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Domain.dll" />
+    <Node Id="@22" Category="CodeSchema_Assembly" Bounds="168.609641340255,534.858642716215,321.233333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.ReadModel.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(616ea638-f187-492d-a7f0-87dcced248ea.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.ReadModel.Application.dll" />
+    <Node Id="@24" Category="CodeSchema_Assembly" Bounds="914.764937863772,85.4827125551121,321.28,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(96f700b6-723a-4247-bf51-09ed3b608b77.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Application.dll" />
+    <Node Id="@26" Category="CodeSchema_Assembly" Bounds="1269.71840490798,513.140557291164,292.183333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(4fca66af-9863-4557-8717-d0696a8d569f.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Application.dll" />
+    <Node Id="@28" Category="CodeSchema_Assembly" Bounds="-38.9753586597452,479.858542716515,352.403333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(f765939a-8435-49f2-bd1b-18dfd2846890.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.dll" />
+    <Node Id="@30" Category="CodeSchema_Assembly" Bounds="888.959937863772,-24.5172874448879,352.89,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(cff21c28-ee84-4898-84a9-1186592b515a.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp.dll" />
+    <Node Id="@32" Category="CodeSchema_Assembly" Bounds="1581.91340490798,458.140557291164,323.793333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Host.ConsoleApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(e37e23d2-7610-40f3-a20a-4faf612e6888.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Host.ConsoleApp.dll" />
+    <Node Id="@34" Category="CodeSchema_Assembly" Bounds="1096.24327119711,30.482712555112,356.323333333334,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Infrastructure.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(61a4481d-2763-4398-af02-f6a7ec7b1627.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Infrastructure.Test.dll">
+      <Category Ref="CodeMap_TestAsset" />
+      <Category Ref="CodeMap_TestProject" />
+      <Category Ref="FileSystem.Category.FileOfType.dll" />
+    </Node>
+    <Node Id="@36" Category="CodeSchema_Assembly" Bounds="1224.19673824131,458.140557291164,327.226666666666,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Infrastructure.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(f24d4988-5577-420a-9285-a2b1f8031bed.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Infrastructure.Test.dll">
+      <Category Ref="CodeMap_TestAsset" />
+      <Category Ref="CodeMap_TestProject" />
+      <Category Ref="FileSystem.Category.FileOfType.dll" />
+    </Node>
+    <Node Id="@38" Category="CodeSchema_Assembly" Bounds="1266.44827119711,85.482712555112,325.913333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Domain.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(ab8d03b7-2dd8-4fbf-afb4-728a180d3873.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Domain.Test.dll" />
+    <Node Id="@40" Category="CodeSchema_Assembly" Bounds="1925.90173824131,513.140557291164,297.816666666667,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Domain.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(d4d8dc80-1f40-4a12-84b4-9dfefbe609ab.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Domain.Test.dll">
+      <Category Ref="CodeMap_TestAsset" />
+      <Category Ref="CodeMap_TestProject" />
+      <Category Ref="FileSystem.Category.FileOfType.dll" />
+    </Node>
+    <Node Id="@42" Category="CodeSchema_Assembly" Bounds="1482.68827119711,30.482712555112,345.433333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Application.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(ec9e8a9a-8743-4cd6-ace8-ee0fec743e2c.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Application.Test.dll">
+      <Category Ref="CodeMap_TestAsset" />
+      <Category Ref="CodeMap_TestProject" />
+      <Category Ref="FileSystem.Category.FileOfType.dll" />
+    </Node>
+    <Node Id="@44" Category="CodeSchema_Assembly" Bounds="1224.19673824131,623.140557291164,316.336666666667,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.Ritten.Application.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(0a5884b8-e350-4fdc-a8a1-4298ccb13390.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.Ritten.Application.Test.dll">
+      <Category Ref="CodeMap_TestAsset" />
+      <Category Ref="CodeMap_TestProject" />
+      <Category Ref="FileSystem.Category.FileOfType.dll" />
+    </Node>
+    <Node Id="@6" Category="CodeSchema_Assembly" Bounds="520.164641340255,534.85859271669,332.123333333333,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.ReadModel.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(11fe2357-cb08-4780-8090-74dc01fa7fd6.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.ReadModel.Infrastructure.dll" />
+    <Node Id="@8" Category="CodeSchema_Assembly" Bounds="369.319937863772,30.4827125551122,332.17,25" CodeSchemaProperty_StrongName="Grayson.ExampleCQRS.KmStanden.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(545e3d7f-6b91-462a-b744-7baac7a90435.OutputPath)" Group="Collapsed" Label="Grayson.ExampleCQRS.KmStanden.Infrastructure.dll" />
+    <Node Id="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Category="CodeMap_SolutionFolder" Bounds="349.319937863772,-64.517537444888,1498.80166666667,250.0005" Group="Expanded" Label="KmStanden" UseManualLocation="True" />
+    <Node Id="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" Category="CodeMap_SolutionFolder" Bounds="-58.9753586597452,439.85839271669,1113.65166666667,195.0002999997" Group="Expanded" Label="ReadModel" UseManualLocation="True" />
+    <Node Id="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Category="CodeMap_SolutionFolder" Bounds="1204.19673824131,418.140290624508,1039.52166666667,250" Group="Expanded" Label="Ritten" UseManualLocation="True" />
   </Nodes>
   <Links>
-    <Link Source="@10" Target="@11" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="9">
-      <Category Ref="CodeSchema_Calls" />
-      <Category Ref="InheritsFrom" />
-    </Link>
-    <Link Source="@12" Target="@11" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="5">
-      <Category Ref="CodeSchema_Calls" />
+    <Link Source="@10" Target="@16" Category="CodeMap_ExternalReference" Bounds="896.360525771219,401.6875,645.12437321868,56.7118636839216" />
+    <Link Source="@10" Target="@18" Category="CodeMap_ProjectReference" Bounds="1716.41877745419,233.210113076337,375.801069534486,143.477386923663" />
+    <Link Source="@10" Target="@20" Category="References" Bounds="1743.81007157464,538.140557291139,0,21.0001" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="65">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_ReturnTypeLink" />
       <Category Ref="Implements" />
     </Link>
-    <Link Source="@3" Target="@12" Category="Contains" FetchingParent="@3" />
-    <Link Source="@3" Target="@6" Category="CodeMap_ProjectReference" Bounds="172.962188670171,36.3105649884853,90.2112367291844,27.3856565998785" />
-    <Link Source="@6" Target="@11" Category="Contains" FetchingParent="@6" />
-    <Link Source="@8" Target="(@7 Namespace=Grayson.SeedWork.DDD.Application.Integration)" Category="Contains" FetchingParent="@8" />
-    <Link Source="@8" Target="@10" Category="Contains" FetchingParent="@8" />
-    <Link Source="@8" Target="@6" Category="CodeMap_ProjectReference" Bounds="-2.80274983761177,27.982775252893,115.878869009084,46.4773012459214" />
+    <Link Source="@10" Target="@26" Category="CodeMap_ProjectReference" Bounds="1570.90173824131,525.640572691223,21.3716666666664,2.17191961837671E-06" />
+    <Link Source="@12" Target="@18" Category="CodeMap_ExternalReference" Bounds="1023.51165771484,55.4827117919922,449.154235839844,84.2096710205078" />
+    <Link Source="@12" Target="@24" Category="References" Bounds="927.041222161437,55.4827125551121,96.0754195897709,27.5216546092675" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@14" Target="@16" Category="References" Bounds="763.126770019531,504.858581542969,116.749816894531,83.3739624023438" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="5">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@14" Target="@6" Category="CodeSchema_Calls" Bounds="739.667536997082,504.85859271669,98.7860437371116,27.579859926605" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="@20" Target="@16" Category="CodeMap_ProjectReference" Bounds="905.554471874837,448.197051826897,641.292194791829,18.7916609790782" />
+    <Link Source="@20" Target="@18" Category="CodeMap_ProjectReference" Bounds="1708.47513509788,234.051243384593,392.059766142299,197.636256615407" />
+    <Link Source="@22" Target="@16" Category="References" Bounds="410.362745402982,559.858642716215,185.832067986289,28.629564279358" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="69">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@24" Target="@18" Category="References" Bounds="1199.95033579768,110.482812555112,289.954193634816,29.1012552897257" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="14">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@26" Target="@16" Category="CodeMap_ExternalReference" Bounds="846.617057073103,401.6875,416.564811613766,56.294693695313" />
+    <Link Source="@26" Target="@18" Category="References" Bounds="1412.29937446912,231.940176535342,655.659532494971,144.747323464658" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="8">
+      <Category Ref="CodeMap_ExternalReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@26" Target="@20" Category="References" Bounds="1490.35543576213,538.140590624508,170.033193711518,28.5116981392488" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="96">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FieldRead" />
+    </Link>
+    <Link Source="@28" Target="@16" Category="CodeMap_ExternalReference" Bounds="277.324005126953,504.858551025391,332.001800537109,83.3739929199219" />
+    <Link Source="@28" Target="@22" Category="References" Bounds="180.862592304825,504.858542716515,96.075419589291,27.5216546089798" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="@28" Target="@6" Category="CodeSchema_Calls" Bounds="261.998921849603,504.858542716516,290.499599332149,29.1029007072841" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="@30" Target="@16" Category="CodeMap_ExternalReference" Bounds="698.667846533137,0.482562555112006,359.022381380176,581.717238375963" />
+    <Link Source="@30" Target="@18" Category="CodeMap_ExternalReference" Bounds="1068.73852539063,0.482612550258636,403.927368164063,139.209770262241" />
+    <Link Source="@30" Target="@20" Category="CodeMap_ExternalReference" Bounds="1079.71346456189,0.482562555112006,643.010206339705,561.736910362951" />
+    <Link Source="@30" Target="@24" Category="CodeMap_ExternalReference" Bounds="1066.54129943402,0.48261255511207,6.91245661446169,76.0371610082137" />
+    <Link Source="@30" Target="@8" Category="CodeSchema_Calls" Bounds="664.811191751397,0.482612555112071,280.139419665697,29.0711247085949" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="5">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="@32" Target="@10" Category="CodeSchema_Calls" Bounds="1743.81007157464,483.140457291139,0,21.0001" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="6">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="@32" Target="@16" Category="CodeMap_ExternalReference" Bounds="839.422656553916,346.6875,758.939616173357,111.195302909861" />
+    <Link Source="@32" Target="@18" Category="CodeMap_ExternalReference" Bounds="1731.85080253526,232.260496440907,344.633565981689,89.4270035590926" />
+    <Link Source="@32" Target="@20" Category="CodeMap_ExternalReference" Bounds="1582.13916015625,483.140472412109,99.232177734375,83.2334899902344" />
+    <Link Source="@32" Target="@26" Category="References" Bounds="1499.2314230235,483.140457291139,170.03337472155,28.511763051244" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+      <Category Ref="CodeMap_ExternalReference" />
+    </Link>
+    <Link Source="@34" Target="@18" Category="CodeMap_ExternalReference" Bounds="1401.11657714844,55.4826393127441,216.581176757813,76.309871673584" />
+    <Link Source="@34" Target="@24" Category="References" Bounds="1129.30684125282,55.482637555112,99.8709677881816,27.6026166119064" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@36" Target="@10" Category="CodeMap_ProjectReference" Bounds="1468.71906441224,483.140490624483,185.287537594376,28.6259183151435" />
+    <Link Source="@36" Target="@16" Category="CodeMap_ExternalReference" Bounds="806.91334556252,346.6875,467.812563528389,110.432281954333" />
+    <Link Source="@36" Target="@18" Category="CodeMap_ExternalReference" Bounds="1413.9868496697,231.290004445624,624.165897745729,90.3974955543754" />
+    <Link Source="@36" Target="@20" Category="CodeMap_ExternalReference" Bounds="1458.95983886719,483.140502929688,213.586547851563,83.2334594726563" />
+    <Link Source="@36" Target="@26" Category="References" Bounds="1394.17369636805,483.140490624483,11.189608943007,21.9796289580913" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@38" Target="@18" Category="CodeMap_ProjectReference" Bounds="1473.49576678954,110.482737555112,97.1595930988337,27.5452955484288" />
+    <Link Source="@40" Target="@16" Category="CodeMap_ExternalReference" Bounds="904.979053737393,398.833224517797,961.274767978513,62.4707569982072" />
+    <Link Source="@40" Target="@18" Category="CodeMap_ExternalReference" Bounds="2023.31976034462,237.403170326372,96.2892294952335,139.284329673628" />
+    <Link Source="@40" Target="@20" Category="References" Bounds="1827.91547627476,538.140557291164,171.66745934919,28.5248562868492" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="15">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@42" Target="@18" Category="CodeMap_ExternalReference" Bounds="1629.55525654185,55.482637555112,22.2133242971188,76.3584411046199" />
+    <Link Source="@42" Target="@24" Category="References" Bounds="1216.18250566435,55.482637555112,307.404669801394,29.1505355774032" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="4">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@44" Target="@16" Category="CodeMap_ExternalReference" Bounds="905.548130058604,479.329243075819,258.517013823772,12.3203253665808" />
+    <Link Source="@44" Target="@18" Category="CodeMap_ExternalReference" Bounds="1358.22778640633,232.952511177814,730.644171851017,253.734988822185" />
+    <Link Source="@44" Target="@20" Category="CodeMap_ExternalReference" Bounds="1464.51176205543,594.494573511156,188.254040105422,28.6460171133524" />
+    <Link Source="@44" Target="@26" Category="CodeMap_ProjectReference" Bounds="1386.16563975646,546.751380458937,23.2257921271596,76.3892101655719" />
+    <Link Source="@6" Target="@16" Category="References" Bounds="686.226308006921,559.85859271669,0,21" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="49">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+      <Category Ref="Implements" />
+    </Link>
+    <Link Source="@8" Target="@16" Category="CodeMap_ExternalReference" Bounds="204.005369223174,229.999761538435,515.894286350304,359.851881346257" />
+    <Link Source="@8" Target="@18" Category="References" Bounds="594.854431152344,55.4827117919922,868.179626464844,90.2787628173828" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="7">
+      <Category Ref="CodeMap_ProjectReference" />
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@8" Target="@20" Category="References" Bounds="1069.06649557577,120,582.953191947892,307.488607124995" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="@8" Target="@24" Category="CodeSchema_Calls" Bounds="658.131987450955,55.4827125551122,285.59222300008,29.0881496744938" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1">
+      <Category Ref="CodeMap_ProjectReference" />
+    </Link>
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@12" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@18" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@24" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@30" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@34" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@38" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@42" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" Target="@8" Category="Contains" FetchingParent="KmStanden{140921D2-94BA-4B00-BCD9-C688E4D9B673}" />
+    <Link Source="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" Target="@14" Category="Contains" FetchingParent="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" />
+    <Link Source="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" Target="@16" Category="Contains" FetchingParent="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" />
+    <Link Source="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" Target="@22" Category="Contains" FetchingParent="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" />
+    <Link Source="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" Target="@28" Category="Contains" FetchingParent="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" />
+    <Link Source="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" Target="@6" Category="Contains" FetchingParent="ReadModel{95ECB565-239B-4A37-B334-6393015CF530}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@10" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@20" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@26" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@32" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@36" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@40" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
+    <Link Source="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" Target="@44" Category="Contains" FetchingParent="Ritten{103249F4-2D45-4D74-BB0A-BC899862126E}" />
   </Links>
   <Categories>
+    <Category Id="CodeMap_ExternalReference" Label="External Reference" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
     <Category Id="CodeMap_ProjectReference" Label="Project Reference" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
+    <Category Id="CodeMap_SolutionFolder" Label="Solution Folder" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Solution Folder" />
+    <Category Id="CodeMap_TestAsset" Label="Test Asset" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Test Assets" />
+    <Category Id="CodeMap_TestProject" Label="Test Project" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Test Projects" />
     <Category Id="CodeSchema_Assembly" Label="Assembly" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Assemblies" />
     <Category Id="CodeSchema_Calls" Label="Calls" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Called By" OutgoingActionLabel="Calls" />
-    <Category Id="CodeSchema_Namespace" Label="Namespace" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" NavigationActionLabel="Namespaces" />
+    <Category Id="CodeSchema_FieldRead" Label="Field Read" BasedOn="CodeSchema_FieldReference" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Read By" OutgoingActionLabel="Reads Fields" />
+    <Category Id="CodeSchema_FieldReference" Label="Field Reference" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References Fields" />
+    <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
     <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
     <Category Id="File" Label="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Files" />
+    <Category Id="FileSystem.Category.FileOfType.dll" BasedOn="CodeSchema_Assembly" CanBeDataDriven="True" IsProviderRoot="False" />
     <Category Id="Implements" Label="Implements" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Implemented by" OutgoingActionLabel="Implements" />
-    <Category Id="InheritsFrom" Label="Inherits From" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Inherited By" OutgoingActionLabel="Inherits From" />
     <Category Id="References" Label="References" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
   </Categories>
   <Properties>
@@ -49,7 +202,6 @@
     <Property Id="DelayedChildNodesState" Label="Delayed Child Nodes State" Description="Unspecified if the delayed child nodes state is not specified. NotFetched if the group contains child nodes that are not fetched into the graph yet. Fetched if the group has all its delayed child nodes already fetched." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
     <Property Id="DelayedCrossGroupLinksState" Label="Delayed Cross-Group Links State" Description="Unspecified if the delayed cross-group links state is not specified. NotFetched if delayed cross-group links on this node are not fetched into the graph yet. Fetched if all delayed cross-group links have already fetched." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
     <Property Id="Expression" DataType="System.String" />
-    <Property Id="FetchedChildrenCount" DataType="System.Int32" />
     <Property Id="FetchingParent" DataType="Microsoft.VisualStudio.GraphModel.GraphNodeId" />
     <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
     <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
@@ -58,6 +210,7 @@
     <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
     <Property Id="IsContainment" DataType="System.Boolean" />
     <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
     <Property Id="IsSourceVirtualized" Label="Link Source Virtualized" Description="If true, the link source end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
     <Property Id="IsTargetVirtualized" Label="Link Target Virtualized" Description="If true, the link target end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
     <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
@@ -74,21 +227,48 @@
   </Properties>
   <QualifiedNames>
     <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
-    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
   </QualifiedNames>
   <IdentifierAliases>
-    <Alias n="1" Uri="Assembly=$(d7e481a3-db0f-4906-9ab5-7c9543d0e962.OutputPathUri)" />
-    <Alias n="2" Uri="Assembly=$(bbdd1f5e-6247-4c47-a67d-35daffe2e02e.OutputPathUri)" />
-    <Alias n="3" Id="(@2)" />
-    <Alias n="4" Uri="Assembly=$(be12d899-318e-4fdb-83d4-02b1e3016b1d.OutputPathUri)" />
-    <Alias n="5" Uri="Assembly=$(afdfea06-4af9-4728-b20e-27372f001fc1.OutputPathUri)" />
+    <Alias n="5" Uri="Assembly=$(11fe2357-cb08-4780-8090-74dc01fa7fd6.OutputPathUri)" />
     <Alias n="6" Id="(@5)" />
-    <Alias n="7" Uri="Assembly=$(67a88450-61b2-454b-bd71-c2b75c87f975.OutputPathUri)" />
+    <Alias n="7" Uri="Assembly=$(545e3d7f-6b91-462a-b744-7baac7a90435.OutputPathUri)" />
     <Alias n="8" Id="(@7)" />
-    <Alias n="9" Uri="Assembly=$(059d4653-86de-48f5-82a1-9debec3833e9.OutputPathUri)" />
-    <Alias n="10" Id="(@7 Namespace=Grayson.SeedWork.DDD.Application)" />
-    <Alias n="11" Id="(@5 Namespace=Grayson.SeedWork.DDD.Domain)" />
-    <Alias n="12" Id="(@2 Namespace=Grayson.SeedWork.DDD.Infrastructure)" />
+    <Alias n="9" Uri="Assembly=$(01327226-6b43-4fca-a489-0756e6635f97.OutputPathUri)" />
+    <Alias n="10" Id="(@9)" />
+    <Alias n="11" Uri="Assembly=$(d2d80e49-9f4a-44f1-b720-8daa11eb29a6.OutputPathUri)" />
+    <Alias n="12" Id="(@11)" />
+    <Alias n="13" Uri="Assembly=$(0791be65-0386-40db-af4e-b3b7667c9cbd.OutputPathUri)" />
+    <Alias n="14" Id="(@13)" />
+    <Alias n="15" Uri="Assembly=$(88d35169-0531-4afd-a429-3388bfcf92fc.OutputPathUri)" />
+    <Alias n="16" Id="(@15)" />
+    <Alias n="17" Uri="Assembly=$(e3c582da-f244-4b77-8a6b-2d28be2cb1bf.OutputPathUri)" />
+    <Alias n="18" Id="(@17)" />
+    <Alias n="19" Uri="Assembly=$(749195eb-33c0-4618-965d-f30db706d5a4.OutputPathUri)" />
+    <Alias n="20" Id="(@19)" />
+    <Alias n="21" Uri="Assembly=$(616ea638-f187-492d-a7f0-87dcced248ea.OutputPathUri)" />
+    <Alias n="22" Id="(@21)" />
+    <Alias n="23" Uri="Assembly=$(96f700b6-723a-4247-bf51-09ed3b608b77.OutputPathUri)" />
+    <Alias n="24" Id="(@23)" />
+    <Alias n="25" Uri="Assembly=$(4fca66af-9863-4557-8717-d0696a8d569f.OutputPathUri)" />
+    <Alias n="26" Id="(@25)" />
+    <Alias n="27" Uri="Assembly=$(f765939a-8435-49f2-bd1b-18dfd2846890.OutputPathUri)" />
+    <Alias n="28" Id="(@27)" />
+    <Alias n="29" Uri="Assembly=$(cff21c28-ee84-4898-84a9-1186592b515a.OutputPathUri)" />
+    <Alias n="30" Id="(@29)" />
+    <Alias n="31" Uri="Assembly=$(e37e23d2-7610-40f3-a20a-4faf612e6888.OutputPathUri)" />
+    <Alias n="32" Id="(@31)" />
+    <Alias n="33" Uri="Assembly=$(61a4481d-2763-4398-af02-f6a7ec7b1627.OutputPathUri)" />
+    <Alias n="34" Id="(@33)" />
+    <Alias n="35" Uri="Assembly=$(f24d4988-5577-420a-9285-a2b1f8031bed.OutputPathUri)" />
+    <Alias n="36" Id="(@35)" />
+    <Alias n="37" Uri="Assembly=$(ab8d03b7-2dd8-4fbf-afb4-728a180d3873.OutputPathUri)" />
+    <Alias n="38" Id="(@37)" />
+    <Alias n="39" Uri="Assembly=$(d4d8dc80-1f40-4a12-84b4-9dfefbe609ab.OutputPathUri)" />
+    <Alias n="40" Id="(@39)" />
+    <Alias n="41" Uri="Assembly=$(ec9e8a9a-8743-4cd6-ace8-ee0fec743e2c.OutputPathUri)" />
+    <Alias n="42" Id="(@41)" />
+    <Alias n="43" Uri="Assembly=$(0a5884b8-e350-4fdc-a8a1-4298ccb13390.OutputPathUri)" />
+    <Alias n="44" Id="(@43)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Node" GroupLabel="Results" ValueLabel="True">
@@ -308,17 +488,51 @@
     </Style>
   </Styles>
   <Paths>
+    <Path Id="01327226-6b43-4fca-a489-0756e6635f97.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Infrastructure\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.Ritten.Infrastructure.dll" />
+    <Path Id="01327226-6b43-4fca-a489-0756e6635f97.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Infrastructure/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.Ritten.Infrastructure.dll" />
     <Path Id="059d4653-86de-48f5-82a1-9debec3833e9.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.Utils.Configuration\bin\Debug\netstandard2.0\Grayson.Utils.Configuration.dll" />
-    <Path Id="059d4653-86de-48f5-82a1-9debec3833e9.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.Utils.Configuration/bin/Debug/netstandard2.0/Grayson.Utils.Configuration.dll" />
+    <Path Id="0791be65-0386-40db-af4e-b3b7667c9cbd.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.ReadModel.WepApi\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.ReadModel.WepApi.dll" />
+    <Path Id="0791be65-0386-40db-af4e-b3b7667c9cbd.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.ReadModel.WepApi/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.ReadModel.WepApi.dll" />
+    <Path Id="0a5884b8-e350-4fdc-a8a1-4298ccb13390.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Application.Test\bin\Debug\net4.7.1\Grayson.ExampleCQRS.Ritten.Application.Test.dll" />
+    <Path Id="0a5884b8-e350-4fdc-a8a1-4298ccb13390.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Application.Test/bin/Debug/net4.7.1/Grayson.ExampleCQRS.Ritten.Application.Test.dll" />
+    <Path Id="11fe2357-cb08-4780-8090-74dc01fa7fd6.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.ReadModel.Infrastructure\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.ReadModel.Infrastructure.dll" />
+    <Path Id="11fe2357-cb08-4780-8090-74dc01fa7fd6.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.ReadModel.Infrastructure/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.ReadModel.Infrastructure.dll" />
+    <Path Id="4fca66af-9863-4557-8717-d0696a8d569f.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Application\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.Ritten.Application.dll" />
+    <Path Id="4fca66af-9863-4557-8717-d0696a8d569f.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Application/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.Ritten.Application.dll" />
+    <Path Id="545e3d7f-6b91-462a-b744-7baac7a90435.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Infrastructure\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.KmStanden.Infrastructure.dll" />
+    <Path Id="545e3d7f-6b91-462a-b744-7baac7a90435.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Infrastructure/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.KmStanden.Infrastructure.dll" />
+    <Path Id="616ea638-f187-492d-a7f0-87dcced248ea.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.ReadModel.Application\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.ReadModel.Application.dll" />
+    <Path Id="616ea638-f187-492d-a7f0-87dcced248ea.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.ReadModel.Application/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.ReadModel.Application.dll" />
+    <Path Id="61a4481d-2763-4398-af02-f6a7ec7b1627.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Infrastructure.Test\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.KmStanden.Infrastructure.Test.dll" />
+    <Path Id="61a4481d-2763-4398-af02-f6a7ec7b1627.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Infrastructure.Test/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.KmStanden.Infrastructure.Test.dll" />
     <Path Id="67a88450-61b2-454b-bd71-c2b75c87f975.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.SeedWork.DDD.Application\bin\Debug\netstandard2.0\Grayson.SeedWork.DDD.Application.dll" />
-    <Path Id="67a88450-61b2-454b-bd71-c2b75c87f975.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.SeedWork.DDD.Application/bin/Debug/netstandard2.0/Grayson.SeedWork.DDD.Application.dll" />
+    <Path Id="749195eb-33c0-4618-965d-f30db706d5a4.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Domain\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.Ritten.Domain.dll" />
+    <Path Id="749195eb-33c0-4618-965d-f30db706d5a4.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Domain/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.Ritten.Domain.dll" />
+    <Path Id="88d35169-0531-4afd-a429-3388bfcf92fc.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.ReadModel.Domain\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.ReadModel.Domain.dll" />
+    <Path Id="88d35169-0531-4afd-a429-3388bfcf92fc.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.ReadModel.Domain/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.ReadModel.Domain.dll" />
+    <Path Id="96f700b6-723a-4247-bf51-09ed3b608b77.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Application\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.KmStanden.Application.dll" />
+    <Path Id="96f700b6-723a-4247-bf51-09ed3b608b77.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Application/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.KmStanden.Application.dll" />
+    <Path Id="ab8d03b7-2dd8-4fbf-afb4-728a180d3873.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Domain.Test\bin\Debug\net471\Grayson.ExampleCQRS.KmStanden.Domain.Test.dll" />
+    <Path Id="ab8d03b7-2dd8-4fbf-afb4-728a180d3873.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Domain.Test/bin/Debug/net471/Grayson.ExampleCQRS.KmStanden.Domain.Test.dll" />
     <Path Id="afdfea06-4af9-4728-b20e-27372f001fc1.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.SeedWork.DDD.Domain\bin\Debug\netstandard2.0\Grayson.SeedWork.DDD.Domain.dll" />
-    <Path Id="afdfea06-4af9-4728-b20e-27372f001fc1.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.SeedWork.DDD.Domain/bin/Debug/netstandard2.0/Grayson.SeedWork.DDD.Domain.dll" />
     <Path Id="bbdd1f5e-6247-4c47-a67d-35daffe2e02e.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.Seedwork.DDD.Infrastructure\bin\Debug\netstandard2.0\Grayson.SeedWork.DDD.Infrastructure.dll" />
-    <Path Id="bbdd1f5e-6247-4c47-a67d-35daffe2e02e.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.Seedwork.DDD.Infrastructure/bin/Debug/netstandard2.0/Grayson.SeedWork.DDD.Infrastructure.dll" />
     <Path Id="be12d899-318e-4fdb-83d4-02b1e3016b1d.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.Utils.Logging\bin\Debug\netstandard2.0\Grayson.Utils.Logging.dll" />
-    <Path Id="be12d899-318e-4fdb-83d4-02b1e3016b1d.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.Utils.Logging/bin/Debug/netstandard2.0/Grayson.Utils.Logging.dll" />
+    <Path Id="cff21c28-ee84-4898-84a9-1186592b515a.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp.dll" />
+    <Path Id="cff21c28-ee84-4898-84a9-1186592b515a.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp.dll" />
+    <Path Id="d2d80e49-9f4a-44f1-b720-8daa11eb29a6.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.WebApi\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.KmStanden.WebApi.dll" />
+    <Path Id="d2d80e49-9f4a-44f1-b720-8daa11eb29a6.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.WebApi/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.KmStanden.WebApi.dll" />
+    <Path Id="d4d8dc80-1f40-4a12-84b4-9dfefbe609ab.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Domain.Test\bin\Debug\net471\Grayson.ExampleCQRS.Ritten.Domain.Test.dll" />
+    <Path Id="d4d8dc80-1f40-4a12-84b4-9dfefbe609ab.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Domain.Test/bin/Debug/net471/Grayson.ExampleCQRS.Ritten.Domain.Test.dll" />
     <Path Id="d7e481a3-db0f-4906-9ab5-7c9543d0e962.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.Utils.DDD\bin\Debug\netstandard2.0\Grayson.Utils.DDD.dll" />
-    <Path Id="d7e481a3-db0f-4906-9ab5-7c9543d0e962.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.Utils.DDD/bin/Debug/netstandard2.0/Grayson.Utils.DDD.dll" />
+    <Path Id="e37e23d2-7610-40f3-a20a-4faf612e6888.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Host.ConsoleApp\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.Ritten.Host.ConsoleApp.dll" />
+    <Path Id="e37e23d2-7610-40f3-a20a-4faf612e6888.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Host.ConsoleApp/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.Ritten.Host.ConsoleApp.dll" />
+    <Path Id="e3c582da-f244-4b77-8a6b-2d28be2cb1bf.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Domain\bin\Debug\netstandard2.0\Grayson.ExampleCQRS.KmStanden.Domain.dll" />
+    <Path Id="e3c582da-f244-4b77-8a6b-2d28be2cb1bf.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Domain/bin/Debug/netstandard2.0/Grayson.ExampleCQRS.KmStanden.Domain.dll" />
+    <Path Id="ec9e8a9a-8743-4cd6-ace8-ee0fec743e2c.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.KmStanden.Application.Test\bin\Debug\net4.7.1\Grayson.ExampleCQRS.KmStanden.Application.Test.dll" />
+    <Path Id="ec9e8a9a-8743-4cd6-ace8-ee0fec743e2c.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.KmStanden.Application.Test/bin/Debug/net4.7.1/Grayson.ExampleCQRS.KmStanden.Application.Test.dll" />
+    <Path Id="f24d4988-5577-420a-9285-a2b1f8031bed.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Ritten.Infrastructure.Test\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.Ritten.Infrastructure.Test.dll" />
+    <Path Id="f24d4988-5577-420a-9285-a2b1f8031bed.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Ritten.Infrastructure.Test/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.Ritten.Infrastructure.Test.dll" />
+    <Path Id="f765939a-8435-49f2-bd1b-18dfd2846890.OutputPath" Value="C:\Sources\Repos\Grayson.ExampleCQRS\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp\bin\Debug\netcoreapp2.0\Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.dll" />
+    <Path Id="f765939a-8435-49f2-bd1b-18dfd2846890.OutputPathUri" Value="file:///C:/Sources/Repos/Grayson.ExampleCQRS/Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp/bin/Debug/netcoreapp2.0/Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp.dll" />
   </Paths>
 </DirectedGraph>

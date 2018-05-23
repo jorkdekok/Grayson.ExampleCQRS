@@ -1,8 +1,8 @@
 ﻿using Grayson.ExampleCQRS.Infrastructure;
 using Grayson.ExampleCQRS.Infrastructure.EventSourcing;
-using Grayson.ExampleCQRS.Infrastructure.MessageBus;
 using Grayson.ExampleCQRS.Infrastructure.Repository;
 using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+using Grayson.ExampleCQRS.Ritten.Infrastructure.Integration;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.ReadModel.Repository;
 using Grayson.ExampleCQRS.Ritten.Infrastructure.Repository;
 using Grayson.SeedWork.DDD.Domain;

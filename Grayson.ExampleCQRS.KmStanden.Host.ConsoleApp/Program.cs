@@ -50,8 +50,6 @@ namespace Grayson.ExampleCQRS.KmStanden.Host.ConsoleApp
                 InfrastructureModule.RegisterEventForwarder(container);
                 RabbitMqModule.RegisterCommandConsumers(container);
 
-                ReadModel.Infrastructure.Registrations.InfrastructureModule.RegisterAll(container);
-
                 var bus = Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
                     var host = cfg.Host(new Uri(configuration["CommandBusConnection"]), hst =>

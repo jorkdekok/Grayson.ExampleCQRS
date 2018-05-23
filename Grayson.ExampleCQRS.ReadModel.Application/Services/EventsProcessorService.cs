@@ -1,13 +1,16 @@
-﻿using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
+﻿using Grayson.ExampleCQRS.ReadModel.Application.IntegrationEvents;
 using Grayson.SeedWork.DDD.Application;
-using Grayson.SeedWork.DDD.Domain;
+using Grayson.SeedWork.DDD.Application.Integration;
+
+using System.Threading.Tasks;
 
 namespace Grayson.ExampleCQRS.Application.ReadModel.Services
 {
-    public class EventsProcessorService : ApplicationService, IDomainEventHandler<KmStandCreated>
+    public class EventsProcessorService : ApplicationService, IIntegrationEventHandler<KmStandCreated>
     {
-        public void When(KmStandCreated @event)
+        async Task IIntegrationEventHandler<KmStandCreated>.When(KmStandCreated @event)
         {
+            throw new System.NotImplementedException();
         }
     }
 }

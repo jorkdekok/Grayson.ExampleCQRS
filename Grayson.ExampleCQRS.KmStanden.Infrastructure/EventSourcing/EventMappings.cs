@@ -1,5 +1,5 @@
 ﻿using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+//using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
 using MongoDB.Bson.Serialization;
 
 namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.EventSourcing
@@ -20,8 +20,8 @@ namespace Grayson.ExampleCQRS.KmStanden.Infrastructure.EventSourcing
                 }
 
                 // Rit events
-                AutoMapClass<RitCreated>();
-                AutoMapClass<RitUpdated>();
+                //AutoMapClass<RitCreated>();
+                //AutoMapClass<RitUpdated>();
 
                 // KmStand events
                 AutoMapClass<KmStandCreated>();

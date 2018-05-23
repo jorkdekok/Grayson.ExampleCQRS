@@ -51,7 +51,9 @@ namespace Grayson.ExampleCQRS.Readmodel.Host.ConsoleApp
                 using (var eventBus = container.GetInstance<IIntegrationEventBus>())
                 {
                     eventBus.Subscribe<KmStandCreated, KmStandProjectionService>();
-                    
+                    eventBus.Subscribe<RitCreated, RitProjectionService>();
+                    eventBus.Subscribe<RitUpdated, RitProjectionService>();
+
                     Console.WriteLine("Listening for events.. Press enter to exit");
                     Console.ReadLine();
                 }

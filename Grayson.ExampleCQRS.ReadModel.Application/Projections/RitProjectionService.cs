@@ -1,15 +1,16 @@
 ﻿using Grayson.ExampleCQRS.Domain.ReadModel.Model;
 using Grayson.ExampleCQRS.Domain.ReadModel.Repository;
-using Grayson.ExampleCQRS.KmStanden.Domain.AggregatesModel.KmStandAggregate;
-using Grayson.ExampleCQRS.Ritten.Domain.AggregatesModel.RitAggregate;
+using Grayson.ExampleCQRS.ReadModel.Application.IntegrationEvents;
 using Grayson.SeedWork.DDD.Application;
-using Grayson.SeedWork.DDD.Domain;
+using Grayson.SeedWork.DDD.Application.Integration;
 
-namespace Grayson.ExampleCQRS.Application.ReadModel.Projections
+using System.Threading.Tasks;
+
+namespace Grayson.ExampleCQRS.ReadModel.Application.Projections
 {
     public class RitProjectionService : ApplicationService,
-        IDomainEventHandler<RitCreated>,
-        IDomainEventHandler<RitUpdated>
+        IIntegrationEventHandler<RitCreated>,
+        IIntegrationEventHandler<RitUpdated>
     {
         private readonly IKmStandViewRepository _kmStandRepository;
         private readonly IRitViewRepository _ritViewRepository;
@@ -43,7 +44,7 @@ namespace Grayson.ExampleCQRS.Application.ReadModel.Projections
             }
         }
 
-        public void When(RitUpdated @event)
+        public async Task When(RitUpdated @event)
         {
             var ritView = _ritViewRepository.GetById(@event.Id);
             if (ritView != null)
@@ -58,7 +59,7 @@ namespace Grayson.ExampleCQRS.Application.ReadModel.Projections
             }
         }
 
-        public void When(RitCreated @event)
+        public async Task When(RitCreated @event)
         {
             var ritView = _ritViewRepository.GetById(@event.Id);
             if (ritView == null)

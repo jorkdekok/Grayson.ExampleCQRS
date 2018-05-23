@@ -26,9 +26,17 @@ namespace WebBlazor.Redux
 
         public static async Task AddKmStand(KmStand kmstand, Dispatcher<IAction> dispatch, HttpClient http)
         {
-            //dispatch(new AddNewKmStandAction(kmstand));
+            KmStandPost data = new KmStandPost() { stand = kmstand.stand, datum = kmstand.datum };
 
-            await http.PostJsonAsync<KmStand>("http://localhost:6001/api/v1/KmStanden", kmstand);
+            await http.SendJsonAsync(HttpMethod.Post, "http://localhost:6001/api/v1/KmStanden", kmstand);
+
+            dispatch(new AddNewKmStandAction(kmstand));
+        }
+
+        private class KmStandPost
+        {
+            public int stand { get; set; }
+            public DateTime datum { get; set; }
 
         }
     }

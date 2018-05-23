@@ -6,24 +6,75 @@
     </div>
     <div class="form-group">
         <label>Datum</label>
-        <input class="form-control" type="date" placeholder="datum" bind="@newKmStand.datum" />
+        <input class="form-control" type="date" placeholder="datum" bind="@newKmStand.inputDate" />
+    </div>
+    <div class="form-group">
+        <label>Tijd</label>
+        <input class="form-control" type="time" placeholder="tijd" bind="@newKmStand.inputTime" />
     </div>
 </div>
-<button class="btn btn-primary" onclick="@AddKmStand">Add</button>
+<div>
+    <button class="btn btn-primary" onclick="@(async () => await @AddKmStand())">Add</button>
+</div>
 
-<p>@status</p>
+@if (ShowAlertOk)
+{
+<div class="alert alert-success" role="alert" >
+    New Km stand added.
+</div>
+}
+@if (ShowAlertError)
+{
+<div class="alert alert-danger" role="alert" >
+    This is a danger alert—check it out!
+</div>
+}
+
+<p>@message</p>
 
 @functions {
-KmStand newKmStand = new KmStand();
-string status;
+    KmStand newKmStand = new KmStand();
+    bool ShowAlertOk = false;
+    bool ShowAlertError = false;
+    string message;
 
-[Parameter]
-private Action<KmStand> OnAdded { get; set; }
+    [Parameter]
+    private Func<KmStand, Task> OnAdded { get; set; }
 
-void AddKmStand()
-{
-    status = "added.";
-    OnAdded?.Invoke(newKmStand);
-}
+    protected override void OnInit()
+    {
+        newKmStand.datum = DateTime.Now;
+        newKmStand.inputDate = newKmStand.datum.ToString("yyyy-MM-dd");
+        newKmStand.inputTime = newKmStand.datum.ToString("hh:mm");
+
+        Console.WriteLine($"Date: {newKmStand.inputDate}");
+        Console.WriteLine($"Time: {newKmStand.inputTime}");
+    }
+
+
+    async Task AddKmStand()
+    {
+        Console.WriteLine($"Date: {newKmStand.inputDate}");
+        Console.WriteLine($"Time: {newKmStand.inputTime}");
+
+        newKmStand.ParseInputDateTime();
+
+        Console.WriteLine($"datum: {newKmStand.datum}");
+
+        try
+        {
+            await OnAdded?.Invoke(newKmStand);
+
+            message = "";
+            ShowAlertOk = true;
+            ShowAlertError = false;
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+            
+            ShowAlertError = true;
+        }
+    }
 
 }

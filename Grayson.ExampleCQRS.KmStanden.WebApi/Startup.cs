@@ -37,6 +37,14 @@ namespace Grayson.ExampleCQRS.KmStanden.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
             IntegrateSimpleInjector(services);
 
@@ -66,6 +74,8 @@ namespace Grayson.ExampleCQRS.KmStanden.WebApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            // global policy - assign here or on each controller
+            app.UseCors("CorsPolicy");
             app.UseMvc();
         }
 

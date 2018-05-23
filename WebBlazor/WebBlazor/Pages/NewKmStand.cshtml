@@ -13,21 +13,11 @@
 @functions {
     string status;
 
-    public void Added(KmStand kmstand)
+    public async Task Added(KmStand kmstand)
     {
         status = "added.";
-        //Dispatch(new AddNewKmStandAction(kmstand));
-        //ActionCreators.AddKmStand(kmstand, Store.Dispatch, Http).Wait();
-        KmStandPost data = new KmStandPost() { stand = kmstand.stand, datum = kmstand.datum };
-
-
-        Http.PostJsonAsync<KmStandPost>("http://localhost:6001/api/v1/KmStanden", data).Wait();
+        
+        await ActionCreators.AddKmStand(kmstand, Store.Dispatch, Http);
     }
-
-    class KmStandPost
-    {
-        public int stand { get; set; }
-        public DateTime datum { get; set; }
-
-    }
+    
 }

@@ -87,8 +87,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{C4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grayson.ExampleCQRS.ReadModel.WepApi", "Grayson.ExampleCQRS.ReadModel.WepApi\Grayson.ExampleCQRS.ReadModel.WepApi.csproj", "{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreAngular", "WebCoreAngular\WebCoreAngular.csproj", "{ABB7663D-D325-4EC1-8AC5-AA76C2C36765}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,10 +225,6 @@ Global
 		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0791BE65-0386-40DB-AF4E-B3B7667C9CBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABB7663D-D325-4EC1-8AC5-AA76C2C36765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABB7663D-D325-4EC1-8AC5-AA76C2C36765}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABB7663D-D325-4EC1-8AC5-AA76C2C36765}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABB7663D-D325-4EC1-8AC5-AA76C2C36765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

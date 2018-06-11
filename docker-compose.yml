@@ -54,12 +54,6 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
-  webcoreangular:
-    image: webcoreangular
-    build:
-      context: .
-      #dockerfile: WebCoreAngular/Dockerfile
-
 volumes:
   sqlvolume:
 

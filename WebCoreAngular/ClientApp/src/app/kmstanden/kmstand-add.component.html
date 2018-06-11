@@ -1,0 +1,41 @@
+<div class="container">
+
+  <h1> {{ pageTitle }}</h1>
+  <form #form="ngForm" novalidate>
+
+    <div class="row">
+      <div class="form-group">
+        <label>Datum</label>
+        <input type="text" class="form-control" required placeholder="Datepicker" name="datum" 
+         
+          
+          bsDatepicker
+                    >
+
+      </div>
+    </div>
+
+    <div class="form-group has-danger">
+      <label class="control-label">Stand</label>
+      <input #stand="ngModel" type="number" class="form-control" required placeholder="00000" name="stand" [(ngModel)]="model.stand"
+        [class.is-invalid]="stand.invalid && stand.touched">
+      <div class="invalid-feedback">
+        Stand is required.
+      </div>
+    </div>
+
+    <!-- <div class="form-group">
+      <label>Primary Language</label>
+      <select #primaryLanguage class="form-control" name="primaryLanguage" (blur)="validatePrimaryLanguage(primaryLanguage.value)"
+        (change)="validatePrimaryLanguage(primaryLanguage.value)" [(ngModel)]="model.primaryLanguage" [class.is-invalid]="hasPrimaryLanguageError">
+        <option value="default">Select a language...</option>
+        <option *ngFor="let lang of languages">
+          {{ lang }}
+        </option>
+      </select>
+    </div> -->
+
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Ok</button>
+
+  </form>
+</div>

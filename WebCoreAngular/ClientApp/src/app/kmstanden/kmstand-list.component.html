@@ -1,0 +1,30 @@
+
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+      {{ pageTitle }}
+  </div>
+  <div class='panel-body'>
+        <div class='table-responsive'>
+          <table class='table'
+                  *ngIf='kmstanden && kmstanden.length'>
+              <thead>
+                  <tr>
+                      <th>Datum</th>
+                      <th>Stand</th>
+                      <th>Id</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor='let kmstand of kmstanden'>
+                      <td>{{ kmstand.datum | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                      <td>{{ kmstand.stand }}</td>
+                      <td><a [routerLink]="['/kmstanden', kmstand.id]">
+                        {{ kmstand.id }}
+                        </a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

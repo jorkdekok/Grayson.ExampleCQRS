@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
   declarations: [],
   exports: [
     CommonModule,
-    FormsModule
-  ]
+    FormsModule,
+    ]
 })
 export class SharedModule { }

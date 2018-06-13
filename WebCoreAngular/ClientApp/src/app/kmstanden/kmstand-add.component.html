@@ -1,17 +1,26 @@
 <div class="container">
 
   <h1> {{ pageTitle }}</h1>
-  <form #form="ngForm" novalidate>
+  <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
     <div class="row">
       <div class="form-group">
         <label>Datum</label>
-        <input type="text" class="form-control" required placeholder="Datepicker" name="datum" 
-         
-          
-          bsDatepicker
-                    >
+        <!-- <input type="text" class="form-control" required placeholder="Datepicker" name="datum" [(ngModel)]="model.datum" bsDatepicker
+          [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"> -->
+        <div class="row align-items-center">
 
+          <div class="col-xs-12 col-12 col-md-4 form-group">
+            <input type="text" class="form-control" name="inputDate" [(ngModel)]="inputDate" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+          </div>
+
+          <div class="col-xs-12 col-12 col-md-4 form-group">
+            <timepicker name="inputTime" [(ngModel)]="inputTime" [showMeridian]="false"></timepicker>
+          </div>
+          {{ inputDate }} <br/>
+          {{ inputTime }}
+        </div>
+        {{ model.datum }}
       </div>
     </div>
 

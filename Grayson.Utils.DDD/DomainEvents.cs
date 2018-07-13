@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace Grayson.Utils.DDD
 {
+    /// <summary>
+    /// test
+    /// </summary>
+    /// <typeparam name="E"></typeparam>
     public class DomainEvents<E>
     {
         [ThreadStatic]

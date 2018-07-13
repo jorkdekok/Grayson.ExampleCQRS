@@ -1,50 +1,47 @@
-<div class="container">
+<!-- <div class="container"> -->
 
-  <h1> {{ pageTitle }}</h1>
-  <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+<h1> {{ pageTitle }}</h1>
+<form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <div class="row">
-      <div class="form-group">
-        <label>Datum</label>
-        <!-- <input type="text" class="form-control" required placeholder="Datepicker" name="datum" [(ngModel)]="model.datum" bsDatepicker
-          [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"> -->
-        <div class="row align-items-center">
+  <div class="form-group">
+    <label>Datum</label>
+    <div class="row align-items-center">
 
-          <div class="col-xs-12 col-12 col-md-4 form-group">
-            <input type="text" class="form-control" name="inputDate" [(ngModel)]="inputDate" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
-          </div>
+      <div class="col-xs-12 col-12 col-md-2 form-group">
+        <input type="text" class="form-control" name="inputDate" [(ngModel)]="inputDate" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+      </div>
 
-          <div class="col-xs-12 col-12 col-md-4 form-group">
-            <timepicker name="inputTime" [(ngModel)]="inputTime" [showMeridian]="false"></timepicker>
-          </div>
-          {{ inputDate }} <br/>
-          {{ inputTime }}
-        </div>
-        {{ model.datum }}
+      <div class="col-xs-12 col-12 col-md-2 form-group">
+        <timepicker name="inputTime" [(ngModel)]="inputTime" [showMeridian]="false"></timepicker>
       </div>
     </div>
+  </div>
 
-    <div class="form-group has-danger">
-      <label class="control-label">Stand</label>
-      <input #stand="ngModel" type="number" class="form-control" required placeholder="00000" name="stand" [(ngModel)]="model.stand"
+  <div class="form-group has-danger">
+    <label class="control-label">Stand</label>
+     
+      <div class="col-xs-12 col-12 col-md-2 form-group">
+      <input #stand="ngModel" type="number" class="form-control col-md-2" required placeholder="km stand" name="stand" [(ngModel)]="model.stand"
         [class.is-invalid]="stand.invalid && stand.touched">
       <div class="invalid-feedback">
         Stand is required.
       </div>
     </div>
+  </div>
 
-    <!-- <div class="form-group">
+  <!-- <div class="form-group">
       <label>Primary Language</label>
       <select #primaryLanguage class="form-control" name="primaryLanguage" (blur)="validatePrimaryLanguage(primaryLanguage.value)"
-        (change)="validatePrimaryLanguage(primaryLanguage.value)" [(ngModel)]="model.primaryLanguage" [class.is-invalid]="hasPrimaryLanguageError">
-        <option value="default">Select a language...</option>
-        <option *ngFor="let lang of languages">
-          {{ lang }}
-        </option>
-      </select>
-    </div> -->
+      (change)="validatePrimaryLanguage(primaryLanguage.value)" [(ngModel)]="model.primaryLanguage" [class.is-invalid]="hasPrimaryLanguageError">
+      <option value="default">Select a language...</option>
+      <option *ngFor="let lang of languages">
+        {{ lang }}
+      </option>
+    </select>
+  </div> -->
 
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Ok</button>
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Ok</button>
 
-  </form>
-</div>
+</form>
+{{ model.datum }}
+<!-- </div> -->

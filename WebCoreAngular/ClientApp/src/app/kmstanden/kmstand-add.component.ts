@@ -9,7 +9,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 })
 export class KmstandAddComponent implements OnInit {
   pageTitle = 'Nieuwe kmstand';
-  model: IKmStand = { id: '', stand: 0, datum: new Date() };
+  model: IKmStand = { id: '', stand: null, datum: new Date() };
   inputDate: Date;
   inputTime: Date;
 

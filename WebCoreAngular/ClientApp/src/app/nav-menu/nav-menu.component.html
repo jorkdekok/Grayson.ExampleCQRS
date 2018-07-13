@@ -1,5 +1,4 @@
-<div class='main-nav'>
-    <div class='navbar navbar-inverse'>
+    <nav class='navbar'>
         <div class='navbar-header'>
             <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded'
                 (click)='toggle()'>
@@ -11,8 +10,8 @@
             <a class='navbar-brand' [routerLink]='["/"]'>Rit Registratie</a>
         </div>
         <div class='clearfix'></div>
-        <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-            <ul class='nav navbar-nav'>
+        <div class='' [ngClass]='{ "in": isExpanded }'>
+            <ul class='nav flex-column'>
                 <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                     <a [routerLink]='["/"]' (click)='collapse()'>
                         <span class='glyphicon glyphicon-home'></span> Home
@@ -30,5 +29,4 @@
                 </li>
             </ul>
         </div>
-    </div>
-</div>
+    </nav>

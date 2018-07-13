@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { KmstandModule } from './kmstanden/kmstand.module';
 import { SharedModule } from './shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SharedModule } from './shared/shared.module';
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ]),
     KmstandModule,
-    SharedModule
+    SharedModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

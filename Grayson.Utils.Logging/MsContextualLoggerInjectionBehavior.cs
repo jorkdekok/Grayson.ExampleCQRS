@@ -7,6 +7,9 @@ using System;
 
 namespace Grayson.Utils.Logging
 {
+    /// <summary>
+    /// Test 01
+    /// </summary>
     public class MsContextualLoggerInjectionBehavior : IDependencyInjectionBehavior
     {
         private readonly Container container;

@@ -12,27 +12,23 @@ on:
 env:
   target: debug
   SOLUTION_FILE_PATH: ./*.sln
-   
+
 jobs:
   build:
-   
+    env:
+      target: debug
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Environment Variables from Dotenv
-    # You may pin to the exact commit or the version.
-  # uses: c-py/action-dotenv-to-setenv@a6380f4d905f42adb7c065db63e6d66d75b971ad
-    - uses: c-py/action-dotenv-to-setenv@v3
-      with:
-    # Path to the .env file (Default: .env)
-        env-file: github.env # default is .env
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore ${ env.SOLUTION_FILE_PATH }
+      run: dotnet restore $SOLUTION_FILE_PATH
     - name: Build
       run: dotnet build --no-restore
     - name: Test

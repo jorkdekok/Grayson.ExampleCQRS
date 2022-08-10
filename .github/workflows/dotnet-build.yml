@@ -2,15 +2,20 @@ name: .NET build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: 
+       - main
+       - release/*
   pull_request:
-    branches: [ "master" ]
-
+    branches: 
+       - main
+       - release/*
+env:
+  target: debug
+  SOLUTION_FILE_PATH: ./*.sln
+   
 jobs:
   build:
-    env:
-      target: debug
-
+   
     runs-on: ubuntu-latest
 
     steps:

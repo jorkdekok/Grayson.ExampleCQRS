@@ -11,7 +11,7 @@ on:
        - release/*
 env:
   target: debug
-  SOLUTION_FILE_PATH: ./*.sln
+  SOLUTION_FILE_PATH: Grayson.ExampleCQRS.sln
 
 jobs:
   build:

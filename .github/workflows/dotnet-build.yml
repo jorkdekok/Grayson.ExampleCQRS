@@ -22,7 +22,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Environment Variables from Dotenv
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:

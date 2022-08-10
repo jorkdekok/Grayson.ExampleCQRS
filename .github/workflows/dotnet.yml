@@ -15,9 +15,8 @@ jobs:
     steps:
     - name: checkout code
     - uses: actions/checkout@v3
-    - uses: actions/setup-dotnet@v2
-      with:
-        global-json-file: /global.json
+    - name: setup-dotnet
+      uses: actions/setup-dotnet@v2
     - run: dotnet build Grayson.ExampleCQRS.sln
     - name: Test
       run: dotnet test --no-build --verbosity normal

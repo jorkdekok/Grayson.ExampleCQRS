@@ -13,8 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: checkout code
     - uses: actions/checkout@v3
-    - name: Setup .NET build dependencies
-      uses: timheuer/bootstrap-dotnet@v1
+    - uses: actions/setup-dotnet@v2
+      with:
+        global-json-file: /global.json
+    - run: dotnet build .
     - name: Test
       run: dotnet test --no-build --verbosity normal
